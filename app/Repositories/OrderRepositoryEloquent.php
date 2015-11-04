@@ -13,6 +13,15 @@ use CodeDelivery\Models\Order;
  */
 class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 {
+    public function listsStatus()
+    {
+        return [
+            0 => 'Pendente',
+            1 => 'Saiu para Entrega',
+            2 => 'Entregue',
+            3 => 'Cancelado'
+        ];
+    }
     /**
      * Specify Model class name
      *

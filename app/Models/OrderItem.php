@@ -17,6 +17,13 @@ class OrderItem extends Model implements Transformable
         'qtd'
     ];
 
+    protected $appends = ['totals'];
+
+    public function getTotalsAttribute()
+    {
+        return $this->attributes['totals'] = number_format(($this->price * $this->qtd), 2, '.', '.');
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);

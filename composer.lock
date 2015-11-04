@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5afcfe562a58cece71d7cb45c6347aae",
-    "content-hash": "4a8b9ca6c4efd3f92ea44af3e1a62dc0",
+    "hash": "65439a64f00e59693ae78322f13b95e8",
+    "content-hash": "2fd357a13b12855db736080cb3f4424c",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -1593,12 +1593,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "b3e4ef96830dd41a13d2cb4767e406dc82d0805e"
+                "reference": "67c5be09bd31d7ebdb27edbca5b14aaf841c692c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/b3e4ef96830dd41a13d2cb4767e406dc82d0805e",
-                "reference": "b3e4ef96830dd41a13d2cb4767e406dc82d0805e",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/67c5be09bd31d7ebdb27edbca5b14aaf841c692c",
+                "reference": "67c5be09bd31d7ebdb27edbca5b14aaf841c692c",
                 "shasum": ""
             },
             "require": {
@@ -1667,7 +1667,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2015-11-03 14:24:30"
+            "time": "2015-11-04 08:13:32"
         },
         {
             "name": "symfony/process",

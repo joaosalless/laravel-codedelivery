@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole'], function () {
+Route::group(
+    [
+        'prefix'     => 'admin',
+        'as'         => 'admin.',
+        'middleware' => 'auth.checkrole'
+    ], function () {
 
     /** ------------------------------------------------------------------------
      *  Categories
@@ -44,5 +49,33 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
         Route::get('{id}/editar',     ['as' => 'edit',    'uses' => 'ProductsController@edit']);
         Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'ProductsController@update']);
         Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'ProductsController@destroy']);
+    });
+
+    /** ------------------------------------------------------------------------
+     *  Orders
+     *  ------------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+        Route::get('/',               ['as' => 'index',   'uses' => 'OrdersController@index']);
+        Route::get('criar',           ['as' => 'create',  'uses' => 'OrdersController@create']);
+        Route::get('{id}',            ['as' => 'show',    'uses' => 'OrdersController@show']);
+        Route::post('salvar',         ['as' => 'store',   'uses' => 'OrdersController@store']);
+        Route::get('{id}/editar',     ['as' => 'edit',    'uses' => 'OrdersController@edit']);
+        Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'OrdersController@update']);
+        Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'OrdersController@destroy']);
+    });
+
+    /** ------------------------------------------------------------------------
+     *  Clients
+     *  ------------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'clients', 'as' => 'clients.'], function () {
+        Route::get('/',               ['as' => 'index',   'uses' => 'ClientsController@index']);
+        Route::get('criar',           ['as' => 'create',  'uses' => 'ClientsController@create']);
+        Route::get('{id}',            ['as' => 'show',    'uses' => 'ClientsController@show']);
+        Route::post('salvar',         ['as' => 'store',   'uses' => 'ClientsController@store']);
+        Route::get('{id}/editar',     ['as' => 'edit',    'uses' => 'ClientsController@edit']);
+        Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'ClientsController@update']);
+        Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'ClientsController@destroy']);
     });
 });

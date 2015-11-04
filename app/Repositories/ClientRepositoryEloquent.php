@@ -14,6 +14,15 @@ use CodeDelivery\Models\Client;
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
 {
     /**
+     * Fields utilizadas na busca
+     */
+    protected $fieldSearchable = [
+        'phone'=>'like',
+        'address'=>'like',
+        'zipcode'=>'like',
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string

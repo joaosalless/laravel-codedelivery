@@ -10,6 +10,8 @@ class Client extends Model implements Transformable
 {
     use TransformableTrait;
 
+    protected $with = ['user'];
+
     protected $fillable = [
         'user_id',
         'phone',
@@ -21,6 +23,11 @@ class Client extends Model implements Transformable
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function isDeletable()
+    {
+        return false;
     }
 }

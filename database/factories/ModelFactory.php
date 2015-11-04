@@ -11,7 +11,9 @@
 |
 */
 
-$factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $faker) {
+$faker = \Faker\Factory::create('pt_BR');
+
+$factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $faker) use ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -20,26 +22,43 @@ $factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $fak
     ];
 });
 
-$factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $faker) {
+$factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $faker) use ($faker) {
     return [
         'phone' => $faker->phoneNumber,
-        'address' => $faker->address,
+        'address' => $faker->streetAddress,
+        'district' => $faker->citySuffix,
         'city' => $faker->city,
-        'state' => $faker->state,
+        'state' => $faker->stateAbbr,
         'zipcode' => $faker->postcode
     ];
 });
 
-$factory->define(CodeDelivery\Models\Category::class, function (Faker\Generator $faker) {
+$factory->define(CodeDelivery\Models\Category::class, function (Faker\Generator $faker) use ($faker) {
     return [
         'name' => $faker->word
     ];
 });
 
-$factory->define(CodeDelivery\Models\Product::class, function (Faker\Generator $faker) {
+$factory->define(CodeDelivery\Models\Product::class, function (Faker\Generator $faker) use ($faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->sentence,
         'price' => $faker->numberBetween(10, 50)
+    ];
+});
+
+$factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $faker) use ($faker) {
+    return [
+        'client_id' => rand(1, 10),
+        'shipping' => 5,
+        'total' => 0,
+        'status' => 0
+    ];
+});
+
+
+$factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) use ($faker) {
+    return [
+
     ];
 });
