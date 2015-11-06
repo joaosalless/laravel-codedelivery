@@ -5,6 +5,7 @@ namespace CodeDelivery\Models;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use CodeDelivery\Models\Cupom;
 
 class Order extends Model implements Transformable
 {
@@ -17,7 +18,12 @@ class Order extends Model implements Transformable
         'status'
     ];
 
-    protected $with = ['deliveryman'];
+    protected $with = [
+        'client',
+        'cupom',
+        'deliveryman',
+        'items'
+    ];
 
     public function items()
     {
@@ -25,11 +31,6 @@ class Order extends Model implements Transformable
     }
 
     protected $appends = ['subtotal'];
-
-    public function getSubtotalAttribute()
-    {
-        return $this->attributes['subtotal'] = number_format($this->items->sum('totals'), 2, '.', '.');
-    }
 
     public function client()
     {
@@ -44,6 +45,16 @@ class Order extends Model implements Transformable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function cupom()
+    {
+        return $this->belongsTo(Cupom::class);
+    }
+
+    public function getSubtotalAttribute()
+    {
+        return $this->attributes['subtotal'] = number_format($this->items->sum('totals'), 2, '.', '');
     }
 
     public function isDeletable()

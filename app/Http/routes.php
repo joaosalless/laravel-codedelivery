@@ -130,14 +130,33 @@ Route::group([
 ], function () {
 
     /** -----------------------------------------------------------------------
-     *  Orders
+     *  Client
      *  -----------------------------------------------------------------------
      */
-    Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
-        Route::get('/', function () {
+    Route::group([
+        'prefix'     => 'client',
+        'as'         => 'client.',
+        'middleware' => 'oauth.checkrole:client'
+    ], function () {
+        Route::resource('orders', 'Api\Client\ClientCheckoutController', [
+            'except' => ['create', 'edit', 'destroy']
+        ]);
+    });
+
+    /** -----------------------------------------------------------------------
+     *  Entregador
+     *  -----------------------------------------------------------------------
+     */
+    Route::group([
+        'prefix'     => 'deliveryman',
+        'as'         => 'deliveryman.',
+        'middleware' => 'oauth.checkrole:deliveryman'
+    ], function () {
+
+        Route::get('pedidos', function () {
             return [
                 'id' => 1,
-                'client' => 'User Client',
+                'client' => 'Usuário Entregador',
                 'total' => 10
             ];
         });
