@@ -45,4 +45,9 @@ class User extends Model implements
     {
         return $this->hasOne(Client::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'client_id', 'id');
+    }
 }

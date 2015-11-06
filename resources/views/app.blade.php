@@ -39,12 +39,19 @@
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
-                    <li><a href="{{ route('admin.clients.index') }}">Clientes</a></li>
-                    <li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
-                    <li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
-                    <li><a href="{{ route('admin.categories.index') }}">Usuários</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+                    @if (Auth::check())
+                        @if (Auth::user()->role == 'admin')
+                            <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-folder"></i> Categorias</a></li>
+                            <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-archive"></i> Produtos</a></li>
+                            <li><a href="{{ route('admin.clients.index') }}"><i class="fa fa-users"></i> Clientes</a></li>
+                            <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
+                            <li><a href="{{ route('admin.cupoms.index') }}"><i class="fa fa-tag"></i> Cupoms</a></li>
+                            <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-users"></i> Usuários</a></li>
+                        @elseif(Auth::user()->role == 'client')
+                            <li><a href="{{ route('customer.orders.index') }}"><i class="fa fa-shopping-cart"></i> Meus Pedidos</a></li>
+                        @endif
+                    @endif
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -75,5 +82,7 @@
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    @yield('post-script')
 </body>
 </html>

@@ -17,7 +17,7 @@ $factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $fak
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
     ];
 });
@@ -60,5 +60,13 @@ $factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $fa
 $factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) use ($faker) {
     return [
 
+    ];
+});
+
+$factory->define(CodeDelivery\Models\Cupom::class, function (Faker\Generator $faker) use ($faker) {
+    return [
+        'code' => rand(100, 1000),
+        'value' => rand(50, 100),
+        'used' => rand(0, 1)
     ];
 });

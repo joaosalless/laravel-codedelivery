@@ -34,6 +34,11 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            'CodeDelivery\Repositories\CupomRepository',
+            'CodeDelivery\Repositories\CupomRepositoryEloquent'
+        );
+
+        $this->app->bind(
             'CodeDelivery\Repositories\ProductRepository',
             'CodeDelivery\Repositories\ProductRepositoryEloquent'
         );

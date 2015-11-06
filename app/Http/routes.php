@@ -20,7 +20,7 @@ Route::group(
     [
         'prefix'     => 'admin',
         'as'         => 'admin.',
-        'middleware' => 'auth.checkrole'
+        'middleware' => 'auth.checkrole:admin'
     ], function () {
 
     /** ------------------------------------------------------------------------
@@ -78,4 +78,41 @@ Route::group(
         Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'ClientsController@update']);
         Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'ClientsController@destroy']);
     });
+
+    /** ------------------------------------------------------------------------
+     *  Cupoms
+     *  ------------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'cupoms', 'as' => 'cupoms.'], function () {
+        Route::get('/',               ['as' => 'index',   'uses' => 'CupomsController@index']);
+        Route::get('criar',           ['as' => 'create',  'uses' => 'CupomsController@create']);
+        Route::get('{id}',            ['as' => 'show',    'uses' => 'CupomsController@show']);
+        Route::post('salvar',         ['as' => 'store',   'uses' => 'CupomsController@store']);
+        Route::get('{id}/editar',     ['as' => 'edit',    'uses' => 'CupomsController@edit']);
+        Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'CupomsController@update']);
+        Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'CupomsController@destroy']);
+    });
+});
+
+/** ----------------------------------------------------------------------------
+ *  Customer Area
+ *  ----------------------------------------------------------------------------
+ */
+ Route::group(
+     [
+         'prefix'     => 'customer',
+         'as'         => 'customer.',
+         'middleware' => 'auth.checkrole:client'
+     ], function () {
+
+     /** -----------------------------------------------------------------------
+      *  Checkout
+      *  -----------------------------------------------------------------------
+      */
+     Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+         Route::get('/', ['as' => 'index', 'uses' => 'CheckoutController@index']);
+         Route::get('criar',           ['as' => 'create',  'uses' => 'CheckoutController@create']);
+         Route::get('{id}',            ['as' => 'show',    'uses' => 'CheckoutController@show']);
+         Route::post('salvar',         ['as' => 'store',   'uses' => 'CheckoutController@store']);
+     });
 });

@@ -6,33 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Client extends Model implements Transformable
+class Cupom extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $with = ['user'];
-
     protected $fillable = [
-        'user_id',
-        'phone',
-        'address',
-        'city',
-        'state',
-        'zipcode'
+        'code',
+        'value'
     ];
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'client_id', 'user_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Order::class);
     }
 
     public function isDeletable()
     {
+        if (!empty($this->orders)) {
+            return false;
+        }
+
+        if ($this->used < 1) {
+            return true;
+        }
+
         return false;
     }
 }
