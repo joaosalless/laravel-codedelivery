@@ -4,15 +4,16 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability" : "dev",
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "prettus/l5-repository": "^2.1",
         "bestmomo/scafold": "dev-master",
         "laravelcollective/html": "5.1.*",
-        "laracasts/flash": "^1.3"
+        "laracasts/flash": "^1.3",
+        "lucadegasperi/oauth2-server-laravel": "5.0.*"
     },
-    "minimum-stability" : "dev",
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",

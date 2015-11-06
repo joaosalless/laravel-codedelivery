@@ -15,13 +15,11 @@ Route::get('/', function () {
     return view('app');
 });
 
-
-Route::group(
-    [
-        'prefix'     => 'admin',
-        'as'         => 'admin.',
-        'middleware' => 'auth.checkrole:admin'
-    ], function () {
+Route::group([
+    'prefix'     => 'admin',
+    'as'         => 'admin.',
+    'middleware' => 'auth.checkrole:admin'
+], function () {
 
     /** ------------------------------------------------------------------------
      *  Categories
@@ -98,21 +96,50 @@ Route::group(
  *  Customer Area
  *  ----------------------------------------------------------------------------
  */
- Route::group(
-     [
-         'prefix'     => 'customer',
-         'as'         => 'customer.',
-         'middleware' => 'auth.checkrole:client'
-     ], function () {
+Route::group([
+    'prefix'     => 'customer',
+    'as'         => 'customer.',
+    'middleware' => 'auth.checkrole:client'
+], function () {
 
-     /** -----------------------------------------------------------------------
-      *  Checkout
-      *  -----------------------------------------------------------------------
-      */
-     Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
-         Route::get('/', ['as' => 'index', 'uses' => 'CheckoutController@index']);
-         Route::get('criar',           ['as' => 'create',  'uses' => 'CheckoutController@create']);
-         Route::get('{id}',            ['as' => 'show',    'uses' => 'CheckoutController@show']);
-         Route::post('salvar',         ['as' => 'store',   'uses' => 'CheckoutController@store']);
-     });
+    /** -----------------------------------------------------------------------
+     *  Checkout
+     *  -----------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'CheckoutController@index']);
+        Route::get('criar',           ['as' => 'create',  'uses' => 'CheckoutController@create']);
+        Route::get('{id}',            ['as' => 'show',    'uses' => 'CheckoutController@show']);
+        Route::post('salvar',         ['as' => 'store',   'uses' => 'CheckoutController@store']);
+    });
+});
+
+/** ----------------------------------------------------------------------------
+ *  API
+ *  ----------------------------------------------------------------------------
+ */
+
+Route::post('oauth/access_token', function () {
+     return Response::json(Authorizer::issueAccessToken());
+});
+
+Route::group([
+    'prefix'     => 'api',
+    'as'         => 'api.',
+    'middleware' => 'oauth'
+], function () {
+
+    /** -----------------------------------------------------------------------
+     *  Orders
+     *  -----------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+        Route::get('/', function () {
+            return [
+                'id' => 1,
+                'client' => 'User Client',
+                'total' => 10
+            ];
+        });
+    });
 });
