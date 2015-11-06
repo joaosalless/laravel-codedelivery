@@ -149,6 +149,8 @@ return [
         Bestmomo\Scafold\ScafoldServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
     ],
 
     /*
@@ -198,9 +200,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Form'  => Collective\Html\FormFacade::class,
-        'Html'  => Collective\Html\HtmlFacade::class,
-        'Flash' => Laracasts\Flash\Flash::class,
+        'Form'       => Collective\Html\FormFacade::class,
+        'Html'       => Collective\Html\HtmlFacade::class,
+        'Flash'      => Laracasts\Flash\Flash::class,
+        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
     ],
 
 ];
