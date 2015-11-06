@@ -21,7 +21,7 @@ class CreateCupomsTable extends Migration
         });
 
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('cupom_id')->unsigned()->nullable();
+            $table->integer('cupom_id')->unsigned()->nullable()->after('user_deliveryman_id');
             $table->foreign('cupom_id')->references('id')->on('cupoms');
         });
     }

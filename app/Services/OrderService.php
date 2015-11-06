@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Services;
 
+use CodeDelivery\Models\Order;
 use CodeDelivery\Repositories\ClientRepository;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Repositories\OrderRepository;
@@ -71,8 +72,15 @@ class OrderService
         }
     }
 
-    public function update(array $data, $id)
+    public function updateStatus($id, $userDeliverymanId, $status)
     {
+        $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
+        if ($order instanceof Order) {
+            $order->status = $status;
+            $order->save();
+            return $order;
+        }
 
+        return false;
     }
 }

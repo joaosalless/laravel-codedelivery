@@ -14,25 +14,35 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         factory(User::class)->create([
-            'name' => 'Admin',
+            'name' => 'Usuário Entragador 1',
+            'email' => 'entregador1@user.com',
+            'password' => bcrypt(123456),
+            'role' => 'deliveryman'
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'Usuário Entragador 2',
+            'email' => 'entregador2@user.com',
+            'password' => bcrypt(123456),
+            'role' => 'deliveryman'
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'Usuário Admin',
             'email' => 'admin@user.com',
             'password' => bcrypt(123456),
             'role' => 'admin'
         ])->client()->save(factory(Client::class)->make());
 
         factory(User::class)->create([
-            'email' => 'entregador@user.com',
-            'password' => bcrypt(123456),
-            'role' => 'deliveryman'
-        ]);
-
-        factory(User::class)->create([
-            'name' => 'User',
+            'name' => 'Usuário Cliente',
             'email' => 'user@user.com',
             'password' => bcrypt(123456),
         ])->client()->save(factory(Client::class)->make());
 
-        factory(User::class, 10)->create()->each(function($c) {
+        factory(User::class, 10)->create([
+            'password' => bcrypt(123456)
+        ])->each(function ($c) {
             $c->client()->save(factory(Client::class)->make());
         });
     }

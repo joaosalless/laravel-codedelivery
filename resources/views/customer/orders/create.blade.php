@@ -7,7 +7,7 @@
 
     <br>
 
-    @include('partials.form_errors', ['listErrors' => false])
+    @include('partials.form_errors', ['listErrors' => true])
     @include('flash::message')
 
     {!! Form::open(['route' => 'customer.orders.store']) !!}

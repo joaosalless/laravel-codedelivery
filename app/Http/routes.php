@@ -129,9 +129,9 @@ Route::group([
     'middleware' => 'oauth'
 ], function () {
 
-    /** -----------------------------------------------------------------------
+    /** ------------------------------------------------------------------------
      *  Client
-     *  -----------------------------------------------------------------------
+     *  ------------------------------------------------------------------------
      */
     Route::group([
         'prefix'     => 'client',
@@ -143,22 +143,21 @@ Route::group([
         ]);
     });
 
-    /** -----------------------------------------------------------------------
+    /** ------------------------------------------------------------------------
      *  Entregador
-     *  -----------------------------------------------------------------------
+     *  ------------------------------------------------------------------------
      */
     Route::group([
         'prefix'     => 'deliveryman',
         'as'         => 'deliveryman.',
         'middleware' => 'oauth.checkrole:deliveryman'
     ], function () {
-
-        Route::get('pedidos', function () {
-            return [
-                'id' => 1,
-                'client' => 'Usuário Entregador',
-                'total' => 10
-            ];
-        });
+        Route::resource('orders', 'Api\Deliveryman\DeliverymanCheckoutController', [
+            'except' => ['create', 'edit', 'destroy', 'store']
+        ]);
+        Route::patch('orders/{id}/update-status', [
+            'as'   => 'orders.update_status',
+            'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus'
+        ]);
     });
 });
