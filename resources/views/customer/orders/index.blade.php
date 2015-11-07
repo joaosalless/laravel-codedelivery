@@ -40,9 +40,9 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }}</td>
-                                <td>R$ {{ $order->total }}</td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>{{ $order->status }}</td>
+                                <td>{{ $order->present()->getTotal }}</td>
+                                <td>{{ $order->present()->getCreatedAt }}</td>
+                                <td>{{ $order->present()->getStatus }}</td>
                                 <td>
                                     <a href="{{ route('customer.orders.show', ['id' => $order->id]) }}" class="btn btn-xs btn-primary">visualizar</a>
                                 </td>

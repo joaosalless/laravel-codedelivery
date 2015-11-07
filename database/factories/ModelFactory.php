@@ -24,7 +24,7 @@ $factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $fak
 
 $factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $faker) use ($faker) {
     return [
-        'phone' => $faker->phoneNumber,
+        'phone' => $faker->phoneNumberCleared,
         'address' => $faker->streetAddress,
         'district' => $faker->citySuffix,
         'city' => $faker->city,
@@ -66,8 +66,8 @@ $factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator
 
 $factory->define(CodeDelivery\Models\Cupom::class, function (Faker\Generator $faker) use ($faker) {
     return [
-        'code' => rand(100, 1000),
+        'code'  => rand(100, 1000),
         'value' => rand(50, 100),
-        'used' => rand(0, 1)
+        'used' => 0
     ];
 });

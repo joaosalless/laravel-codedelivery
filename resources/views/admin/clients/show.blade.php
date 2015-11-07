@@ -35,7 +35,7 @@
                     </tr>
                     <tr>
                         <td>Telefone</td>
-                        <td>{{ $client->phone }}</td>
+                        <td>{{ $client->present()->getPhone }}</td>
                     </tr>
                     <tr>
                         <td>Emdereço</td>
@@ -51,15 +51,23 @@
                     </tr>
                     <tr>
                         <td>CEP</td>
-                        <td>{{ $client->zipcode }}</td>
+                        <td>{{ $client->present()->getZipcode }}</td>
                     </tr>
                     <tr>
                         <td>Criado em</td>
-                        <td>{{ $client->created_at }}</td>
+                        <td>{{ $client->present()->getCreatedAt }}</td>
                     </tr>
                     <tr>
                         <td>Atualizado em</td>
-                        <td>{{ $client->updated_at }}</td>
+                        <td>{{ $client->present()->getUpdatedAt }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pedidos Efetuados</td>
+                        <td>{{ $client->present()->getQtdOrders }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total de Pedidos Efetuados</td>
+                        <td>{{ $client->present()->getTotalOrders }}</td>
                     </tr>
                 </tbody>
             </table>

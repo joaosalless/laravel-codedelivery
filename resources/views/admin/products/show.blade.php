@@ -34,8 +34,8 @@
                         <td>{{ $product->category->name }}</td>
                     </tr>
                     <tr>
-                        <td>Preço</td>
-                        <td>R$ {{ $product->price }}</td>
+                        <td>Preço Atual</td>
+                        <td>{{ $product->present()->getPrice }}</td>
                     </tr>
                     <tr>
                         <td>Descrição</td>
@@ -43,12 +43,20 @@
                     </tr>
                     <tr>
                         <td>Criado em</td>
-                        <td>{{ $product->created_at }}</td>
+                        <td>{{ $product->present()->getCreatedAt }}</td>
                     </tr>
                     <tr>
                         <td>Atualizado em</td>
-                        <td>{{ $product->updated_at }}</td>
+                        <td>{{ $product->present()->getUpdatedAt }}</td>
                     </tr>
+                    <tr>
+                        <td>Quantidade de Vendas</td>
+                        <td>{{ $product->present()->getQtdOrders }}</td>
+                    </tr>
+                    {{-- <tr>
+                        <td>Valor Total de Vendas</td>
+                        <td>{{ $product->present()->getTotalOrders }}</td>
+                    </tr> --}}
                 </tbody>
             </table>
         </div>

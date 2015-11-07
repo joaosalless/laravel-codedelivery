@@ -10,6 +10,7 @@ use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Services\OrderService;
+use CodeDelivery\Presenters\Api\OrderPresenter;
 use Authorizer;
 
 class ClientCheckoutController extends Controller
@@ -18,6 +19,8 @@ class ClientCheckoutController extends Controller
     private $userRepository;
     private $productRepository;
     private $orderService;
+
+    private $with = ['client', 'cupom', 'items', 'deliveryman'];
 
     public function __construct(
         OrderRepository $orderRepository,
@@ -35,9 +38,12 @@ class ClientCheckoutController extends Controller
     {
         $userId = Authorizer::getResourceOwnerId();
         $clientId = $this->userRepository->find($userId)->client->id;
-        $orders = $this->orderRepository->with('items')->scopeQuery(function ($query) use ($clientId) {
-            return $query->where('client_id', $clientId);
-        })->paginate();
+        $orders = $this->orderRepository
+            ->with($this->with)
+            ->skipPresenter(false)
+            ->scopeQuery(function ($query) use ($clientId) {
+                return $query->where('client_id', $clientId);
+            })->paginate();
 
         return $orders;
     }
@@ -49,18 +55,19 @@ class ClientCheckoutController extends Controller
         $clientId = $this->userRepository->find($userId)->client->id;
         $data['client_id'] = $clientId;
         $o = $this->orderService->create($data);
-        $o = $this->orderRepository->with('items')->find($o->id);
+        $o = $this->orderRepository
+            ->with($this->with)
+            ->skipPresenter(false)
+            ->find($o->id);
+
         return $o;
     }
 
     public function show($id)
     {
-        $o = $this->orderRepository->find($id);
-
-        $o->items->each(function ($item) {
-            $item->product;
-        });
-
-        return $o;
+        return $this->orderRepository
+            ->with($this->with)
+            ->skipPresenter(false)
+            ->find($id);
     }
 }

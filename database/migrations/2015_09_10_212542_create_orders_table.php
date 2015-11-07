@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned();
-            $table->foreign('client_id')->references('id')->on('users');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->integer('user_deliveryman_id')->unsigned()->nullable();
             $table->foreign('user_deliveryman_id')->references('id')->on('users');
             $table->enum('payment_method', ['creditcard', 'cash'])->default('cash');

@@ -41,7 +41,7 @@
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->category->name }}</td>
-                            <td>R$ {{ $product->price }}</td>
+                            <td>{{ $product->present()->getPrice }}</td>
                             <td>
                                 <a href="{{ route('admin.products.show', ['id' => $product->id]) }}" class="btn btn-xs btn-primary">visualizar</a>
                                 <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}" class="btn btn-xs btn-warning">editar</a>

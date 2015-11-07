@@ -3,6 +3,8 @@
 namespace CodeDelivery\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
+use CodeDelivery\Presenters\BasePresenters\OrderPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use CodeDelivery\Models\Cupom;
@@ -10,6 +12,9 @@ use CodeDelivery\Models\Cupom;
 class Order extends Model implements Transformable
 {
     use TransformableTrait;
+
+    use PresentableTrait;
+    protected $presenter = OrderPresenter::class;
 
     protected $fillable = [
         'client_id',
@@ -41,11 +46,6 @@ class Order extends Model implements Transformable
     public function deliveryman()
     {
         return $this->belongsTo(User::class, 'user_deliveryman_id', 'id');
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
     }
 
     public function cupom()

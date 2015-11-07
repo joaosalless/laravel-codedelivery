@@ -31,19 +31,31 @@
                     </tr>
                     <tr>
                         <td>Valor</td>
-                        <td>R$ {{ $cupom->code }}</td>
+                        <td>{{ $cupom->present()->getValue }}</td>
                     </tr>
                     <tr>
-                        <td>Foi Utilizado</td>
-                        <td>{{ $cupom->used }}</td>
+                        <td>Utilizado</td>
+                        <td>{{ $cupom->present()->getUsed }}</td>
+                    </tr>
+
+                    @if ($cupom->used > 0)
+                    <tr>
+                        <td>Utilizado Por</td>
+                        <td><a href="{{ route('admin.clients.show', ['id' => $cupom->present()->getUsedByClientid]) }}">{{ $cupom->present()->getUsedByClientName }}</a></td>
                     </tr>
                     <tr>
-                        <td>Criada em</td>
-                        <td>{{ $cupom->created_at }}</td>
+                        <td>Utilizado em</td>
+                        <td>{{ $cupom->present()->getUsedAt }}</td>
+                    </tr>
+                    @endif
+
+                    <tr>
+                        <td>Criado em</td>
+                        <td>{{ $cupom->present()->getCreatedAt }}</td>
                     </tr>
                     <tr>
-                        <td>Atualizada em</td>
-                        <td>{{ $cupom->updated_at }}</td>
+                        <td>Atualizado em</td>
+                        <td>{{ $cupom->present()->getUpdatedAt }}</td>
                     </tr>
                 </tbody>
             </table>

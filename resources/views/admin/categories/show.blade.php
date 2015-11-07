@@ -30,13 +30,21 @@
                         <td>{{ $category->name }}</td>
                     </tr>
                     <tr>
-                        <td>Criada em</td>
-                        <td>{{ $category->created_at }}</td>
+                        <td>Criado em</td>
+                        <td>{{ $category->present()->getCreatedAt }}</td>
                     </tr>
                     <tr>
-                        <td>Atualizada em</td>
-                        <td>{{ $category->updated_at }}</td>
+                        <td>Atualizado em</td>
+                        <td>{{ $category->present()->getUpdatedAt }}</td>
                     </tr>
+                    <tr>
+                        <td>Quantidade de Produtos</td>
+                        <td>{{ $category->present()->getQtdProducts }}</td>
+                    </tr>
+                    {{-- <tr>
+                        <td>Valor Total de Produtos</td>
+                        <td>{{ $category->present()->getTotalValorProducts }}</td>
+                    </tr> --}}
                 </tbody>
             </table>
         </div>

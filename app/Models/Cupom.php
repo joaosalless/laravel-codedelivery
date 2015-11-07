@@ -3,6 +3,8 @@
 namespace CodeDelivery\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
+use CodeDelivery\Presenters\BasePresenters\CupomPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -10,9 +12,13 @@ class Cupom extends Model implements Transformable
 {
     use TransformableTrait;
 
+    use PresentableTrait;
+    protected $presenter = CupomPresenter::class;
+
     protected $fillable = [
         'code',
-        'value'
+        'value',
+        'used'
     ];
 
     public function orders()

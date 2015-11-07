@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d3dc79633c8248038bcb96d8127bc701",
-    "content-hash": "467c16512aa7a53d1bf7e6be24aa8d5a",
+    "hash": "194da28f71eec4f2d25cdfcb7f6f6505",
+    "content-hash": "3fe9a66850860134c4ec03b09e29a4de",
     "packages": [
         {
             "name": "bestmomo/scafold",
@@ -202,7 +202,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/097e7ba84f64a427e55008117ef2bb94096731dc",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
                 "reference": "097e7ba84f64a427e55008117ef2bb94096731dc",
                 "shasum": ""
             },
@@ -347,6 +347,54 @@
             "time": "2015-04-20 18:58:01"
         },
         {
+            "name": "jansenfelipe/utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jansenfelipe/utils.git",
+                "reference": "deb6607e5f77f9e89d8ec5fa7786719874784df9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jansenfelipe/utils/zipball/deb6607e5f77f9e89d8ec5fa7786719874784df9",
+                "reference": "deb6607e5f77f9e89d8ec5fa7786719874784df9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JansenFelipe\\Utils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jansen Felipe",
+                    "email": "jansen.felipe@gmail.com"
+                }
+            ],
+            "description": "Uma simples classe utilitária com métodos que podem salvar sua vida (ou não)",
+            "keywords": [
+                "php",
+                "util"
+            ],
+            "time": "2015-07-11 22:59:52"
+        },
+        {
             "name": "jeremeamia/SuperClosure",
             "version": "dev-master",
             "source": {
@@ -448,6 +496,52 @@
             "time": "2015-02-01 20:07:15"
         },
         {
+            "name": "laracasts/presenter",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Presenter.git",
+                "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Presenter/zipball/b284f3137f990efd6e95df49d254f1ccc4541e92",
+                "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Presenter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Simple view presenters",
+            "keywords": [
+                "laravel",
+                "presenter",
+                "view"
+            ],
+            "time": "2014-09-13 13:18:07"
+        },
+        {
             "name": "laravel/framework",
             "version": "5.1.x-dev",
             "source": {
@@ -457,7 +551,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/50b5d240ce3d54540f096aa73f833fa412798164",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d0aae67b969ffa9b388e7b51ca4b6d4c02516090",
                 "reference": "50b5d240ce3d54540f096aa73f833fa412798164",
                 "shasum": ""
             },
@@ -586,7 +680,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/a4acc4a0ad2c559db35dd0b4766d460d8f44276f",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/5ad8377968ba3b4da91fc60ca98b2eef4df380fc",
                 "reference": "a4acc4a0ad2c559db35dd0b4766d460d8f44276f",
                 "shasum": ""
             },
@@ -759,6 +853,69 @@
                 "storage"
             ],
             "time": "2015-10-30 22:12:12"
+        },
+        {
+            "name": "league/fractal",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "219022e3031c13a150b393d4adb3a1c7455e2de2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/219022e3031c13a150b393d4adb3a1c7455e2de2",
+                "reference": "219022e3031c13a150b393d4adb3a1c7455e2de2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "time": "2015-10-17 15:37:34"
         },
         {
             "name": "league/oauth2-server",
@@ -2045,7 +2202,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/6d672891571ab4bd24cc0fe6ee5ea4b372a4d82f",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c45956dcc15f0687339f2ccdb885aaf27e5ee4d2",
                 "reference": "6d672891571ab4bd24cc0fe6ee5ea4b372a4d82f",
                 "shasum": ""
             },
@@ -3370,7 +3527,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "bestmomo/scafold": 20
+        "bestmomo/scafold": 20,
+        "jansenfelipe/utils": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

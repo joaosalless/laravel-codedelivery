@@ -29,7 +29,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NOME</th>
+                        <th>Nome</th>
+                        <th>Produtos</th>
                         <th style="width:128px">AÇÕES</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                         <tr>
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
+                            <td>{{ $category->present()->getQtdProducts }}</td>
                             <td>
                                 <a href="{{ route('admin.categories.show', ['id' => $category->id]) }}" class="btn btn-xs btn-primary">visualizar</a>
                                 <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}" class="btn btn-xs btn-warning">editar</a>

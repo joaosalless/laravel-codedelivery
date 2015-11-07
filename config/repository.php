@@ -225,7 +225,7 @@ return [
             'repositories'=>'Repositories',
             'interfaces'=>'Repositories',
             'transformers'=>'Transformers',
-            'presenters'=>'Presenters'
+            'presenters'=>'Presenters\\Api'
         ]
     ]
 ];

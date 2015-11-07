@@ -22,15 +22,15 @@
             <div class="col-xs-4 text-right">
                 <address>
                     <strong>Data do Pedido:</strong><br>
-                    {{ $order->created_at }}<br>
+                    {{ $order->present()->getCreatedAt }}<br>
                 </address>
 
                 <address>
                     <strong>Status do Pedido:</strong><br>
-                    {{ $order->status }}
+                    {{ $order->present()->getStatus }}
                 </address>
 
-                @if (!empty($order->deliveryman))
+                @if (!empty($order->deliveryman) && ($order->status == 1 || $order->status == 2))
                 <address>
                     <strong>Entregador:</strong><br>
                     {{ $order->deliveryman->name }}
@@ -43,6 +43,13 @@
                 <address>
                     <strong>Forma de Pagamento:</strong><br>
                     {{ $order->payment_method }}
+                </address>
+            </div>
+            <div class="col-xs-8">
+                <address>
+                    <strong>Cupom de Desconto:</strong><br>
+                    Código: {{ $order->cupom->code }}<br>
+                    Valor : {{ $order->cupom->present()->getValue }}<br>
                 </address>
             </div>
         </div>
@@ -70,28 +77,36 @@
                             @foreach ($order->items as $item)
                             <tr>
                                 <td>{{ $item->product->name }}</td>
-                                <td class="text-center">R$ {{ $item->price }}</td>
+                                <td class="text-center">{{ $item->present()->getPrice }}</td>
                                 <td class="text-center">{{ $item->qtd }}</td>
-                                <td class="text-right">R$ {{ $item->totals }}</td>
+                                <td class="text-right">{{ $item->present()->getTotals }}</td>
                             </tr>
                             @endforeach
                             <tr>
                                 <td class="thick-line"></td>
                                 <td class="thick-line"></td>
                                 <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                <td class="thick-line text-right">R$ {{ $order->subtotal }}</td>
+                                <td class="thick-line text-right">{{ $order->present()->getSubtotal }}</td>
                             </tr>
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>Taxa de Entrega</strong></td>
-                                <td class="no-line text-right">R$ {{ $order->shipping }}</td>
+                                <td class="no-line text-right">{{ $order->present()->getShippingCosts }}</td>
                             </tr>
+                            @if ($order->cupom_id)
+                            <tr>
+                                <td class="no-line"></td>
+                                <td class="no-line"></td>
+                                <td class="no-line text-center"><strong>Desconto</strong></td>
+                                <td class="no-line text-right">{{ $order->cupom->present()->getValue }}</td>
+                            </tr>
+                            @endif
                             <tr>
                                 <td class="no-line"></td>
                                 <td class="no-line"></td>
                                 <td class="no-line text-center"><strong>Total</strong></td>
-                                <td class="no-line text-right"><strong>R$ {{ $order->total }}</strong></td>
+                                <td class="no-line text-right"><strong>{{ $order->present()->getTotal }}</strong></td>
                             </tr>
                         </tbody>
                     </table>

@@ -43,7 +43,7 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }}</td>
-                                <td>{{ $order->created_at }}</td>
+                                <td>{{ $order->present()->getCreatedAt }}</td>
                                 <td>{{ $order->client->user->name }}</td>
                                 <td>
                                     <table class="table table-condensed table-hover no-margin">
@@ -52,13 +52,13 @@
                                                 <tr>
                                                     <td style="width:15px">{{ $item->qtd }}</td>
                                                     <td>{{ $item->product->name }}</td>
-                                                    <td style="width:80px;text-align:right">R$ {{ $item->totals }}</td>
+                                                    <td style="width:80px;text-align:right">{{ $item->present()->getTotals }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </td>
-                                <td><h4 style="margin:0" class="pull-right"><small>R$</small> {{ $order->total }}</h4></td>
+                                <td><h4 style="margin:0" class="pull-right">{{ $order->present()->getTotal }}</h4></td>
                                 <td>
                                     @if ($order->deliveryman)
                                         {{ $order->deliveryman->name }}
@@ -66,7 +66,7 @@
                                         --
                                     @endif
                                 </td>
-                                <td>{{ $order->status }}</td>
+                                <td>{{ $order->present()->getStatus }}</td>
                                 <td>
                                     <a href="{{ route('admin.orders.show', ['id' => $order->id]) }}" class="btn btn-xs btn-margin-bottom btn-primary">visualizar</a>
                                     <a href="{{ route('admin.orders.edit', ['id' => $order->id]) }}" class="btn btn-xs btn-margin-bottom btn-warning">editar</a>

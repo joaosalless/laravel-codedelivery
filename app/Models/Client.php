@@ -3,12 +3,17 @@
 namespace CodeDelivery\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
+use CodeDelivery\Presenters\BasePresenters\ClientPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 class Client extends Model implements Transformable
 {
     use TransformableTrait;
+
+    use PresentableTrait;
+    protected $presenter = ClientPresenter::class;
 
     protected $with = ['user'];
 

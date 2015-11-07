@@ -31,6 +31,7 @@
                         <th>ID</th>
                         <th>Código</th>
                         <th>Valor</th>
+                        <th>Utilizado</th>
                         <th style="width:178px">AÇÕES</th>
                     </tr>
                 </thead>
@@ -39,7 +40,8 @@
                         <tr>
                             <td># {{ $cupom->id }}</td>
                             <td>{{ $cupom->code }}</td>
-                            <td>R$ {{ $cupom->value }}</td>
+                            <td>{{ $cupom->present()->getValue }}</td>
+                            <td>{{ $cupom->present()->getUsed }}</td>
                             <td>
                                 <a href="{{ route('admin.cupoms.show', ['id' => $cupom->id]) }}" class="btn btn-xs btn-primary">visualizar</a>
                                 <a href="{{ route('admin.cupoms.edit', ['id' => $cupom->id]) }}" class="btn btn-xs btn-warning">editar</a>

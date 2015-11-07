@@ -4,6 +4,8 @@ namespace CodeDelivery\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
+use CodeDelivery\Presenters\BasePresenters\UserPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -19,6 +21,9 @@ class User extends Model implements
     Transformable
 {
     use TransformableTrait, Authenticatable, Authorizable, CanResetPassword;
+
+    use PresentableTrait;
+    protected $presenter = UserPresenter::class;
 
     /**
      * The database table used by the model.

@@ -30,6 +30,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Email</th>
                         <th>Telefone</th>
                         <th style="width:178px">AÇÕES</th>
                     </tr>
@@ -39,7 +40,8 @@
                         <tr>
                             <td>{{ $client->id }}</td>
                             <td>{{ $client->user->name }}</td>
-                            <td>{{ $client->phone }}</td>
+                            <td>{{ $client->present()->getEmail }}</td>
+                            <td>{{ $client->present()->getPhone }}</td>
                             <td>
                                 <a href="{{ route('admin.clients.show', ['id' => $client->id]) }}" class="btn btn-xs btn-primary">visualizar</a>
                                 <a href="{{ route('admin.clients.edit', ['id' => $client->id]) }}" class="btn btn-xs btn-warning">editar</a>

@@ -3,12 +3,17 @@
 namespace CodeDelivery\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
+use CodeDelivery\Presenters\BasePresenters\ProductPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 class Product extends Model implements Transformable
 {
     use TransformableTrait;
+
+    use PresentableTrait;
+    protected $presenter = ProductPresenter::class;
 
     protected $fillable = [
         'category_id',
@@ -22,9 +27,9 @@ class Product extends Model implements Transformable
         return $this->belongsTo(Category::class);
     }
 
-    public function orders()
+    public function orderItems()
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasMany(OrderItem::class);
     }
 
     public function isDeletable()

@@ -8,7 +8,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            @include('admin.orders.order')
+            @include('customer.orders.order')
         </div>
     </div>
 </div>
