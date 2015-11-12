@@ -7,7 +7,7 @@
 
     <br>
 
-    @include('partials.form_errors', ['listErrors' => false])
+    @include('partials.form_errors', ['listErrors' => true])
     @include('flash::message')
 
     {!! Form::open(['route' => 'customer.orders.store']) !!}
@@ -25,6 +25,11 @@
             </div>
 
             <div class="panel-body">
+                <div class="form-group">
+                    {!! Form::label('cupom_code', 'Código do Cupom') !!}
+                    {!! Form::text('cupom_code', null, ['class' => 'form-control']) !!}
+                    <small class="text-danger">{{ $errors->first('cupom_code') }}</small>
+                </div>
                 @include('customer.orders._form')
             </div>
         </div>
