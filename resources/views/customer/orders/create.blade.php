@@ -27,7 +27,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     {!! Form::label('cupom_code', 'Código do Cupom') !!}
-                    {!! Form::text('cupom_code', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::text('cupom_code', null, ['class' => 'form-control']) !!}
                     <small class="text-danger">{{ $errors->first('cupom_code') }}</small>
                 </div>
                 @include('customer.orders._form')
