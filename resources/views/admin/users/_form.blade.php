@@ -23,6 +23,23 @@
             <small class="text-danger">{{ $errors->first('role') }}</small>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('password', 'Senha') !!}
+            <input type="password" class="form-control" name="password">
+            <small class="text-danger">{{ $errors->first('password') }}</small>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label('password_confirmation', 'Confirme a Senha') !!}
+            <input type="password" class="form-control" name="password_confirmation">
+            <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+        </div>
+    </div>
 
     <div class="col-md-4">
         <div class="form-group">
@@ -31,7 +48,8 @@
             <small class="text-danger">{{ $errors->first('client.phone') }}</small>
         </div>
     </div>
-
+</div>
+<div class="row">
     <div class="col-md-12">
         <div class="form-group">
             {!! Form::label('client[address]', 'Endereço') !!}
@@ -39,7 +57,8 @@
             <small class="text-danger">{{ $errors->first('client.address') }}</small>
         </div>
     </div>
-
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="form-group">
             {!! Form::label('client[city]', 'Cidade') !!}

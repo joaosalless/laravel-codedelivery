@@ -22,11 +22,20 @@ class UserService
 
     public function create(array $data)
     {
+        $data['password'] = bcrypt($data['password']);
 
+        $user = $this->userRepository->create($data);
+        $data['client']['user_id'] = $user->id;
+
+        $this->clientRepository->create($data['client']);
     }
 
     public function update(array $data, $id)
     {
+        if (isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
         $user = $this->userRepository->find($id);
         $this->userRepository->update($data, $id);
 

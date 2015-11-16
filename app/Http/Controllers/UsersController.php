@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use CodeDelivery\Http\Requests;
 use CodeDelivery\Http\Controllers\Controller;
-use CodeDelivery\Http\Requests\AdminUserRequest;
+use CodeDelivery\Http\Requests\AdminCreateUserRequest;
+use CodeDelivery\Http\Requests\AdminUpdateUserRequest;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\UserService;
 use Flash;
@@ -38,7 +39,7 @@ class UsersController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(AdminUserRequest $request)
+    public function store(AdminCreateUserRequest $request)
     {
         $data = $request->all();
         $this->userService->create($data);
@@ -62,7 +63,7 @@ class UsersController extends Controller
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
-    public function update(AdminUserRequest $request, $id)
+    public function update(AdminUpdateUserRequest $request, $id)
     {
         $data = $request->all();
         $this->userService->update($data, $id);
