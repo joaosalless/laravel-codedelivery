@@ -45,7 +45,7 @@
                             <li><a href="{{ route('admin.clients.index') }}"><i class="fa fa-users"></i> Clientes</a></li>
                             <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-shopping-cart"></i> Pedidos</a></li>
                             <li><a href="{{ route('admin.cupoms.index') }}"><i class="fa fa-tag"></i> Cupoms</a></li>
-                            <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-users"></i> Usuários</a></li>
+                            <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i> Usuários</a></li>
                         @elseif(Auth::user()->role == 'client')
                             <li><a href="{{ route('customer.orders.index') }}"><i class="fa fa-shopping-cart"></i> Meus Pedidos</a></li>
                         @endif
