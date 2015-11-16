@@ -90,6 +90,20 @@ Route::group([
         Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'CupomsController@update']);
         Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'CupomsController@destroy']);
     });
+
+    /** ------------------------------------------------------------------------
+     *  Users
+     *  ------------------------------------------------------------------------
+     */
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'UsersController@index']);
+        Route::get('criar',           ['as' => 'create',  'uses' => 'UsersController@create']);
+        Route::get('{id}',            ['as' => 'show',    'uses' => 'UsersController@show']);
+        Route::post('salvar',         ['as' => 'store',   'uses' => 'UsersController@store']);
+        Route::get('{id}/editar',     ['as' => 'edit',    'uses' => 'UsersController@edit']);
+        Route::post('{id}/atualizar', ['as' => 'update',  'uses' => 'UsersController@update']);
+        Route::get('{id}/remover',    ['as' => 'destroy', 'uses' => 'UsersController@destroy']);
+    });
 });
 
 /** ----------------------------------------------------------------------------

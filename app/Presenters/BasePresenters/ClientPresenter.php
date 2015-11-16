@@ -25,7 +25,7 @@ class ClientPresenter extends Presenter
 
     public function getQtdOrders()
     {
-        return $this->orders ? $this->orders->count() : $this->orders;
+        return $this->orders ? $this->orders->count() : 0;
     }
 
     public function getTotalOrders($moeda = true, $currency = 'R$', $decimal = 2)

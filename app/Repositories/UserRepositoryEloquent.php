@@ -23,6 +23,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return $this->model->where('role', '=', 'deliveryman')->lists('name', 'id');
     }
 
+    public function listsRoles()
+    {
+        return [
+            'client' => 'Cliente',
+            'deliveryman' => 'Entregador',
+            'admin' => 'Administrador',
+        ];
+    }
+
     /**
      * Specify Model class name
      *
