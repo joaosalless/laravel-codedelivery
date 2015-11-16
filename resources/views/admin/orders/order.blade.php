@@ -45,6 +45,7 @@
                     {{ $order->payment_method }}
                 </address>
             </div>
+            @if ($order->cupom)
             <div class="col-xs-8">
                 <address>
                     <strong>Cupom de Desconto:</strong><br>
@@ -52,6 +53,7 @@
                     Valor : {{ $order->cupom->present()->getValue }}<br>
                 </address>
             </div>
+            @endif
         </div>
     </div>
 </div>

@@ -160,4 +160,17 @@ Route::group([
             'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus'
         ]);
     });
+
+    /** ------------------------------------------------------------------------
+     *  Teste
+     *  ------------------------------------------------------------------------
+     */
+    Route::get('teste', [
+        'as'         => 'teste',
+        // 'middleware' => 'oauth', // Por estar agrupada no prefixo "api", esta rota já está protegida pelo OAuth.
+
+        function () {
+            return 'Teste de rota com autenticação oauth: "api/teste"';
+        }
+    ]);
 });
