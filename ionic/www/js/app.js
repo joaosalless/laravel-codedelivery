@@ -24,9 +24,10 @@ angular.module('starter', [
 
     .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
       OAuthProvider.configure({
-        baseUrl: 'https://api.website.com',
+        baseUrl: 'https://codedelivery.dev',
         clientId: 'appid01',
-        clientSecret: 'secret' // optional
+        clientSecret: 'secret', // optional
+        grantPath: '/oauth/access_token'
       });
 
       OAuthTokenProvider.configure({
