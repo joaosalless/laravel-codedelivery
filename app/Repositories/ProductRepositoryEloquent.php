@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Models\Product;
+use CodeDelivery\Presenters\ProductPresenter;
 
 /**
  * Class ProductRepositoryEloquent
@@ -13,6 +14,13 @@ use CodeDelivery\Models\Product;
  */
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return ProductPresenter::class;
+    }
+
     public function lists()
     {
         return $this->model->lists('name', 'id');

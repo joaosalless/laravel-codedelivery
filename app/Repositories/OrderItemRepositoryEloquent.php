@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\OrderItemRepository;
 use CodeDelivery\Models\OrderItem;
+use CodeDelivery\Presenters\OrderItemPresenter;
 
 /**
  * Class OrderItemRepositoryEloquent
@@ -13,6 +14,13 @@ use CodeDelivery\Models\OrderItem;
  */
 class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRepository
 {
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return OrderItemPresenter::class;
+    }
+
     /**
      * Specify Model class name
      *

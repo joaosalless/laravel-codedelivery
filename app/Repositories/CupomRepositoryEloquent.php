@@ -5,6 +5,7 @@ namespace CodeDelivery\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Models\Cupom;
+use CodeDelivery\Presenters\CupomPresenter;
 
 /**
  * Class CupomRepositoryEloquent
@@ -12,6 +13,13 @@ use CodeDelivery\Models\Cupom;
  */
 class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
 {
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return CupomPresenter::class;
+    }
+
     /**
      * Specify Model class name
      *

@@ -18,19 +18,20 @@ class ClientTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(Client $model) {
+    public function transform(Client $model)
+    {
         return [
             'id'         => (int)$model->id,
 
             /* place your other model properties here */
             'name'    => $model->user->name,
             'email'   => $model->user->email,
-            'phone'   => $model->phone,
+            'phone'   => $model->present()->getPhone,
             'user_id' => $model->user_id,
             'address' => $model->address,
             'city'    => $model->city,
             'state'   => $model->state,
-            'zipcode' => $model->zipcode,
+            'zipcode' => $model->present()->getZipcode,
 
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at

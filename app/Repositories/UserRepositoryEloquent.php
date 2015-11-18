@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Models\User;
+use CodeDelivery\Presenters\UserPresenter;
 
 /**
  * Class UserRepositoryEloquent
@@ -13,6 +14,13 @@ use CodeDelivery\Models\User;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return UserPresenter::class;
+    }
+
     public function lists()
     {
         return $this->model->lists('name', 'id');

@@ -25,6 +25,7 @@ class OrderTransformer extends TransformerAbstract
         return [
             'id' => (int)$model->id,
             'total' => (float) $model->total,
+            'status' => $model->status,
             // 'status' => $model->present()->orderStatus();
 
             /* place your other model properties here */
@@ -38,11 +39,6 @@ class OrderTransformer extends TransformerAbstract
     {
         return $this->item($model->client, new ClientTransformer());
     }
-
-    // public function includeDeliveryman(Order $model)
-    // {
-    //     return $this->item($model->deliveryman, new DeliverymanTransformer());
-    // }
 
     public function includeCupom(Order $model)
     {

@@ -15,7 +15,7 @@ class Client extends Model implements Transformable
     use PresentableTrait;
     protected $presenter = ClientPresenter::class;
 
-    protected $with = ['user'];
+    // protected $with = ['user'];
 
     protected $fillable = [
         'user_id',

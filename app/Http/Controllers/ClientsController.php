@@ -47,14 +47,14 @@ class ClientsController extends Controller
 
     public function show($id)
     {
-        $client = $this->repository->find($id);
+        $client = $this->repository->with(['user'])->find($id);
 
         return view('admin.clients.show', compact('client'));
     }
 
     public function edit($id)
     {
-        $client = $this->repository->find($id);
+        $client = $this->repository->with(['user'])->find($id);
 
         return view('admin.clients.edit', compact('client'));
     }

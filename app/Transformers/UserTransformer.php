@@ -1,0 +1,41 @@
+<?php
+
+namespace CodeDelivery\Transformers;
+
+use League\Fractal\TransformerAbstract;
+use CodeDelivery\Models\User;
+
+/**
+ * Class ClientTransformer
+ * @package namespace CodeDelivery\Transformers;
+ */
+class UserTransformer extends TransformerAbstract
+{
+    protected $defaultIncludes =   ['client'];
+    // protected $availableIncludes = ['client'];
+
+    /**
+     * Transform the \Client entity
+     * @param \Client $model
+     *
+     * @return array
+     */
+    public function transform(User $model)
+    {
+        return [
+            'id'      => (int)$model->id,
+
+            /* place your other model properties here */
+            'name'    => $model->name,
+            'email'   => $model->email,
+
+            'created_at' => $model->created_at,
+            'updated_at' => $model->updated_at
+        ];
+    }
+
+    public function includeClient(User $model)
+    {
+        return $this->item($model->client, new ClientTransformer());
+    }
+}

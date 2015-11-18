@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\ClientRepository;
 use CodeDelivery\Models\Client;
+use CodeDelivery\Presenters\ClientPresenter;
 
 /**
  * Class ClientRepositoryEloquent
@@ -13,6 +14,13 @@ use CodeDelivery\Models\Client;
  */
 class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
 {
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return ClientPresenter::class;
+    }
+
     /**
      * Fields utilizadas na busca
      */
