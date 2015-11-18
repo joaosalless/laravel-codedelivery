@@ -3,7 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', [
+  'ionic',
+  'starter.controllers',
+  'angular-oauth2'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,13 +22,48 @@ angular.module('starter', ['ionic'])
   });
 })
 
-    .config(function ($stateProvider) {
-      $stateProvider.state('home', {
-        url: '/home',
-        templateUrl: 'templates/home.html'
-      })
-      .state('main', {
-        url: '/',
-        templateUrl: 'templates/main.html'
-      })
+    .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
+      OAuthProvider.configure({
+        baseUrl: 'https://api.website.com',
+        clientId: 'appid01',
+        clientSecret: 'secret' // optional
+      });
+      
+      OAuthTokenProvider.configure({
+        name: 'token',
+        options: {
+          secure: true
+        }
+      });
+
+      $stateProvider
+        .state('home', {
+          url: '/home/:nome',
+          templateUrl: 'templates/home.html',
+          controller: 'HomeController'
+        })
+        .state('home.a', {
+          url: '/a',
+          templateUrl: 'templates/home-a.html'
+        })
+        .state('home.b', {
+          url: '/b',
+          templateUrl: 'templates/home-b.html'
+        })
+
+        .state('main', {
+          url: '/main',
+          templateUrl: 'templates/main.html'
+        })
+          .state('main.a', {
+            url: '/a',
+            templateUrl: 'templates/main-a.html'
+          })
+          .state('main.b', {
+            url: '/b',
+            templateUrl: 'templates/main-b.html'
+          });
+
+      $urlRouterProvider.otherwise('/main');
+
     });
