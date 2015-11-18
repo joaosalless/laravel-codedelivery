@@ -28,7 +28,7 @@ angular.module('starter', [
         clientId: 'appid01',
         clientSecret: 'secret' // optional
       });
-      
+
       OAuthTokenProvider.configure({
         name: 'token',
         options: {
@@ -37,33 +37,12 @@ angular.module('starter', [
       });
 
       $stateProvider
-        .state('home', {
-          url: '/home/:nome',
-          templateUrl: 'templates/home.html',
-          controller: 'HomeController'
-        })
-        .state('home.a', {
-          url: '/a',
-          templateUrl: 'templates/home-a.html'
-        })
-        .state('home.b', {
-          url: '/b',
-          templateUrl: 'templates/home-b.html'
+        .state('login', {
+          url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'LoginController'
         })
 
-        .state('main', {
-          url: '/main',
-          templateUrl: 'templates/main.html'
-        })
-          .state('main.a', {
-            url: '/a',
-            templateUrl: 'templates/main-a.html'
-          })
-          .state('main.b', {
-            url: '/b',
-            templateUrl: 'templates/main-b.html'
-          });
-
-      $urlRouterProvider.otherwise('/main');
+      // $urlRouterProvider.otherwise('/');
 
     });
