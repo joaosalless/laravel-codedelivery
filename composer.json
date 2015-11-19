@@ -15,7 +15,8 @@
         "lucadegasperi/oauth2-server-laravel": "5.0.*",
         "league/fractal": "^0.13.0",
         "laracasts/presenter": "^0.2.1",
-        "jansenfelipe/utils": "^2.0@dev"
+        "jansenfelipe/utils": "^2.0@dev",
+        "barryvdh/laravel-cors": "0.7.x"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -129,71 +129,77 @@ Route::group([
 });
 
 /** ----------------------------------------------------------------------------
- *  API
+ *  CORS
  *  ----------------------------------------------------------------------------
  */
+Route::group(['middleware' => 'cors'], function () {
 
-Route::post('oauth/access_token', function () {
-     return Response::json(Authorizer::issueAccessToken());
-});
-
-Route::group([
-    'prefix'     => 'api',
-    'as'         => 'api.',
-    'middleware' => 'oauth'
-], function () {
-
-    /** ------------------------------------------------------------------------
-     *  Authenticated User
-     *  ------------------------------------------------------------------------
+    /** ----------------------------------------------------------------------------
+     *  API
+     *  ----------------------------------------------------------------------------
      */
-    Route::get('authenticated', [
-        'as'   => 'authenticated',
-        'uses' => 'Api\AuthenticatedUserController@show'
-    ]);
-
-    /** ------------------------------------------------------------------------
-     *  Client
-     *  ------------------------------------------------------------------------
-     */
-    Route::group([
-        'prefix'     => 'client',
-        'as'         => 'client.',
-        'middleware' => 'oauth.checkrole:client'
-    ], function () {
-        Route::resource('orders', 'Api\Client\ClientCheckoutController', [
-            'except' => ['create', 'edit', 'destroy']
-        ]);
+    Route::post('oauth/access_token', function () {
+         return Response::json(Authorizer::issueAccessToken());
     });
 
-    /** ------------------------------------------------------------------------
-     *  Entregador
-     *  ------------------------------------------------------------------------
-     */
     Route::group([
-        'prefix'     => 'deliveryman',
-        'as'         => 'deliveryman.',
-        'middleware' => 'oauth.checkrole:deliveryman'
+        'prefix'     => 'api',
+        'as'         => 'api.',
+        'middleware' => 'oauth'
     ], function () {
-        Route::resource('orders', 'Api\Deliveryman\DeliverymanCheckoutController', [
-            'except' => ['create', 'edit', 'destroy', 'store']
+
+        /** ------------------------------------------------------------------------
+         *  Authenticated User
+         *  ------------------------------------------------------------------------
+         */
+        Route::get('authenticated', [
+            'as'   => 'authenticated',
+            'uses' => 'Api\AuthenticatedUserController@show'
         ]);
-        Route::patch('orders/{id}/update-status', [
-            'as'   => 'orders.update_status',
-            'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus'
+
+        /** ------------------------------------------------------------------------
+         *  Client
+         *  ------------------------------------------------------------------------
+         */
+        Route::group([
+            'prefix'     => 'client',
+            'as'         => 'client.',
+            'middleware' => 'oauth.checkrole:client'
+        ], function () {
+            Route::resource('orders', 'Api\Client\ClientCheckoutController', [
+                'except' => ['create', 'edit', 'destroy']
+            ]);
+        });
+
+        /** ------------------------------------------------------------------------
+         *  Entregador
+         *  ------------------------------------------------------------------------
+         */
+        Route::group([
+            'prefix'     => 'deliveryman',
+            'as'         => 'deliveryman.',
+            'middleware' => 'oauth.checkrole:deliveryman'
+        ], function () {
+            Route::resource('orders', 'Api\Deliveryman\DeliverymanCheckoutController', [
+                'except' => ['create', 'edit', 'destroy', 'store']
+            ]);
+            Route::patch('orders/{id}/update-status', [
+                'as'   => 'orders.update_status',
+                'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus'
+            ]);
+        });
+
+        /** ------------------------------------------------------------------------
+         *  Teste
+         *  ------------------------------------------------------------------------
+         */
+        Route::get('teste', [
+            'as'         => 'teste',
+            // 'middleware' => 'oauth', // Por estar agrupada no prefixo "api", esta rota já está protegida pelo OAuth.
+
+            function () {
+                return 'Teste de rota com autenticação oauth: "api/teste"';
+            }
         ]);
     });
-
-    /** ------------------------------------------------------------------------
-     *  Teste
-     *  ------------------------------------------------------------------------
-     */
-    Route::get('teste', [
-        'as'         => 'teste',
-        // 'middleware' => 'oauth', // Por estar agrupada no prefixo "api", esta rota já está protegida pelo OAuth.
-
-        function () {
-            return 'Teste de rota com autenticação oauth: "api/teste"';
-        }
-    ]);
 });

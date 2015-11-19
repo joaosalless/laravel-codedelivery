@@ -33,7 +33,7 @@ angular.module('starter', [
       OAuthTokenProvider.configure({
         name: 'token',
         options: {
-          secure: true
+          secure: false
         }
       });
 
@@ -42,6 +42,13 @@ angular.module('starter', [
           url: '/login',
           templateUrl: 'templates/login.html',
           controller: 'LoginController'
+        })
+        .state('home', {
+          url: '/home',
+          templateUrl: 'templates/home.html',
+          controller: function ($scope) {
+            
+          }
         })
 
       // $urlRouterProvider.otherwise('/');
