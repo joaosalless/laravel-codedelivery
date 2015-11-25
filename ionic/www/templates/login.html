@@ -1,20 +1,20 @@
 <ion-view>
   <ion-nav-title>Login</ion-nav-title>
-  <ion-content class="padding">
+  <ion-content class="">
     <form name="form" ng-submit="login()">
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="text" name="username" placeholder="Digite seu nome de usuário"
-            ng-model="user.username" required="required"/>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+          <input type="text" name="username" ng-model="user.username" required="required" placeholder="Email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Senha</span>
+          <input type="password" name="password" ng-model="user.password" required="required" placeholder="Senha">
         </label>
       </div>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="password" name="password" placeholder="Digite sua senha"
-            ng-model="user.password" required="required"/>
-        </label>
+      <div class="padding">
+        <button type="submit" class="button button-block button-assertive">Login</button>
       </div>
-      <button type="submit" class="button button-full button-balanced">Login</button>
     </form>
   </ion-content>
 </ion-view>

@@ -11,6 +11,7 @@ use CodeDelivery\Models\Client;
  */
 class ClientTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = ['user'];
 
     /**
      * Transform the \Client entity
@@ -24,8 +25,8 @@ class ClientTransformer extends TransformerAbstract
             'id'         => (int)$model->id,
 
             /* place your other model properties here */
-            'name'    => $model->user->name,
-            'email'   => $model->user->email,
+            // 'name'    => $model->user->name,
+            // 'email'   => $model->user->email,
             'phone'   => $model->present()->getPhone,
             'user_id' => $model->user_id,
             'address' => $model->address,
@@ -33,8 +34,13 @@ class ClientTransformer extends TransformerAbstract
             'state'   => $model->state,
             'zipcode' => $model->present()->getZipcode,
 
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            // 'created_at' => $model->created_at,
+            // 'updated_at' => $model->updated_at
         ];
+    }
+
+    public function includeUser(Client $model)
+    {
+        return $this->item($model->user, new UserTransformer());
     }
 }

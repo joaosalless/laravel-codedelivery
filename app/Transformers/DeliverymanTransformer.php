@@ -9,10 +9,8 @@ use CodeDelivery\Models\User;
  * Class ClientTransformer
  * @package namespace CodeDelivery\Transformers;
  */
-class UserTransformer extends TransformerAbstract
+class DeliverymanTransformer extends TransformerAbstract
 {
-    // protected $defaultIncludes =   ['client'];
-    protected $availableIncludes = ['client'];
 
     /**
      * Transform the \Client entity
@@ -23,20 +21,11 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $model)
     {
         return [
-            'id'      => (int)$model->id,
+            'id'         => (int)$model->id,
 
             /* place your other model properties here */
             'name'    => $model->name,
             'email'   => $model->email,
-            'role'    => $model->role,
-
-            // 'created_at' => $model->created_at,
-            // 'updated_at' => $model->updated_at
         ];
-    }
-
-    public function includeClient(User $model)
-    {
-        return $this->item($model->client, new ClientTransformer());
     }
 }

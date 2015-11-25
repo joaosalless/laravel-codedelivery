@@ -22,35 +22,35 @@ angular.module('starter', [
   });
 })
 
-    .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
-      OAuthProvider.configure({
-        baseUrl: 'https://codedelivery.dev',
-        clientId: 'appid01',
-        clientSecret: 'secret', // optional
-        grantPath: '/oauth/access_token'
-      });
+.config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
+  OAuthProvider.configure({
+    baseUrl: 'http://codedelivery.dev',
+    clientId: 'appid01',
+    clientSecret: 'secret', // optional
+    grantPath: '/oauth/access_token'
+  });
 
-      OAuthTokenProvider.configure({
-        name: 'token',
-        options: {
-          secure: false
-        }
-      });
+  OAuthTokenProvider.configure({
+    name: 'token',
+    options: {
+      secure: true
+    }
+  });
 
-      $stateProvider
-        .state('login', {
-          url: '/login',
-          templateUrl: 'templates/login.html',
-          controller: 'LoginController'
-        })
-        .state('home', {
-          url: '/home',
-          templateUrl: 'templates/home.html',
-          controller: function ($scope) {
-            
-          }
-        })
+  $stateProvider
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginController'
+    })
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      controller: function ($scope) {
 
-      // $urlRouterProvider.otherwise('/');
+      }
+    })
 
-    });
+  // $urlRouterProvider.otherwise('/');
+
+});

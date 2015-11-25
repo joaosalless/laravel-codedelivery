@@ -17,6 +17,6 @@ angular.module('starter.controllers', [])
           template: 'Login e/ou senha inválidos'
         });
         console.debug(responseEror);
-      })
+      });
     }
   }]);
