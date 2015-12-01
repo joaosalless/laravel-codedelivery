@@ -11,12 +11,12 @@ angular.module('starter.controllers', [])
     $scope.login = function () {
       OAuth.getAccessToken($scope.user).then(function(data) {
         $state.go('home');
-      }, function (responseEror) {
+      }, function (responseError) {
         $ionicPopup.alert({
           title: 'Advertência',
           template: 'Login e/ou senha inválidos'
         });
-        console.debug(responseEror);
+        console.debug(responseError);
       });
     }
   }]);

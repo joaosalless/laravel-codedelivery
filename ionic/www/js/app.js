@@ -9,7 +9,7 @@ angular.module('starter', [
   'angular-oauth2'
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $http, OAuthToken) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +20,8 @@ angular.module('starter', [
       StatusBar.styleDefault();
     }
   });
+
+  $http.defaults.headers.common.Authorization = 'Bearer ' + OAuthToken.getToken();
 })
 
 .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider) {
@@ -33,7 +35,7 @@ angular.module('starter', [
   OAuthTokenProvider.configure({
     name: 'token',
     options: {
-      secure: true
+      secure: false
     }
   });
 
@@ -46,11 +48,17 @@ angular.module('starter', [
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
-      controller: function ($scope) {
-
+      controller: function ($scope, $http) {
+        $http.get('http://codedelivery.dev/api/authenticated?include=client').then(
+          function(success){
+            $scope.user = success.data;
+            // console.log($scope.user);
+          }, function(error){
+            console.log(error);
+          }
+        );
       }
     })
 
   // $urlRouterProvider.otherwise('/');
-
 });
