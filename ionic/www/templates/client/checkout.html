@@ -1,7 +1,14 @@
 <ion-view>
-  <ion-nav-title>Checkout</ion-nav-title>
+    <ion-nav-title>Checkout</ion-nav-title>
 
-  <ion-content class="padding">
-    Checkout
-  </ion-content>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item ng-repeat="o in items">
+                {{o.name}}
+                <soan class="item-note">
+                  <i class="ion ion-cash"> {{o.price}}</i>
+                </soan>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>

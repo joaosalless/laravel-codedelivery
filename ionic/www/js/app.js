@@ -1,5 +1,4 @@
 // Ionic Starter App
-'use strict';
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -89,6 +88,8 @@ angular.module('starter', [
             templateUrl: 'templates/client/view_products.html',
             controller: 'ClientViewProductController'
         })
-
     // $urlRouterProvider.otherwise('/');
+})
+.service('cart', function () {
+    this.items = [];
 });
