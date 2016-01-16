@@ -50,6 +50,19 @@ angular.module('starter', [
         });
 
         $stateProvider
+            .state('menu', {
+                url: '/menu',
+                templateUrl: 'templates/menu.html',
+                controller: function ($scope, $ionicSideMenuDelegate) {
+                    $scope.openLeft = function () {
+                        $ionicSideMenuDelegate.toggleLeft();
+                    };
+
+                    $scope.openRight = function () {
+                        $ionicSideMenuDelegate.toggleRight();
+                    };
+                }
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'templates/login.html',
