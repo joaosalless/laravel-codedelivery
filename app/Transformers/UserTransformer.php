@@ -24,14 +24,12 @@ class UserTransformer extends TransformerAbstract
     {
         return [
             'id'      => (int)$model->id,
-
-            /* place your other model properties here */
             'name'    => $model->name,
             'email'   => $model->email,
             'role'    => $model->role,
 
-            // 'created_at' => $model->created_at,
-            // 'updated_at' => $model->updated_at
+            'created_at' => $model->created_at,
+            'updated_at' => $model->updated_at
         ];
     }
 

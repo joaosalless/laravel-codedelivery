@@ -8,4 +8,4 @@ angular.module('starter.services')
                 isArray: false
             }
         });
-    }])
+    }]);

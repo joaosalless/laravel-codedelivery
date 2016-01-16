@@ -1,9 +1,15 @@
 angular.module('starter.controllers')
     .controller('ClientCheckoutController', [
-        '$scope', '$state', '$cart', 'Order', '$ionicLoading', '$ionicPopup', 'Cupom', '$cordovaBarcodeScanner',
-        function ($scope, $state, $cart, Order, $ionicLoading, $ionicPopup, Cupom, $cordovaBarcodeScanner) {
+        '$scope', '$state', '$cart', 'Order', '$ionicLoading', '$ionicPopup', 'Cupom', '$cordovaBarcodeScanner', 'User',
+        function ($scope, $state, $cart, Order, $ionicLoading, $ionicPopup, Cupom, $cordovaBarcodeScanner, User) {
 
             'use strict';
+
+            User.authenticated({include: 'client'}, function(data) {
+                console.log(data.data);
+            }, function(responseError) {
+
+            });
 
             var cart = $cart.get();
             $scope.cupom = cart.cupom;
