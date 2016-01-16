@@ -15,7 +15,7 @@ angular.module('starter', [
     'ngResource'
 ])
 .constant('appConfig', {
-  baseUrl: 'http://codedelivery.dev'
+  baseUrl: 'http://192.168.1.105'
 })
 .run(function ($ionicPlatform, $http, OAuthToken) {
     $ionicPlatform.ready(function () {
@@ -95,7 +95,7 @@ angular.module('starter', [
             templateUrl: 'templates/client/view_products.html',
             controller: 'ClientViewProductController'
         })
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
 })
 .service('cart', function () {
     this.items = [];
