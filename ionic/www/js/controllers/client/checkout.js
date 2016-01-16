@@ -8,11 +8,11 @@ angular.module('starter.controllers')
             var cart = $cart.get();
             $scope.cupom = cart.cupom;
             $scope.items = cart.items;
-            $scope.total = cart.total;
+            $scope.total = $cart.getTotalFinal();
             $scope.removeItem = function (i) {
                 $cart.removeItem(i);
                 $scope.items.splice(i, 1);
-                $scope.total = $cart.get().total;
+                $scope.total = $cart.getTotalFinal();
             };
 
             $scope.openListProducts = function () {
@@ -24,14 +24,17 @@ angular.module('starter.controllers')
             };
 
             $scope.save = function () {
-                var items = angular.copy($scope.items);
-                angular.forEach(items, function (item) {
+                var o = {items: angular.copy($scope.items)};
+                angular.forEach(o.items, function (item) {
                     item.product_id = item.id;
                 });
                 $ionicLoading.show({
                     template: 'Carregando...'
                 });
-                Order.save({id: null}, {items: items}, function (data) {
+                if ($scope.cupom.value) {
+                    o.cupom_code = $scope.cupom.code;
+                }
+                Order.save({id: null}, o, function (data) {
                     $ionicLoading.hide();
                     $state.go('client.checkout_successful');
                 }, function (responseError) {
@@ -53,7 +56,7 @@ angular.module('starter.controllers')
                 $scope.total = $cart.getTotalFinal();
             };
 
-            function getValueCupom($code) {
+            function getValueCupom(code) {
                 $ionicLoading.show({
                     template: 'Carregando...'
                 });

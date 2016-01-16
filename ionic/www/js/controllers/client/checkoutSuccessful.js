@@ -5,8 +5,9 @@ angular.module('starter.controllers')
             'use strict';
 
             var cart = $cart.get();
+            $scope.cupom = cart.cupom;
             $scope.items = cart.items;
-            $scope.total = cart.total;
+            $scope.total = $cart.getTotalFinal();
             $cart.clear();
 
             $scope.openListOrders = function() {

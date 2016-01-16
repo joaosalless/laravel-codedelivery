@@ -85,6 +85,7 @@ angular.module('starter', [
             controller: 'ClientCheckoutDetailController'
         })
         .state('client.checkout_successful', {
+            cache: false,
             url: '/checkout/successfull',
             templateUrl: 'templates/client/checkout_successful.html',
             controller: 'ClientCheckoutSuccessfulController'
