@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col">
                         <h2>{{o.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</h2>
-                        <p>{{o.product_names | limitTo: 3}}</p>
+                        <p>{{o.product_names | limitTo: 3 | join: ', '}}</p>
                         <i class="ion ion-ios-cart"></i> {{o.product_names.length}} Ítens
                     </div>
                     <div class="col text-right">
