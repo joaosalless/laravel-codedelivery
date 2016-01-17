@@ -11,7 +11,7 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-            Order.query({id: null, include: 'items'}, function (data) {
+            Order.query({id: null}, function (data) {
                 $scope.items = data.data;
                 $ionicLoading.hide();
                 console.log($scope.order);
