@@ -1,6 +1,10 @@
 <ion-view>
     <ion-nav-title>Meus Pedidos</ion-nav-title>
     <ion-content class="padding has-header">
+        <ion-refresher
+            pulling-text="Puxe para atualizar..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
         <ion-list>
             <ion-item ng-repeat="o in items">
                 <div class="row">

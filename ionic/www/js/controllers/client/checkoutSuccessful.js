@@ -10,8 +10,8 @@ angular.module('starter.controllers')
             $scope.total = $cart.getTotalFinal();
             $cart.clear();
 
-            $scope.openListOrders = function() {
-
+            $scope.openListOrders = function () {
+                $state.go('client.order');
             };
         }
     ]);

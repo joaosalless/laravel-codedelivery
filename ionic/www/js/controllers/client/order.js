@@ -11,15 +11,26 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-            Order.query({
-                id: null,
-                orderBy: 'created_at',
-                sortedBy: 'desc'
-            }, function (data) {
+            $scope.doRefresh = function () {
+                getOrders().then(function (data) {
+                    $scope.items = data.data;
+                    $scope.$broadcast('scroll.refreshComplete');
+                }, function (dataError) {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+            };
+
+            function getOrders() {
+                return Order.query({
+                    id: null,
+                    orderBy: 'created_at',
+                    sortedBy: 'desc'
+                }).$promise;
+            }
+
+            getOrders().then(function (data) {
                 $scope.items = data.data;
                 $ionicLoading.hide();
-                console.log($scope.order);
-
             }, function (dataError) {
                 $ionicLoading.hide();
             });
