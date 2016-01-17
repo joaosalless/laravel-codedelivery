@@ -57,10 +57,48 @@ angular.module('starter', [
                     $scope.openLeft = function () {
                         $ionicSideMenuDelegate.toggleLeft();
                     };
-
                     $scope.openRight = function () {
                         $ionicSideMenuDelegate.toggleRight();
                     };
+                }
+            })
+            .state('menu.a', {
+                url: '/a',
+                template: '<ion-view>' +
+                        '<ion-content class="padding has-header">' +
+                        '<h1>Estamos na A</h1>' +
+                        '<a ui-sref="menu.b">Ir para B</a><br/>' +
+                        '<a ui-sref="menu.c">Ir para C</a>' +
+                        '</ion-content>' +
+                        '</ion-view>',
+                controller: function () {
+
+                }
+            })
+            .state('menu.b', {
+                url: '/b',
+                template: '<ion-view>' +
+                        '<ion-content class="padding has-header">' +
+                        '<h1>Estamos na B</h1>' +
+                        '<a ui-sref="menu.a">Ir para A</a><br/>' +
+                        '<a ui-sref="menu.c">Ir para C</a>' +
+                        '</ion-content>' +
+                        '</ion-view>',
+                controller: function () {
+
+                }
+            })
+            .state('menu.c', {
+                url: '/c',
+                template: '<ion-view>' +
+                        '<ion-content class="padding has-header">' +
+                        '<h1>Estamos na C</h1>' +
+                        '<a ui-sref="menu.a">Ir para A</a><br/>' +
+                        '<a ui-sref="menu.b">Ir para B</a>' +
+                        '</ion-content>' +
+                        '</ion-view>',
+                controller: function () {
+
                 }
             })
             .state('login', {
