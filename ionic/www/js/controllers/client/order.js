@@ -20,6 +20,10 @@ angular.module('starter.controllers')
                 });
             };
 
+            $scope.openOrderDetail = function (order) {
+                $state.go('client.view_order', {id: order.id});
+            };
+
             function getOrders() {
                 return Order.query({
                     id: null,

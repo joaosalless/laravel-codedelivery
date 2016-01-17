@@ -79,10 +79,14 @@ angular.module('starter', [
                 controller: 'ClientMenuController'
             })
             .state('client.order', {
-                cache: false,
                 url: '/order',
                 templateUrl: 'templates/client/order.html',
                 controller: 'ClientOrderController'
+            })
+            .state('client.view_order', {
+                url: '/view_order/:id',
+                templateUrl: 'templates/client/view_order.html',
+                controller: 'ClientViewOrderController'
             })
             .state('client.checkout', {
                 cache: false,

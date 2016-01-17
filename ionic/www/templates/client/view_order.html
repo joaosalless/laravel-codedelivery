@@ -1,0 +1,25 @@
+<ion-view>
+    <ion-nav-title>Pedido: #{{order.id}}</ion-nav-title>
+    <div class="bar bar-subheader">
+        <h2 class="title">Total: R$ {{order.total}}</h2>
+    </div>
+    <ion-content class="padding has-subheader">
+        <div class="item item-divider">
+            Data da Compra: {{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="item in order.items.data">
+                <h2>{{item.product.data.name}}</h2>
+                <div class="row">
+                    <div class="col">
+                        Qtd: {{item.qtd}} <br/>
+                        R$ {{item.price}}</i>
+                    </div>
+                    <div class="col">
+                        Subtotal: R$ {{item.qtd * item.price}}</i>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
