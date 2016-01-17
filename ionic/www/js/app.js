@@ -76,6 +76,12 @@ angular.module('starter', [
                 templateUrl: 'templates/client/menu.html',
                 controller: 'ClientMenuController'
             })
+            .state('client.order', {
+                cache: false,
+                url: '/order',
+                templateUrl: 'templates/client/order.html',
+                controller: 'ClientOrderController'
+            })
             .state('client.checkout', {
                 cache: false,
                 url: '/checkout',
