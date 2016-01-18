@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('LoginController', [
-        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', '$localStorage', 'User',
-        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, $localStorage, User) {
+        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', 'UserData', 'User',
+        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User) {
             'use strict';
 
             $scope.user = {
@@ -17,10 +17,10 @@ angular.module('starter.controllers')
                     })
                     .then(function (data) {
                         console.log(data.data);
-                        $localStorage.setObject('user', data.data);
+                        UserData.set(data.data);
                         $state.go('client.checkout');
                     }, function (responseError) {
-                        $localStorage.setObject('user', null);
+                        UserData.set(null);
                         OAuthToken.removeToken();
                         $ionicPopup.alert({
                             title: 'Advertência',

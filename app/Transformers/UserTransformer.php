@@ -35,6 +35,10 @@ class UserTransformer extends TransformerAbstract
 
     public function includeClient(User $model)
     {
-        return $this->item($model->client, new ClientTransformer());
+        if ($model->client) {
+            return $this->item($model->client, new ClientTransformer());
+        } else {
+            return null;
+        }
     }
 }

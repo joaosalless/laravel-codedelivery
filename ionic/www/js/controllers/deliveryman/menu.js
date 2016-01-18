@@ -1,23 +1,8 @@
 angular.module('starter.controllers')
     .controller('DeliverymanMenuController', [
-        '$scope', 'User', '$ionicLoading',
-        function ($scope, User, $ionicLoading) {
-
+        '$scope', 'UserData',
+        function ($scope, UserData) {
             'use strict';
-
-            $scope.user = {
-                name: ''
-            };
-
-            $ionicLoading.show({
-                template: 'Carregando...'
-            });
-
-            User.authenticated({}, function (data) {
-                $scope.user = data.data;
-                $ionicLoading.hide();
-            }, function (responseError) {
-                $ionicLoading.hide();
-            });
+            $scope.user = UserData.get();
         }
     ]);
