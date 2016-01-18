@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('DeliverymanOrderController', [
-        '$scope', '$state', '$ionicLoading', 'Order',
-        function ($scope, $state, $ionicLoading, Order) {
+        '$scope', '$state', '$ionicLoading', 'DeliverymanOrder',
+        function ($scope, $state, $ionicLoading, DeliverymanOrder) {
 
             'use strict';
 
@@ -25,7 +25,7 @@ angular.module('starter.controllers')
             };
 
             function getOrders() {
-                return Order.query({
+                return DeliverymanOrder.query({
                     id: null,
                     orderBy: 'created_at',
                     sortedBy: 'desc'

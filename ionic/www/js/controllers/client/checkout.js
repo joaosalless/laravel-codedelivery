@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('ClientCheckoutController', [
-        '$scope', '$state', '$cart', 'Order', '$ionicLoading', '$ionicPopup', 'Cupom', '$cordovaBarcodeScanner', 'User',
-        function ($scope, $state, $cart, Order, $ionicLoading, $ionicPopup, Cupom, $cordovaBarcodeScanner, User) {
+        '$scope', '$state', '$cart', 'ClientOrder', '$ionicLoading', '$ionicPopup', 'Cupom', '$cordovaBarcodeScanner', 'User',
+        function ($scope, $state, $cart, ClientOrder, $ionicLoading, $ionicPopup, Cupom, $cordovaBarcodeScanner, User) {
 
             'use strict';
 
@@ -34,7 +34,7 @@ angular.module('starter.controllers')
                 if ($scope.cupom.value) {
                     o.cupom_code = $scope.cupom.code;
                 }
-                Order.save({id: null}, o, function (data) {
+                ClientOrder.save({id: null}, o, function (data) {
                     $ionicLoading.hide();
                     $state.go('client.checkout_successful');
                 }, function (responseError) {
