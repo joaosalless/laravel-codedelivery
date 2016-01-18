@@ -1,9 +1,8 @@
-'use strict';
-
 angular.module('starter.controllers')
     .controller('LoginController', [
         '$scope', 'OAuth', '$state', '$ionicPopup',
         function ($scope, OAuth, $state, $ionicPopup) {
+            'use strict';
             $scope.user = {
                 username: '',
                 password: ''
@@ -19,6 +18,6 @@ angular.module('starter.controllers')
                     });
                     console.debug(responseError);
                 });
-            }
+            };
         }
     ]);

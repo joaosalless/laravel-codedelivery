@@ -16,7 +16,9 @@
         "league/fractal": "^0.13.0",
         "laracasts/presenter": "^0.2.1",
         "jansenfelipe/utils": "^2.0@dev",
-        "barryvdh/laravel-cors": "0.7.x"
+        "barryvdh/laravel-cors": "0.7.x",
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -33,6 +35,7 @@
         }
     },
     "autoload-dev": {
+        "file": "_ide_helper.php",
         "classmap": [
             "tests/TestCase.php"
         ]
@@ -46,6 +49,8 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan ide-helper:generate",
             "php artisan optimize"
         ],
         "post-root-package-install": [

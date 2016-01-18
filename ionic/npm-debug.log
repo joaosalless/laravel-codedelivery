@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/opt/node/bin/node',
+1 verbose cli   '/opt/node/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'atom-autocomplete-php' ]
+2 info using npm@2.14.9
+3 info using node@v0.12.9
+4 verbose install initial load of /home/joao/Projetos/laravel-codedelivery/ionic/package.json
+5 warn package.json ionic@1.1.1 No repository field.
+6 warn package.json ionic@1.1.1 No README data
+7 warn package.json ionic@1.1.1 No license field.
+8 verbose readDependencies loading dependencies from /home/joao/Projetos/laravel-codedelivery/ionic/package.json
+9 silly cache add args [ 'atom-autocomplete-php', null ]
+10 verbose cache add spec atom-autocomplete-php
+11 silly cache add parsed spec { raw: 'atom-autocomplete-php',
+11 silly cache add   scope: null,
+11 silly cache add   name: 'atom-autocomplete-php',
+11 silly cache add   rawSpec: '',
+11 silly cache add   spec: '*',
+11 silly cache add   type: 'range' }
+12 silly addNamed atom-autocomplete-php@*
+13 verbose addNamed "*" is a valid semver range for atom-autocomplete-php
+14 silly addNameRange { name: 'atom-autocomplete-php', range: '*', hasData: false }
+15 silly mapToRegistry name atom-autocomplete-php
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry uri https://registry.npmjs.org/atom-autocomplete-php
+19 verbose addNameRange registry:https://registry.npmjs.org/atom-autocomplete-php not in flight; fetching
+20 verbose request uri https://registry.npmjs.org/atom-autocomplete-php
+21 verbose request no auth needed
+22 info attempt registry request try #1 at 05:05:33
+23 verbose request id 8649e156dc45cff8
+24 http request GET https://registry.npmjs.org/atom-autocomplete-php
+25 http 404 https://registry.npmjs.org/atom-autocomplete-php
+26 verbose headers { 'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '2',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   date: 'Sun, 17 Jan 2016 07:05:35 GMT',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   'x-served-by': 'cache-iad2140-IAD',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1453014334.879626,VS0,VE359' }
+27 silly get cb [ 404,
+27 silly get   { 'content-type': 'application/json',
+27 silly get     'cache-control': 'max-age=0',
+27 silly get     'content-length': '2',
+27 silly get     'accept-ranges': 'bytes',
+27 silly get     date: 'Sun, 17 Jan 2016 07:05:35 GMT',
+27 silly get     via: '1.1 varnish',
+27 silly get     age: '0',
+27 silly get     connection: 'keep-alive',
+27 silly get     'x-served-by': 'cache-iad2140-IAD',
+27 silly get     'x-cache': 'MISS',
+27 silly get     'x-cache-hits': '0',
+27 silly get     'x-timer': 'S1453014334.879626,VS0,VE359' } ]
+28 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/atom-autocomplete-php
+28 verbose stack     at makeError (/opt/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+28 verbose stack     at CachingRegistryClient.<anonymous> (/opt/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+28 verbose stack     at Request._callback (/opt/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+28 verbose stack     at Request.self.callback (/opt/node/lib/node_modules/npm/node_modules/request/request.js:198:22)
+28 verbose stack     at Request.emit (events.js:110:17)
+28 verbose stack     at Request.<anonymous> (/opt/node/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+28 verbose stack     at Request.emit (events.js:129:20)
+28 verbose stack     at IncomingMessage.<anonymous> (/opt/node/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+28 verbose stack     at IncomingMessage.emit (events.js:129:20)
+28 verbose stack     at _stream_readable.js:908:16
+29 verbose statusCode 404
+30 verbose pkgid atom-autocomplete-php
+31 verbose cwd /home/joao/Projetos/laravel-codedelivery/ionic
+32 error Linux 3.13.0-74-generic
+33 error argv "/opt/node/bin/node" "/opt/node/bin/npm" "install" "atom-autocomplete-php"
+34 error node v0.12.9
+35 error npm  v2.14.9
+36 error code E404
+37 error 404 Registry returned 404 for GET on https://registry.npmjs.org/atom-autocomplete-php
+37 error 404
+37 error 404 'atom-autocomplete-php' is not in the npm registry.
+37 error 404 You should bug the author to publish it (or use the name yourself!)
+37 error 404 It was specified as a dependency of 'ionic'
+37 error 404
+37 error 404 Note that you can also install from a
+37 error 404 tarball, folder, http url, or git url.
+38 verbose exit [ 1, true ]

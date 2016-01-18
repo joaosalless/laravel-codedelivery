@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('ClientMenuController', [
-        '$scope', '$state', 'User', '$ionicLoading',
-        function ($scope, $state, User, $ionicLoading) {
+        '$scope', 'User', '$ionicLoading',
+        function ($scope, User, $ionicLoading) {
 
             'use strict';
 

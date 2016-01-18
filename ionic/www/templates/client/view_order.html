@@ -13,10 +13,10 @@
                 <div class="row">
                     <div class="col">
                         Qtd: {{item.qtd}} <br/>
-                        R$ {{item.price}}</i>
+                        R$ {{item.price | number: 2}}</i>
                     </div>
                     <div class="col">
-                        Subtotal: R$ {{item.qtd * item.price}}</i>
+                        Subtotal: R$ {{item.qtd * item.price | number: 2}}</i>
                     </div>
                 </div>
             </ion-item>
