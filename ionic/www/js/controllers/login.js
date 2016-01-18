@@ -1,38 +1,33 @@
 angular.module('starter.controllers')
     .controller('LoginController', [
-        '$scope', 'OAuth', '$state', '$ionicPopup', '$q',
-        function ($scope, OAuth, $state, $ionicPopup, $q) {
+        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', '$localStorage', 'User',
+        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, $localStorage, User) {
             'use strict';
+
             $scope.user = {
                 username: '',
                 password: ''
             };
 
-            function adiarExecucao() {
-                var deffered = $q.defer();
-                setTimeout(function(){
-                    deffered.resolve({name: 'ionic'});
-                });
-                return deffered.promise;
-            }
-
-            var promise = adiarExecucao()
-
             $scope.login = function () {
-                OAuth.getAccessToken($scope.user).then(function (data) {
-                    promise.then(function(data){
-                        console.log(data);
-                    }, function (dataError){
-                        console.log(data);
+                var promise = OAuth.getAccessToken($scope.user);
+                promise
+                    .then(function (data) {
+                        return User.authenticated({include: 'client'}).$promise;
+                    })
+                    .then(function (data) {
+                        console.log(data.data);
+                        $localStorage.setObject('user', data.data);
+                        $state.go('client.checkout');
+                    }, function (responseError) {
+                        $localStorage.setObject('user', null);
+                        OAuthToken.removeToken();
+                        $ionicPopup.alert({
+                            title: 'Advertência',
+                            template: 'Login e/ou senha inválidos'
+                        });
+                        console.log(responseError);
                     });
-                    $state.go('client.checkout');
-                }, function (responseError) {
-                    $ionicPopup.alert({
-                        title: 'Advertência',
-                        template: 'Login e/ou senha inválidos'
-                    });
-                    console.debug(responseError);
-                });
             };
         }
     ]);
