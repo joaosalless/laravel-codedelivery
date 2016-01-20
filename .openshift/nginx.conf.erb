@@ -33,7 +33,7 @@ server {
     add_header Strict-Transport-Security max-age=691200;
 
     location / {
-        index  index.html  index.htm  index.php ;
+        index  index.php index.html  index.htm ;
 
         try_files $uri $uri/ @rewrites;
     }
