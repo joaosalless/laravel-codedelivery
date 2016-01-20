@@ -1,37 +1,54 @@
 <ion-view>
-    <ion-nav-title>Pedido</ion-nav-title>
-    <div class="bar bar-subheader">
-        <button class="button button-icon button-clear ion-plus" ng-click="openListProducts()"></button>
-        <h2 class="title">Total: R$ {{total}}</h2>
-        <button class="button button-clear button-icon ion-minus-circled" ng-click="showDelete = !showDelete"
-        ng-class="{'button-assertive': showDelete, '': !showDelete}"
-        ></button>
+    <ion-nav-title>Novo Pedido</ion-nav-title>
+    <div class="bar bar-subheader bar-stable">
+        <h2 class="title">R$ {{total | number: 2}}</h2>
+        <button class="button button-clear button-icon ion-plus-circled" ng-click="openListProducts()"></button>
+        <button class="button button-clear button-icon ion-minus-circled" ng-click="showDelete = !showDelete" ng-show="items.length > 0 || cupom.value != null" ng-class="{'button-assertive': showDelete, '': !showDelete}"></button>
     </div>
     <ion-content class="padding has-subheader">
         <ion-list show-delete="showDelete">
-            <ion-item class="item-balanced item-icon-left" ng-show="cupom.value != null">
-                <span class="icon ion-close" ng-click="removeCupom()"></span>
-                <strong>Cupom</strong>
-                <span class="badge badge-balanced">- R$ {{cupom.value}}</span>
+            <div class="item item-divider" ng-show="cupom.value != null">
+                <strong>Cupom de desconto</strong>
+            </div>
+            <ion-item class="item-thumbnail-left" ng-show="cupom.value != null">
+                <ion-delete-button class="ion-close-circled" ng-click="removeCupom()"></ion-delete-button>
+                <img data-ng-src="data:image/png;base64,{{cupom.qrcode}}" ng-show="cupom.value != null" alt="" />
+                <br/>
+                <p>
+                    <span>Código</span>
+                    <span class="item-note"><strong>{{cupom.code}}</strong></span>
+                </p>
+                <p>
+                    <span>Desconto</span>
+                    <span class="item-note dark">- R$ {{cupom.value | number: 2}}</span>
+                </p>
             </ion-item>
-            <ion-item ng-repeat="o in items" ng-click="openProductDetail($index)">
+            <div class="item item-divider" ng-show="items.length > 0">
+                <strong>Ítens do Pedido</strong>
+            </div>
+            <ion-item ng-repeat="o in items | filter: searchKeyword" ng-click="openProductDetail($index)" class="item-thumbnail-left">
+                <img ng-src="{{o.image}}">
                 <h2>{{o.name}}</h2>
-                <div class="row">
-                    <div class="col">
-                        Qtd: {{o.qtd}} <br/>
-                        Valor Unitário: R$ {{o.price}}
-                    </div>
-                    <div class="col text-right">
-                        Subtotal: R$ {{o.subtotal}}
-                    </div>
-                </div>
+                <p>{{o.description}}</p>
+                <p>
+                    <span>Qtd: {{o.qtd}}</span>
+                    <span class="item-note">
+                        Preço: R$ {{o.price | number: 2}}
+                    </span>
+                    <p>
+                        <span class="item-note dark">Subtotal: R$ {{o.subtotal | number: 2}}</span>
+                    </p>
+                </p>
                 <ion-delete-button class="ion-minus-circled" ng-click="removeItem($index)"></ion-delete-button>
             </ion-item>
+            <div class="item item-divider" ng-show="total != null">
+                <strong>Valor do pedido <span class="item-note dark">R$ {{total | number: 2}}</span></strong>
+            </div>
         </ion-list>
-        <button type="button" class="button button-balanced button-block" ng-click="readBarCode()" ng-disabled="cupom.value != null">
+        <button type="button" class="button button-dark button-block" ng-click="readBarCode()" ng-disabled="cupom.value != null">
             Adicionar Cupom
         </button>
-        <button type="button" class="button button-assertive button-block" ng-click="save()">
+        <button type="button" class="button button-positive button-block" ng-click="save()" ng-show="total > 0">
             Salvar Pedido
         </button>
     </ion-content>

@@ -14,10 +14,13 @@ angular.module('starter', [
     'starter.filters',
     'angular-oauth2',
     'ngResource',
-    'ngCordova'
+    'ngCordova',
+    'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://192.168.1.105'
+        baseUrl: 'http://192.168.1.105',
+        name: 'My App',
+        version: '0.0.1'
     })
     .run(function ($ionicPlatform, $http, OAuthToken) {
         'use strict';
@@ -27,8 +30,13 @@ angular.module('starter', [
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
-            if (window.StatusBar) {
+            if (window.StatusBar && cordova.platformId == 'android') {
+                StatusBar.backgroundColorByHexString('#2975F4');
+                StatusBar.show();
+            }
+            else if (window.StatusBar) {
                 StatusBar.styleDefault();
+                StatusBar.show();
             }
         });
 
@@ -80,11 +88,13 @@ angular.module('starter', [
                 controller: 'ClientMenuController'
             })
             .state('client.order', {
+                cache: false,
                 url: '/order',
                 templateUrl: 'templates/client/order.html',
                 controller: 'ClientOrderController'
             })
             .state('client.view_order', {
+                cache: false,
                 url: '/view_order/:id',
                 templateUrl: 'templates/client/view_order.html',
                 controller: 'ClientViewOrderController'
@@ -96,6 +106,7 @@ angular.module('starter', [
                 controller: 'ClientCheckoutController'
             })
             .state('client.checkout_item_detail', {
+                cache: false,
                 url: '/checkout/detail/:index',
                 templateUrl: 'templates/client/checkout_item_detail.html',
                 controller: 'ClientCheckoutDetailController'

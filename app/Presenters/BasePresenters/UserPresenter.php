@@ -65,4 +65,9 @@ class UserPresenter extends Presenter
             return $moeda ? Utils::moeda($this->deliverymanOrders->sum('total'), $currency, $decimal) : $this->deliverymanOrders->sum('total');
         }
     }
+
+    public function getImage($width = 250, $height = 250)
+    {
+        return "http://lorempixel.com/$width"."/"."$height/people/1";
+    }
 }

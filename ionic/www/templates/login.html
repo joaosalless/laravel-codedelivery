@@ -1,6 +1,8 @@
 <ion-view>
     <ion-nav-bar class="bar bar-positive">
-        <ion-nav-title>Login</ion-nav-title>
+        <ion-nav-title>
+            <h2 class="title">{{app.name}}</h2>
+        </ion-nav-title>
     </ion-nav-bar>
     <ion-content class="">
         <form name="form" ng-submit="login()">
@@ -15,7 +17,7 @@
                 </label>
             </div>
             <div class="padding">
-                <button type="submit" class="button button-block button-assertive">Login</button>
+                <button type="submit" class="button button-block button-positive">Login</button>
             </div>
         </form>
     </ion-content>

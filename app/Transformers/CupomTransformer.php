@@ -11,7 +11,6 @@ use CodeDelivery\Models\Cupom;
  */
 class CupomTransformer extends TransformerAbstract
 {
-
     /**
      * Transform the \Cupom entity
      * @param \Cupom $model
@@ -24,7 +23,7 @@ class CupomTransformer extends TransformerAbstract
             'id'         => (int) $model->id,
             'code'       => (int) $model->code,
             'value'      => (float) $model->value,
-
+            'qrcode'     => base64_encode($model->getQrcode()),
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

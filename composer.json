@@ -18,7 +18,8 @@
         "jansenfelipe/utils": "^2.0@dev",
         "barryvdh/laravel-cors": "0.7.x",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "simplesoftwareio/simple-qrcode": "1.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

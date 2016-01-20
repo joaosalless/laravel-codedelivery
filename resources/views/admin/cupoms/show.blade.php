@@ -30,6 +30,10 @@
                         <td>{{ $cupom->code }}</td>
                     </tr>
                     <tr>
+                        <td>QrCode</td>
+                        <td>{!! $cupom->qrcode !!}</td>
+                    </tr>
+                    <tr>
                         <td>Valor</td>
                         <td>{{ $cupom->present()->getValue }}</td>
                     </tr>

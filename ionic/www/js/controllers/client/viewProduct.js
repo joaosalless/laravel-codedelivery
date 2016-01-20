@@ -10,7 +10,20 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-            Product.query({}, function (data) {
+            $scope.doRefresh = function () {
+                getProducts().then(function (data) {
+                    $scope.products = data.data;
+                    $scope.$broadcast('scroll.refreshComplete');
+                }, function (dataError) {
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+            };
+
+            function getProducts() {
+                return Product.query({search: $scope.searchKeyword}).$promise;
+            }
+
+            getProducts().then(function (data) {
                 $scope.products = data.data;
                 $ionicLoading.hide();
             }, function (dataError) {

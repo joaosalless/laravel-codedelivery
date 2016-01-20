@@ -1,0 +1,75 @@
+
+.no-border {
+    border: 0 none;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.no-margin {
+    margin:0 !important;
+}
+.no-margin-top {
+    margin-top: 0 !important;
+}
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+.no-margin-left {
+    margin-left:0 !important;
+}
+.no-margin-right {
+    margin-right:0 !important;
+}
+
+.border {
+    border: 1px solid $card-border-color;
+}
+.border-bottom {
+    border-bottom: 1px solid lighten($card-border-color, 10%);
+}
+
+.bar.bar-subheader .button {
+    top: 4px;
+    bottom: 4px;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+.bg-success {
+    background: #dff0d8;
+}
+.bg-info {
+    background: #d9edf7;
+}
+.bg-warning {
+    background: #fcf8e3;
+}
+.bg-danger {
+    background: #f2dede;
+}
+
+ion-side-menu.menu.menu-left > ion-content > div.scroll > ion-list > div > ion-item.item > h1,
+ion-side-menu.menu.menu-left > ion-content > div.scroll > ion-list > div > ion-item.item > h2 {
+    color: rgba(255,255,255,.7);
+}
+
+ion-side-menu.menu.menu-left > ion-content > div.scroll > ion-list > div > ion-item.item > p {
+    color: rgba(255,255,255,.7);
+}
+
+.image-loader-container {
+    width: $item-thumbnail-width;
+    height: $item-thumbnail-height;
+
+    .spinner {
+        stroke: #5A5A5A;
+        fill: #5A5A5A;
+        position: absolute;
+        left: 35px;
+        top: 35px;
+    }
+}
+ion-side-menus > ion-side-menu.menu.menu-left > ion-footer-bar > h1.title {
+    font-size: 16px;
+}

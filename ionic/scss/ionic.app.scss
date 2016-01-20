@@ -3,21 +3,48 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
 
 For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
 */
+
+// Default Colors
+$light:                 #fff !default;
+$stable:                #cccccc !default;
+$positive:              #387ef5 !default;
+$calm:                  #11c1f3 !default;
+$balanced:              #33cd5f !default;
+$energized:             #ffc900 !default;
+$assertive:             #ef473a !default;
+$royal:                 #886aea !default;
+$dark:                  #444 !default;
+
+$light-blue:            #3c8dbc;
+$red:                   #dd4b39;
+$green:                 #00a65a;
+$aqua:                  #00c0ef;
+$yellow:                #f39c12;
+$blue:                  #0073b7;
+$navy:                  #001F3F;
+$teal:                  #39CCCC;
+$olive:                 #3D9970;
+$lime:                  #01FF70;
+$orange:                #FF851B;
+$fuchsia:               #F012BE;
+$purple:                #605ca8;
+$maroon:                #D81B60;
+$black:                 #111;
+$gray:                  #d2d6de;
+
+$bar-height:            54px !default;
+$base-background-color: #f8f8f8 !default;
+$base-color:            #000 !default;
+$badge-border-radius:   6px !default;
+$card-border-radius:    4px !default;
+$card-box-shadow:       0 1px 3px rgba(0, 0, 0, .3) !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
+// @import "scss/_miscellaneous";
 @import "www/lib/ionic/scss/ionic";
-
+@import "www/lib/font-awesome/scss/font-awesome";
+@import "scss/app.style";

@@ -1,28 +1,47 @@
 <ion-view>
     <ion-nav-title>Pedido realizado com sucesso</ion-nav-title>
-    <div class="bar bar-balanced bar-subheader">
-        <h2 class="title">Total: R$ {{total}}</h2>
+    <div class="bar bar-subheader bar-energized">
+        <h2 class="title">Valor R$ {{total | number: 2}}</h2>
     </div>
     <ion-content class="padding has-subheader">
-        <ion-list show-delete="showDelete">
-            <ion-item class="item-dark" ng-show="cupom.value != null">
-                <strong>Cupom</strong>
-                <span class="badge badge-dark">- R$ {{cupom.value}}</span>
+        <ion-list>
+            <div class="item item-divider" ng-show="cupom.value != null">
+                Cupom de desconto
+            </div>
+            <ion-item class="item-thumbnail-left" ng-show="cupom.value != null">
+                <img data-ng-src="data:image/png;base64,{{cupom.qrcode}}" alt="" />
+                <br/>
+                <p>
+                    <span>Código</span>
+                    <span class="item-note"><strong>{{cupom.code}}</strong></span>
+                </p>
+                <p>
+                    <span>Desconto</span>
+                    <span class="item-note dark">- R$ {{cupom.value | number: 2}}</span>
+                </p>
             </ion-item>
-            <ion-item ng-repeat="o in items">
+            <div class="item item-divider" ng-show="items.length > 0">
+                <strong>Ítens do Pedido</strong>
+            </div>
+            <ion-item ng-repeat="o in items" class="item-thumbnail-left">
+                <img ng-src="{{o.image}}">
                 <h2>{{o.name}}</h2>
-                <div class="row">
-                    <div class="col">
-                        Qtd: {{o.qtd}} <br/>
-                        Valor Unitário: R$ {{o.price}}
-                    </div>
-                    <div class="col text-right">
-                        Subtotal: R$ {{o.subtotal}}
-                    </div>
-                </div>
+                <p>{{o.description}}</p>
+                <p>
+                    <span>Qtd: {{o.qtd}}</span>
+                    <span class="item-note">
+                        Preço: R$ {{o.price | number: 2}}
+                    </span>
+                    <p>
+                        <span class="item-note dark">Subtotal: R$ {{o.subtotal | number: 2}}</span>
+                    </p>
+                </p>
             </ion-item>
+            <div class="item item-divider" ng-show="total != null">
+                <strong>Valor do pedido <span class="item-note dark">R$ {{total | number: 2}}</span></strong>
+            </div>
         </ion-list>
-        <button type="button" class="button button-royal button-block" ng-click="openListOrders()">
+        <button type="button" class="button button-positive button-block" ng-click="openListOrders()">
             Ver meus pedidos
         </button>
     </ion-content>

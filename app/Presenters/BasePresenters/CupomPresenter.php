@@ -13,6 +13,11 @@ class CupomPresenter extends Presenter
         return $moeda ? Utils::moeda($this->value, $currency, $decimal) : $this->value;
     }
 
+    public function getQrcode($size = 100, $format = 'svg', $margin = 0)
+    {
+        return QrCode::size($size)->margin($margin)->generate($this->code);
+    }
+
     public function getUsed()
     {
         return $this->used > 0 ? 'Sim' : 'Não';

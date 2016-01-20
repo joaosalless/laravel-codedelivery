@@ -195,13 +195,16 @@ a.item.item-complex,
 button.item.item-complex {
   padding: 0;
 }
-.item-complex .item-content,
 .item-radio .item-content {
   position: relative;
   z-index: $z-index-item;
   padding: $item-padding (ceil( ($item-padding * 3) + ($item-padding / 3) ) - 5) $item-padding $item-padding;
   border: none;
   background-color: $item-default-bg;
+}
+
+.item-complex .item-content {
+  padding: $item-padding (ceil( ($item-padding * 1) + ($item-padding / 3) ) - 5) $item-padding $item-padding;
 }
 
 a.item-content {
@@ -504,6 +507,7 @@ button.item.item-button-right {
 .item-thumbnail-left,
 .item-thumbnail-left .item-content {
   padding-top: $item-padding / 2;
+  padding-bottom: 0;
   padding-left: $item-thumbnail-width + $item-thumbnail-margin + $item-padding;
   min-height: $item-thumbnail-height + ($item-thumbnail-margin * 2);
 

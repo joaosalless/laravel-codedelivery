@@ -9,6 +9,7 @@ angular.module('starter.controllers')
             $scope.cupom = cart.cupom;
             $scope.items = cart.items;
             $scope.total = $cart.getTotalFinal();
+
             $scope.removeItem = function (i) {
                 $cart.removeItem(i);
                 $scope.items.splice(i, 1);
@@ -70,7 +71,7 @@ angular.module('starter.controllers')
                     template: 'Carregando...'
                 });
                 Cupom.get({code: code}, function (data) {
-                    $cart.setCupom(data.data.code, data.data.value);
+                    $cart.setCupom(data.data.code, data.data.value, data.data.qrcode);
                     $scope.cupom = $cart.get().cupom;
                     $scope.total = $cart.getTotalFinal();
                     $ionicLoading.hide();

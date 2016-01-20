@@ -27,6 +27,7 @@ class UserTransformer extends TransformerAbstract
             'name'    => $model->name,
             'email'   => $model->email,
             'role'    => $model->role,
+            'image'   => $model->present()->getImage,
 
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at

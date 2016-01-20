@@ -1,30 +1,47 @@
 <ion-view>
-    <ion-nav-title>Produto: {{product.name}}</ion-nav-title>
-    <div class="bar bar-subheader">
-        <h2 class="title">Detalhes do Produto</h2>
-    </div>
-    <ion-content class="padding has-subheader">
-        <div class="list card">
-            <div class="item item-avatar">
-                <h2>{{product.name}}</h2>
-                <p>
-                    Qtd: {{product.qtd}} <br/>
-                    Preço Unitário: {{product.price}}
-                </p>
-            </div>
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear button-icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            Detalhes do Produto
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-ios-cart" ui-sref="client.checkout"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
 
+    <ion-content class="padding">
+        <div class="list card no-margin-top">
+            <div class="item item-title">
+                <h2>{{product.name}}</h2>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{product.image}}">
+            </div>
+            <div class="item item-body">
+                <h2 class="no-margin-top dark">Descrição:</h2>
+                <p style="margin-top:0">{{product.description}}</p>
+            </div>
+            <div class="item item-body">
+                <h2 class="no-margin-top">
+                    <span class="dark">Preço unitário:</span>
+                    <span class="item-note dark">R$ {{product.price | number: 2}}</span>
+                </h2>
+            </div>
+            <div class="item item-body">
+                <h2 class="no-margin-top">
+                    <span class="dark">Subtotal:</span>
+                    <span class="item-note dark">R$ {{(product.price * product.qtd) | number: 2}}</span>
+                </h2>
+            </div>
             <label class="item item-input">
-                <span class="input-label">Quantidade</span>
+                <span class="input-label">Quantidade:</span>
                 <input type="text" placeholder="Forneça a quantidade" ng-model="product.qtd">
             </label>
-            <button type="button" class="button button-assertive button-full" ng-click="updateQtd()">
-                Alterar Quantidade
-            </button>
-
-            <div class="item item-body">
-                <h2>Descrição</h2>
-                <p>{{product.description}}</p>
-            </div>
         </div>
+        <button type="button" class="button button-assertive button-block no-margin" ng-click="updateQtd()">
+            Alterar Quantidade
+        </button>
     </ion-content>
 </ion-view>

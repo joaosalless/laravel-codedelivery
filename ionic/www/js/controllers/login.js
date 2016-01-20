@@ -1,12 +1,13 @@
 angular.module('starter.controllers')
     .controller('LoginController', [
-        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', 'UserData', 'User',
-        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User) {
+        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', 'UserData', 'User', 'appConfig',
+        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User, appConfig) {
             'use strict';
 
+            $scope.app  = appConfig;
             $scope.user = {
-                username: '',
-                password: ''
+                username: 'user@user.com',
+                password: '123456'
             };
 
             $scope.login = function () {
@@ -16,7 +17,6 @@ angular.module('starter.controllers')
                         return User.authenticated({include: 'client'}).$promise;
                     })
                     .then(function (data) {
-                        console.log(data.data);
                         UserData.set(data.data);
                         $state.go('client.checkout');
                     }, function (responseError) {

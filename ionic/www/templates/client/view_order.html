@@ -1,25 +1,57 @@
 <ion-view>
     <ion-nav-title>Pedido: #{{order.id}}</ion-nav-title>
-    <div class="bar bar-subheader">
-        <h2 class="title">Total: R$ {{order.total}}</h2>
-    </div>
-    <ion-content class="padding has-subheader">
-        <div class="item item-divider">
-            Data da Compra: {{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}
-        </div>
+    <!-- <div class="bar bar-subheader bar-stable">
+        <h2 class="title">Total: R$ {{order.total | number: 2}}</h2>
+    </div> -->
+    <ion-content class="padding">
         <ion-list>
-            <ion-item ng-repeat="item in order.items.data">
-                <h2>{{item.product.data.name}}</h2>
-                <div class="row">
-                    <div class="col">
-                        Qtd: {{item.qtd}} <br/>
-                        R$ {{item.price | number: 2}}</i>
-                    </div>
-                    <div class="col">
-                        Subtotal: R$ {{item.qtd * item.price | number: 2}}</i>
-                    </div>
-                </div>
+            <ion-item class="item-white">
+                Data da compra
+                <span class="item-note dark">{{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</span>
             </ion-item>
+            <ion-item class="item-white">
+                Valor da compra
+                <span class="item-note dark"><strong> R$ {{order.total | number: 2}}</strong></span>
+            </ion-item>
+            <ion-item class="item-white">
+                Status
+                <span class="item-note dark"><strong>{{order.status }}</strong></span>
+            </ion-item>
+            <div class="item item-divider" ng-show="order.cupom.data.value != null">
+                Cupom de desconto
+            </div>
+            <ion-item class="item-thumbnail-left" ng-show="order.cupom.data.value != null">
+                <img data-ng-src="data:image/png;base64,{{order.cupom.data.qrcode}}" alt="" />
+                <br/>
+                <p>
+                    <span>Código</span>
+                    <span class="item-note"><strong>{{order.cupom.data.code}}</strong></span>
+                </p>
+                <p>
+                    <span>Desconto</span>
+                    <span class="item-note dark">- R$ {{order.cupom.data.value | number: 2}}</span>
+                </p>
+            </ion-item>
+            <div class="item item-divider">
+                <strong>Ítens do Pedido</strong>
+            </div>
+            <ion-item ng-repeat="o in order.items.data | filter: searchKeyword" class="item-thumbnail-left">
+                <img ng-src="{{o.product.data.image}}">
+                <h2>{{o.product.data.name}}</h2>
+                <p>{{o.product.data.description}}</p>
+                <p>
+                    <span>Qtd: {{o.qtd}}</span>
+                    <span class="item-note">
+                        Preço: R$ {{o.price | number: 2}}
+                    </span>
+                    <p>
+                        <span class="item-note">Subtotal: <span class="dark">R$ {{o.qtd * o.price | number: 2}}</span></span>
+                    </p>
+                </p>
+            </ion-item>
+            <button type="button" class="button button-dark button-block no-margin-bottom">
+                Repetir esta compra
+            </button>
         </ion-list>
     </ion-content>
 </ion-view>

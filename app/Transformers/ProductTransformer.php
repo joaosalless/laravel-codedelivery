@@ -11,6 +11,7 @@ use CodeDelivery\Models\Product;
  */
 class ProductTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = ['category'];
 
     /**
      * Transform the \Product entity
@@ -20,15 +21,19 @@ class ProductTransformer extends TransformerAbstract
      */
     public function transform(Product $model) {
         return [
-            'id'         => (int)$model->id,
-
-            /* place your other model properties here */
-            'name' => $model->name,
+            'id'          => (int)$model->id,
+            'name'        => $model->present()->getName(),
             'description' => $model->description,
-            'price' => $model->price,
+            'price'       => $model->price,
+            'image'       => $model->present()->getImage(160, 160),
 
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'created_at'  => $model->created_at,
+            'updated_at'  => $model->updated_at
         ];
+    }
+
+    public function includeCategory(Product $model)
+    {
+        return $this->item($model->category, new CategoryTransformer());
     }
 }

@@ -7,6 +7,7 @@ use Laracasts\Presenter\PresentableTrait;
 use CodeDelivery\Presenters\BasePresenters\CupomPresenter;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use QrCode;
 
 class Cupom extends Model implements Transformable
 {
@@ -20,6 +21,11 @@ class Cupom extends Model implements Transformable
         'value',
         'used'
     ];
+
+    public function getQrcode($size = 160, $format = 'png', $margin = 0)
+    {
+        return QrCode::format($format)->size($size)->margin($margin)->generate($this->code);
+    }
 
     public function orders()
     {

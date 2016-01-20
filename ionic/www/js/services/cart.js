@@ -1,5 +1,5 @@
 angular.module('starter.services')
-    .service('$cart', ['$localStorage', function ($localStorage) {
+    .service('$cart', ['$localStorage', 'appConfig', function ($localStorage, appConfig) {
 
         'use strict';
 
@@ -49,17 +49,18 @@ angular.module('starter.services')
 
         this.updateQtd = function (i, qtd) {
             var cart = this.get(), itemAux = cart.items[i];
-            itemAux.qtd = qtd;
+            itemAux.qtd = parseInt(qtd);
             itemAux.subtotal = calculateSubTotal(itemAux);
             cart.total = getTotal(cart.items);
             $localStorage.setObject(key, cart);
         };
 
-        this.setCupom = function(code, value) {
+        this.setCupom = function(code, value, qrcode) {
             var cart = this.get();
             cart.cupom = {
                 code: code,
-                value: value
+                value: value,
+                qrcode: qrcode
             };
             $localStorage.setObject(key, cart);
         };
@@ -68,7 +69,8 @@ angular.module('starter.services')
             var cart = this.get();
             cart.cupom = {
                 code: null,
-                value: null
+                value: null,
+                qrcode: null
             };
             $localStorage.setObject(key, cart);
         };
@@ -97,6 +99,7 @@ angular.module('starter.services')
                 cupom: {
                     code: null,
                     value: null,
+                    qrcode: null
                 }
             });
         }

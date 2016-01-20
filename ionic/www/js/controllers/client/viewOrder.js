@@ -8,7 +8,7 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-            ClientOrder.get({id: $stateParams.id, include: 'items, cupom'}, function (data) {
+            ClientOrder.get({id: $stateParams.id, include: 'items,cupom'}, function (data) {
                 $scope.order = data.data;
                 $ionicLoading.hide();
             }, function (dataError) {
