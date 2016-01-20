@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\CategoryRepository;
 use CodeDelivery\Models\Category;
+use CodeDelivery\Presenters\CategoryPresenter;
 
 /**
  * Class CategoryRepositoryEloquent
