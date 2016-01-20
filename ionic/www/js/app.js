@@ -18,7 +18,7 @@ angular.module('starter', [
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://192.168.1.105',
+        baseUrl: 'http://delivery-joaosalless.rhcloud.com',
         name: 'Delivery',
         version: '0.0.1'
     })
@@ -64,21 +64,6 @@ angular.module('starter', [
                 url: '/login',
                 templateUrl: 'templates/login.html',
                 controller: 'LoginController'
-            })
-            .state('home', {
-                url: '/home',
-                templateUrl: 'templates/home.html',
-                controller: function ($scope, $http) {
-                    $http.get('http://codedelivery.dev/api/authenticated?include=client').then(
-                        function (success) {
-                            $scope.user = success.data;
-                            // console.log($scope.user);
-                        },
-                        function (error) {
-                            console.log(error);
-                        }
-                    );
-                }
             })
             .state('client', {
                 abstract: true,

@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td>QrCode</td>
-                        <td>{!! $cupom->qrcode !!}</td>
+                        <td>{!! $cupom->getQrcode(100, 'svg') !!}</td>
                     </tr>
                     <tr>
                         <td>Valor</td>
