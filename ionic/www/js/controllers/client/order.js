@@ -25,6 +25,7 @@ angular.module('starter.controllers')
             function getOrders() {
                 return ClientOrder.query({
                     id: null,
+                    include: 'cupom',
                     orderBy: 'created_at',
                     sortedBy: 'desc'
                 }).$promise;

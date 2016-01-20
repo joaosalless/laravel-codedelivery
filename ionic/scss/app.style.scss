@@ -32,7 +32,10 @@
     top: 4px;
     bottom: 4px;
 }
-
+.bg-positive {
+    background: $positive;
+    color: #fff;
+}
 .bg-white {
     background-color: #fff;
 }

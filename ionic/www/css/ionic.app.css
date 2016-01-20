@@ -11207,6 +11207,10 @@ a.button {
   top: 4px;
   bottom: 4px; }
 
+.bg-positive {
+  background: #387ef5;
+  color: #fff; }
+
 .bg-white {
   background-color: #fff; }
 

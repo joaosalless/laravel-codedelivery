@@ -69,5 +69,6 @@ class UserPresenter extends Presenter
     public function getImage($width = 250, $height = 250)
     {
         return "http://lorempixel.com/$width"."/"."$height/people/1";
+        // return "http://placehold.it/$width"."x"."$height";
     }
 }

@@ -19,7 +19,7 @@ angular.module('starter', [
 ])
     .constant('appConfig', {
         baseUrl: 'http://192.168.1.105',
-        name: 'My App',
+        name: 'Delivery',
         version: '0.0.1'
     })
     .run(function ($ionicPlatform, $http, OAuthToken) {
@@ -86,6 +86,11 @@ angular.module('starter', [
                 url: '/client',
                 templateUrl: 'templates/client/menu.html',
                 controller: 'ClientMenuController'
+            })
+            .state('client.settings', {
+                url: '/settings',
+                templateUrl: 'templates/client/settings.html',
+                controller: 'ClientSettingsController'
             })
             .state('client.order', {
                 cache: false,

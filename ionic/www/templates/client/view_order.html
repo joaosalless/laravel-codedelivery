@@ -15,7 +15,7 @@
             </ion-item>
             <ion-item class="item-white">
                 Status
-                <span class="item-note dark"><strong>{{order.status }}</strong></span>
+                <span class="item-note" ng-class="{'assertive': order.status = 1, 'dark': order.status > 1}">{{order.getStatus }}</span>
             </ion-item>
             <div class="item item-divider" ng-show="order.cupom.data.value != null">
                 Cupom de desconto
