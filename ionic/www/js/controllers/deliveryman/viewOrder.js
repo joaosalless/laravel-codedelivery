@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('DeliverymanViewOrderController', [
-        '$scope', '$stateParams', 'DeliverymanOrder', '$ionicLoading', '$cordovaGeolocation',
-        function ($scope, $stateParams, DeliverymanOrder, $ionicLoading, $cordovaGeolocation) {
+        '$scope', '$stateParams', 'DeliverymanOrder', '$ionicLoading', '$ionicPopup', '$cordovaGeolocation',
+        function ($scope, $stateParams, DeliverymanOrder, $ionicLoading, $ionicPopup, $cordovaGeolocation) {
             'use strict';
 
             var watch;
@@ -18,11 +18,13 @@ angular.module('starter.controllers')
                 $ionicLoading.hide();
             });
 
-            // $scope.goToDelivery = function () {
-                // $ionicPopup.alert({
-                //     title: 'Advertência',
-                //     template: 'Para parar a localização pressione Ok.'
-                // });
+            $scope.goToDelivery = function () {
+                $ionicPopup.alert({
+                    title: 'Advertência',
+                    template: 'Para parar a localização pressione Ok.'
+                }).then(function () {
+                    stopWatchPosition();
+                });
 
                 DeliverymanOrder.updateStatus({id: $stateParams.id}, {status: 1}, function () {
                     var watchOptions = {
@@ -43,7 +45,13 @@ angular.module('starter.controllers')
                             });
                         });
                 });
-            // };
+
+                function stopWatchPosition() {
+                    if (watch && typeof watch === 'object' && watch.hasOwnProperty('watchID')) {
+                        $cordovaGeolocation.clearWatch(watch.watchID);
+                    }
+                }
+            };
 
 
         }
