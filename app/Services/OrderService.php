@@ -86,6 +86,9 @@ class OrderService
         $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
         if ($order instanceof Order) {
             $order->status = $status;
+            if ((int)($order->status) == 1 && !$order->hash) {
+                $order->hash = md5((new \DateTime())->getTimestamp());
+            }
             $order->save();
             return $order;
         }
