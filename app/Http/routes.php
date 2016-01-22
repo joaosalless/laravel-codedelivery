@@ -189,6 +189,10 @@ Route::group(['middleware' => 'cors'], function () {
                 'as'   => 'orders.update_status',
                 'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus'
             ]);
+
+            Route::post('orders/{id}/geo', [
+                'as' => 'orders.geo', 'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@geo'
+            ]);
         });
 
         /** --------------------------------------------------------------------

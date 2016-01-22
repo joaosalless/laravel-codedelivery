@@ -12,7 +12,7 @@ class Geo implements Jsonable
     public function toJson($option = 0)
     {
         return json_encode([
-            'lat'  => $this->lat,
+            'lat' => $this->lat,
             'long' => $this->long,
         ]);
     }

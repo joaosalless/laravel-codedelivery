@@ -10,6 +10,7 @@ use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\OrderService;
 use CodeDelivery\Presenters\Api\OrderPresenter;
 use Authorizer;
+use CodeDelivery\Models\Geo;
 
 class DeliverymanCheckoutController extends Controller
 {
@@ -61,5 +62,14 @@ class DeliverymanCheckoutController extends Controller
         }
 
         return abort(400, 'Order não encontrado');
+    }
+
+    public function get(Request $request, Geo $geo, $id)
+    {
+        $userDeliverymanId = Authorizer::getResourceOwnerId();
+        $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
+        $geo->lat = $request->get('lat');
+        $geo->long = $request->get('long');
+        return $geo;
     }
 }
