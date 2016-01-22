@@ -64,7 +64,7 @@ class DeliverymanCheckoutController extends Controller
         return abort(400, 'Order não encontrado');
     }
 
-    public function get(Request $request, Geo $geo, $id)
+    public function geo(Request $request, Geo $geo, $id)
     {
         $userDeliverymanId = Authorizer::getResourceOwnerId();
         $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
