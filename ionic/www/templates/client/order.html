@@ -15,8 +15,16 @@
                     </div>
                     <div class="col text-right">
                         <h2>R$ {{o.total | number: 2}}</h2>
-                        <p ng-show="o.cupom.data.value != null"><span>- R$ {{o.cupom.data.value | number: 2}}</span></p>
-                        <p>{{o.getStatus}}</p>
+                        <p ng-show="o.cupom.data.value != null">
+                            <span>- R$ {{o.cupom.data.value | number: 2}}
+                            </span>
+                        </p>
+                        <p>
+                            <span class="item-note" ng-class="{'positive': o.status == 1, 'dark': o.status == 0, 'assertive': o.status == 3}">
+                                <i class="fa fa-fw fa-truck"></i>
+                                {{o.getStatus }}
+                            </span>
+                        </p>
                     </div>
                 </div>
             </ion-item>

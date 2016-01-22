@@ -1,6 +1,6 @@
 <ion-view>
     <ion-nav-title>Meus Pedidos</ion-nav-title>
-    <ion-content class="padding has-header">
+    <ion-content class="padding">
         <ion-refresher
             pulling-text="Puxe para atualizar..."
             on-refresh="doRefresh()">
@@ -9,12 +9,23 @@
             <ion-item ng-repeat="o in items" ng-click="openOrderDetail(o)">
                 <div class="row">
                     <div class="col">
-                        <h2>{{o.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</h2>
+                        <h2>#{{o.id}}</h2>
+                        <p>{{o.product_names.length}} Ítens</p>
                         <p>{{o.product_names | limitTo: 3 | join: ', '}}</p>
-                        <i class="ion ion-ios-cart"></i> {{o.product_names.length}} Ítens
                     </div>
                     <div class="col text-right">
-                        R$ {{o.total}}
+                        <p>{{o.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</p>
+                        <h2>R$ {{o.total | number: 2}}</h2>
+                        <p ng-show="o.cupom.data.value != null">
+                            <span>- R$ {{o.cupom.data.value | number: 2}}
+                            </span>
+                        </p>
+                        <p>
+                            <span class="item-note" ng-class="{'positive': o.status == 1, 'dark': o.status == 0, 'assertive': o.status == 3}">
+                                <i class="fa fa-fw fa-truck"></i>
+                                {{o.getStatus }}
+                            </span>
+                        </p>
                     </div>
                 </div>
             </ion-item>

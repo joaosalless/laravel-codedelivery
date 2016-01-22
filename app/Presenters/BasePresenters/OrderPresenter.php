@@ -31,7 +31,7 @@ class OrderPresenter extends Presenter
                 break;
 
             case 1:
-                $status = 'Saiu para Entrega';
+                $status = 'A caminho';
                 break;
 
             case 2:

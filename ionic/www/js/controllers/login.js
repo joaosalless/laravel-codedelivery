@@ -4,9 +4,11 @@ angular.module('starter.controllers')
         function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User, appConfig) {
             'use strict';
 
+            var home;
+
             $scope.app  = appConfig;
             $scope.user = {
-                username: 'user@user.com',
+                username: 'entregador1@user.com',
                 password: '123456'
             };
 
@@ -18,7 +20,7 @@ angular.module('starter.controllers')
                     })
                     .then(function (data) {
                         UserData.set(data.data);
-                        $state.go('client.checkout');
+                        $state.go(getRedirectUrl(data.data.role));
                     }, function (responseError) {
                         UserData.set(null);
                         OAuthToken.removeToken();
@@ -29,5 +31,9 @@ angular.module('starter.controllers')
                         console.log(responseError);
                     });
             };
+
+            function getRedirectUrl(role) {
+                return (role == 'deliveryman') ? 'deliveryman.order' : 'client.checkout';
+            }
         }
     ]);

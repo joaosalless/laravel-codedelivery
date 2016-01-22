@@ -11,7 +11,7 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-            DeliverymanOrder.get({id: $stateParams.id, include: 'items, cupom'}, function (data) {
+            DeliverymanOrder.get({id: $stateParams.id, include: 'items,cupom,client'}, function (data) {
                 $scope.order = data.data;
                 $ionicLoading.hide();
             }, function (dataError) {

@@ -20,7 +20,10 @@ angular.module('starter', [
     .constant('appConfig', {
         baseUrl: 'http://192.168.1.105',
         name: 'Delivery',
-        version: '0.0.1'
+        version: '0.0.1',
+        organization: {
+            name: 'Empresa Teste'
+        }
     })
     .run(function ($ionicPlatform, $http, OAuthToken) {
         'use strict';
@@ -118,6 +121,11 @@ angular.module('starter', [
                 url: '/deliveryman',
                 templateUrl: 'templates/deliveryman/menu.html',
                 controller: 'DeliverymanMenuController'
+            })
+            .state('deliveryman.settings', {
+                url: '/settings',
+                templateUrl: 'templates/deliveryman/settings.html',
+                controller: 'DeliverymanSettingsController'
             })
             .state('deliveryman.order', {
                 url: '/order',

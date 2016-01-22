@@ -6,19 +6,40 @@
     <ion-content class="padding">
         <ion-list>
             <ion-item class="item-white">
-                Data da compra
+                <i class="fa fa-fw fa-shopping-cart"></i> Número do pedido
+                <span class="item-note dark"><strong> #{{order.id}}</strong></span>
+            </ion-item>
+            <ion-item class="item-white">
+                <i class="fa fa-fw fa-calendar-o"></i> Data da compra
                 <span class="item-note dark">{{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</span>
             </ion-item>
             <ion-item class="item-white">
-                Valor da compra
+                <i class="fa fa-fw fa-money"></i> Valor da compra
                 <span class="item-note dark"><strong> R$ {{order.total | number: 2}}</strong></span>
             </ion-item>
             <ion-item class="item-white">
-                Status
+                <i class="fa fa-fw fa-truck"></i> Status
                 <span class="item-note" ng-class="{'assertive': order.status = 1, 'dark': order.status > 1}">{{order.getStatus }}</span>
             </ion-item>
+            <div class="item item-divider">
+                <strong>Endereço de entrega</strong>
+            </div>
+            <ion-item>
+                <p class="no-margin">
+                    {{order.client.data.address}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.district}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.city}}, {{order.client.data.state}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.zipcode}}
+                </p>
+            </ion-item>
             <div class="item item-divider" ng-show="order.cupom.data.value != null">
-                Cupom de desconto
+                <strong>Cupom de desconto</strong>
             </div>
             <ion-item class="item-thumbnail-left" ng-show="order.cupom.data.value != null">
                 <img data-ng-src="data:image/png;base64,{{order.cupom.data.qrcode}}" alt="" />
@@ -36,7 +57,7 @@
                 <strong>Ítens do Pedido</strong>
             </div>
             <ion-item ng-repeat="o in order.items.data | filter: searchKeyword" class="item-thumbnail-left">
-                <img ng-src="{{o.product.data.image}}">
+                <img ng-src="{{o.product.data.image}}" class="no-border">
                 <h2>{{o.product.data.name}}</h2>
                 <p>{{o.product.data.description}}</p>
                 <p>
@@ -49,9 +70,9 @@
                     </p>
                 </p>
             </ion-item>
-            <button type="button" class="button button-dark button-block no-margin-bottom">
+            <!-- <button type="button" class="button button-dark button-block no-margin-bottom">
                 Repetir esta compra
-            </button>
+            </button> -->
         </ion-list>
     </ion-content>
 </ion-view>

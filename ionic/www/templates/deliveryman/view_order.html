@@ -1,28 +1,78 @@
 <ion-view>
     <ion-nav-title>Pedido: #{{order.id}}</ion-nav-title>
-    <div class="bar bar-subheader">
-        <h2 class="title">Total: R$ {{order.total}}</h2>
-    </div>
-    <ion-content class="padding has-subheader">
-        <div class="item item-divider">
-            Data da Compra: {{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}
-        </div>
+    <!-- <div class="bar bar-subheader bar-positive">
+        <h2 class="title">Total: R$ {{order.total | number: 2}}</h2>
+    </div> -->
+    <ion-content class="padding">
         <ion-list>
-            <ion-item ng-repeat="item in order.items.data">
-                <h2>{{item.product.data.name}}</h2>
-                <div class="row">
-                    <div class="col">
-                        Qtd: {{item.qtd}} <br/>
-                        R$ {{item.price}}</i>
-                    </div>
-                    <div class="col">
-                        Subtotal: R$ {{item.qtd * item.price}}</i>
-                    </div>
-                </div>
+            <ion-item class="item-white">
+                <i class="fa fa-fw fa-shopping-cart"></i> Número do pedido
+                <span class="item-note dark"><strong> #{{order.id}}</strong></span>
             </ion-item>
+            <ion-item class="item-white">
+                <i class="fa fa-fw fa-calendar-o"></i> Data da compra
+                <span class="item-note dark">{{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</span>
+            </ion-item>
+            <ion-item class="item-white">
+                <i class="fa fa-fw fa-money"></i> Valor da compra
+                <span class="item-note dark"> R$ {{order.total | number: 2}}</span>
+            </ion-item>
+            <ion-item class="item-white">
+                <i class="fa fa-fw fa-truck"></i> Status
+                <span class="item-note" ng-class="{'assertive': order.status = 1, 'dark': order.status > 1}">{{order.getStatus }}</span>
+            </ion-item>
+            <div class="item item-divider">
+                <strong>Endereço de entrega</strong>
+            </div>
+            <ion-item>
+                <p class="no-margin">
+                    {{order.client.data.address}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.district}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.city}}, {{order.client.data.state}}
+                </p>
+                <p class="no-margin">
+                    {{order.client.data.zipcode}}
+                </p>
+            </ion-item>
+            <div class="item item-divider" ng-show="order.cupom.data.value != null">
+                <strong>Cupom de desconto</strong>
+            </div>
+            <ion-item class="item-thumbnail-left" ng-show="order.cupom.data.value != null">
+                <img data-ng-src="data:image/png;base64,{{order.cupom.data.qrcode}}" alt="" />
+                <br/>
+                <p>
+                    <span>Código</span>
+                    <span class="item-note"><strong>{{order.cupom.data.code}}</strong></span>
+                </p>
+                <p>
+                    <span>Desconto</span>
+                    <span class="item-note dark">- R$ {{order.cupom.data.value | number: 2}}</span>
+                </p>
+            </ion-item>
+            <div class="item item-divider">
+                <strong>Ítens do Pedido</strong>
+            </div>
+            <ion-item ng-repeat="o in order.items.data | filter: searchKeyword" class="item-thumbnail-left">
+                <img ng-src="{{o.product.data.image}}">
+                <h2>{{o.product.data.name}}</h2>
+                <p>{{o.product.data.description}}</p>
+                <p>
+                    <span>Qtd: {{o.qtd}}</span>
+                    <span class="item-note">
+                        Preço: R$ {{o.price | number: 2}}
+                    </span>
+                    <p>
+                        <span class="item-note">Subtotal: <span class="dark">R$ {{o.qtd * o.price | number: 2}}</span></span>
+                    </p>
+                </p>
+            </ion-item>
+            <button type="button" class="button button-positive button-block no-margin-bottom" ng-click="goToDelivery()">
+                <i class="fa fa-fw fa-map-marker"></i> Enviar localização
+            </button>
         </ion-list>
-        <button type="button" class="button button-positive button-block" ng-click="goToDelivery()">
-            <i class="ion ion-model-s"></i>
-        </button>
     </ion-content>
 </ion-view>
