@@ -28,7 +28,8 @@
       "id": "phonegap-plugin-barcodescanner"
     },
     "cordova-plugin-statusbar",
-    "org.apache.cordova.statusbar"
+    "org.apache.cordova.statusbar",
+    "cordova-plugin-geolocation"
   ],
   "cordovaPlatforms": [
     "android",
