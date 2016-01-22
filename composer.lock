@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "02ca70ba38c77eab06e857cd75732901",
-    "content-hash": "927543fe77fc0d470c976b88f839c737",
+    "hash": "7bee29b18fa457084db8b2f59fb120dd",
+    "content-hash": "f95a7f430d37add9270771bb82a5d41d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -151,7 +151,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/da05897cb73a7862bcde0bfd539c9b3ab4798267",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/ed972acf19a51f2273e5d59f6058c75f4f9dc38c",
                 "reference": "da05897cb73a7862bcde0bfd539c9b3ab4798267",
                 "shasum": ""
             },
@@ -1149,7 +1149,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/92c3e8a6973b5fd281bd5e4cee9184e84bfd3d0d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1ab1c48e709d978e05c84e4877b2e99e10267bb7",
                 "reference": "92c3e8a6973b5fd281bd5e4cee9184e84bfd3d0d",
                 "shasum": ""
             },
@@ -1654,7 +1654,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/592af02d0c9a7f6c8a345958d8db5d068cf51147",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6a35f7387b1b66121c37436e72378d58125cef90",
                 "reference": "592af02d0c9a7f6c8a345958d8db5d068cf51147",
                 "shasum": ""
             },
@@ -2141,6 +2141,50 @@
             "time": "2015-11-12 16:18:56"
         },
         {
+            "name": "pusher/pusher-php-server",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-http-php.git",
+                "reference": "79d755cc5d5b02b67779e2a40782fd6e3726657d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/79d755cc5d5b02b67779e2a40782fd6e3726657d",
+                "reference": "79d755cc5d5b02b67779e2a40782fd6e3726657d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "homepage": "https://github.com/pusher/pusher-php-server",
+            "keywords": [
+                "events",
+                "php-pusher-server",
+                "publish",
+                "pusher",
+                "realtime",
+                "rest",
+                "trigger"
+            ],
+            "time": "2015-05-13 11:01:46"
+        },
+        {
             "name": "simplesoftwareio/simple-qrcode",
             "version": "1.3.2",
             "source": {
@@ -2254,7 +2298,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/239e9832a6fe13e8e0129bb62ae02684b7f0bee8",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/696bc208eaa7292d246475af22f458f545d8eafc",
                 "reference": "239e9832a6fe13e8e0129bb62ae02684b7f0bee8",
                 "shasum": ""
             },
@@ -2419,7 +2463,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/5aca4aa9600b943287b4a1799a4d1d78b5388175",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/9044cdf657ea38e58b7ff090f84bb3562dc0a5aa",
                 "reference": "5aca4aa9600b943287b4a1799a4d1d78b5388175",
                 "shasum": ""
             },
@@ -2591,7 +2635,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/d20ac81c81a67ab898b0c0afa435f3e9a7d460cf",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/29e6552c17c839fa529e439bed74425cea1a3db8",
                 "reference": "d20ac81c81a67ab898b0c0afa435f3e9a7d460cf",
                 "shasum": ""
             },
@@ -2640,7 +2684,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/c77c8304eb8c0e8a1151cda72c3783882a32a527",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/4d8fd7051e01d18af84c4a0c3eae1674330bbd04",
                 "reference": "c77c8304eb8c0e8a1151cda72c3783882a32a527",
                 "shasum": ""
             },
@@ -2941,7 +2985,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/caace6932e61e8d9f28d19b6ffd16896449ebe37",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3db2f007e5914fa761a3a4742cb22739df87873e",
                 "reference": "caace6932e61e8d9f28d19b6ffd16896449ebe37",
                 "shasum": ""
             },
@@ -2990,7 +3034,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/078b6abb8eb013dfac606b5da24866396b6309b9",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/2bf6c896a5e3360582bd8a3975513614e219f81f",
                 "reference": "078b6abb8eb013dfac606b5da24866396b6309b9",
                 "shasum": ""
             },
@@ -3063,7 +3107,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/8cbab8445ad4269427077ba02fff8718cb397e22",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/cdda854c79711a4bcf4d0291c437947ce0477b9e",
                 "reference": "8cbab8445ad4269427077ba02fff8718cb397e22",
                 "shasum": ""
             },
@@ -3126,7 +3170,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ad39199e91f2f845a0181b14d459fda13a622138",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/26aad786b215c02368b053134eb753800cac284d",
                 "reference": "ad39199e91f2f845a0181b14d459fda13a622138",
                 "shasum": ""
             },
@@ -4367,7 +4411,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/82287b794641153ae1837b9288c3ae90cecdf5c4",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/a8940bc022a7af0ce2601dc46376fe9dbee2d9f6",
                 "reference": "82287b794641153ae1837b9288c3ae90cecdf5c4",
                 "shasum": ""
             },
