@@ -11,6 +11,7 @@ use CodeDelivery\Services\OrderService;
 use CodeDelivery\Presenters\Api\OrderPresenter;
 use Authorizer;
 use CodeDelivery\Models\Geo;
+use CodeDelivery\Events\GetLocationDeliveryman;
 
 class DeliverymanCheckoutController extends Controller
 {
@@ -64,6 +65,7 @@ class DeliverymanCheckoutController extends Controller
         $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
         $geo->lat = $request->get('lat');
         $geo->long = $request->get('long');
+        event(new GetLocationDeliveryman($geo, $order));
         return $geo;
     }
 }
