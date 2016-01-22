@@ -18,11 +18,11 @@ angular.module('starter.controllers')
                 $ionicLoading.hide();
             });
 
-            $scope.goToDelivery = function () {
-                $ionicPopup.alert({
-                    title: 'Advertência',
-                    template: 'Para parar a localização pressione Ok.'
-                });
+            // $scope.goToDelivery = function () {
+                // $ionicPopup.alert({
+                //     title: 'Advertência',
+                //     template: 'Para parar a localização pressione Ok.'
+                // });
 
                 DeliverymanOrder.updateStatus({id: $stateParams.id}, {status: 1}, function () {
                     var watchOptions = {
@@ -37,14 +37,14 @@ angular.module('starter.controllers')
 
                         },
                         function (position) {
-
+                            DeliverymanOrder.geo({id: $stateParams.id}, {
+                                lat: position.coords.latitude,
+                                long: position.coords.longitude
+                            });
                         });
                 });
-            };
+            // };
 
 
-            DeliverymanOrder.geo({id: $stateParams.id}, {lat: -23.4444, long: -25.4444}, function (data) {
-                console.log(data);
-            });
         }
     ]);
