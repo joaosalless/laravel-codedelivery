@@ -18,7 +18,7 @@ angular.module('starter', [
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'https://delivery-joaosalless.rhcloud.com',
+        baseUrl: 'http://192.168.1.105',
         name: 'Delivery',
         version: '0.0.1'
     })

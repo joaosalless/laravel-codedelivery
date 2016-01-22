@@ -14,5 +14,13 @@ angular.module('starter.controllers')
             }, function (dataError) {
                 $ionicLoading.hide();
             });
+
+            DeliverymanOrder.updateStatus({id: $stateParams.id}, function (data) {
+                console.log(data);
+            });
+
+            DeliverymanOrder.geo({id: $stateParams.id}, {lat: -23.4444, long: -25.4444}, function (data) {
+                console.log(data);
+            });
         }
     ]);
