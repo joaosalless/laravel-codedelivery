@@ -18,7 +18,7 @@ angular.module('starter', [
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://delivery-joaosalless.rhcloud.com',
+        baseUrl: 'https://delivery-joaosalless.rhcloud.com',
         name: 'Delivery',
         version: '0.0.1'
     })
@@ -55,7 +55,7 @@ angular.module('starter', [
         OAuthTokenProvider.configure({
             name: 'token',
             options: {
-                secure: false
+                secure: true
             }
         });
 
