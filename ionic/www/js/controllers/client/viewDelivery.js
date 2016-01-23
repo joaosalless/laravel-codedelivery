@@ -95,8 +95,32 @@ angular.module('starter.controllers')
                 var pusher  = $pusher($window.client),
                     channel = pusher.subscribe(channel);
                 channel.bind('CodeDelivery\\Events\\GetLocationDeliveryman', function (data) {
-                    console.log(data);
-                })
+                    var lat = data.geo.lat, long = data.geo.long;
+
+                    if ($scope.markers.length == 0 || $scope.markers.length == 1) {
+                        $scope.markers.push({
+                            id: 'entregador',
+                            coords: {
+                                latitude: lat,
+                                longitude: long
+                            },
+                            options: {
+                                title: 'Entregador',
+                                icon: iconUrl + '/icon47.png'
+                            }
+                        });
+                        return;
+                    }
+
+                    for (var key in $scope.markers) {
+                        if($scope.markers[key].id === 'entregador') {
+                            $scope.markers[key].coords = {
+                                latitude: lat,
+                                longitude: long
+                            };
+                        }
+                    }
+                });
             }
         }
     ]);
