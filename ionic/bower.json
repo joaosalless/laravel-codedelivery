@@ -12,6 +12,8 @@
     "ionic-image-lazy-load": "ion-image-lazy-load#*",
     "angular-google-maps": "~2.3.0",
     "pusher-angular": "~0.1.8",
-    "pusher": "~3.0.0"
+    "pusher": "~3.0.0",
+    "marker-animate-unobtrusive": "~0.2.7",
+    "jquery.easing": "~1.3.1"
   }
 }
