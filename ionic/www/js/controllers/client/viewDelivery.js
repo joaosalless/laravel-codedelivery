@@ -3,6 +3,8 @@ angular.module('starter.controllers')
         '$scope', '$stateParams', 'ClientOrder', '$ionicLoading', '$ionicPopup', 'UserData',
         function ($scope, $stateParams, ClientOrder, $ionicLoading, $ionicPopup, UserData) {
             'use strict';
+
+            var iconUrl = 'http://maps.google.com/mapfiles/kml/pal2';
             $scope.order = {};
 
             $scope.map = {
@@ -49,7 +51,20 @@ angular.module('starter.controllers')
                     address: address
                 }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
+                        var lat  = results[0].geometry.location.lat() ,
+                            long = results[0].geometry.location.lng();
 
+                        $scope.markers.push({
+                            id: 'client',
+                            coords: {
+                                latitude: lat,
+                                longitude: long
+                            },
+                            options: {
+                                title: 'Local de entrega',
+                                icon: iconUrl + '/icon2.png'
+                            }
+                        });
                     } else {
                         $ionicPopup.alert({
                             title: 'Advertência',
