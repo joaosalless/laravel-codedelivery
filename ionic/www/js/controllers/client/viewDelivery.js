@@ -13,6 +13,32 @@ angular.module('starter.controllers')
                 zoom: 16
             };
 
+            $scope.markers = [
+                {
+                    id: 1,
+                    coords: {
+                        latitude: -23.4444,
+                        longitude: -46.4444
+                    },
+                    options: {
+                        title: 'Meu título',
+                        labelContent: 'Meu marcador',
+                        // icon: 'http://maps.google.com/mapfiles/kml/shapes/motorcycling.png'
+                    }
+                },
+                {
+                    id: 2,
+                    coords: {
+                        latitude: -22.4444,
+                        longitude: -46.4444
+                    },
+                    options: {
+                        title: 'Meu título',
+                        labelContent: 'Meu marcador'
+                    }
+                }
+            ];
+
             $ionicLoading.show({
                 template: 'Carregando...'
             });
