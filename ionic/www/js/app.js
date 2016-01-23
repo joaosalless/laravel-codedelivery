@@ -38,7 +38,8 @@ angular.module('starter', [
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
             if (window.StatusBar && cordova.platformId == 'android') {
-                StatusBar.backgroundColorByHexString('#2975F4');
+                // StatusBar.backgroundColorByHexString('#2975F4');
+                StatusBar.backgroundColorByName('gray');
                 StatusBar.show();
             }
             else if (window.StatusBar) {

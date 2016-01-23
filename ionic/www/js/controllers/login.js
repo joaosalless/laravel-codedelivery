@@ -8,7 +8,7 @@ angular.module('starter.controllers')
 
             $scope.app  = appConfig;
             $scope.user = {
-                username: 'entregador1@user.com',
+                username: 'user@user.com',
                 password: '123456'
             };
 

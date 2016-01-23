@@ -33,7 +33,8 @@
     {
       "locator": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
       "id": "cordova-plugin-actionsheet"
-    }
+    },
+    "cordova-plugin-camera"
   ],
   "cordovaPlatforms": [
     "android",

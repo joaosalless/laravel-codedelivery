@@ -38,7 +38,7 @@
                     {{order.client.data.zipcode}}
                 </p>
             </ion-item>
-            <div class="item item-divider" ng-show="order.cupom.data.value != null">
+            <!-- <div class="item item-divider" ng-show="order.cupom.data.value != null">
                 <strong>Cupom de desconto</strong>
             </div>
             <ion-item class="item-thumbnail-left" ng-show="order.cupom.data.value != null">
@@ -52,8 +52,8 @@
                     <span>Desconto</span>
                     <span class="item-note dark">- R$ {{order.cupom.data.value | number: 2}}</span>
                 </p>
-            </ion-item>
-            <div class="item item-divider">
+            </ion-item> -->
+            <!-- <div class="item item-divider">
                 <strong>Ítens do Pedido</strong>
             </div>
             <ion-item ng-repeat="o in order.items.data | filter: searchKeyword" class="item-thumbnail-left">
@@ -69,7 +69,7 @@
                         <span class="item-note">Subtotal: <span class="dark">R$ {{o.qtd * o.price | number: 2}}</span></span>
                     </p>
                 </p>
-            </ion-item>
+            </ion-item> -->
         </ion-list>
         <ui-gmap-google-map
             center="map.center"

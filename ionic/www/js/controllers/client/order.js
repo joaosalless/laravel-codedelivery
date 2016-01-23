@@ -30,6 +30,8 @@ angular.module('starter.controllers')
                     ],
                     titleText: 'O que fazer?',
                     cancelText: 'Cancelar',
+                    addCancelButtonWithLabel: 'Cancel',
+                    androidEnableCancelButton : true,
                     cancel: function () {
                         //
                     },
