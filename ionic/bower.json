@@ -9,6 +9,7 @@
     "angular-resource": "~1.4.8",
     "ngCordova": "~0.1.24-alpha",
     "font-awesome": "fontawesome#~4.5.0",
-    "ionic-image-lazy-load": "ion-image-lazy-load#*"
+    "ionic-image-lazy-load": "ion-image-lazy-load#*",
+    "angular-google-maps": "~2.3.0"
   }
 }

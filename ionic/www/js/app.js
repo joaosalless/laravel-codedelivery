@@ -15,6 +15,7 @@ angular.module('starter', [
     'angular-oauth2',
     'ngResource',
     'ngCordova',
+    'uiGmapgoogle-maps',
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
