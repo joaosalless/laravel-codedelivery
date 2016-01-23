@@ -4,7 +4,7 @@ angular.module('starter.controllers')
         function ($scope, $stateParams, DeliverymanOrder, $ionicLoading, $ionicPopup, $cordovaGeolocation) {
             'use strict';
 
-            var watch;
+            var watch, lat = null, long;
 
             $scope.order = {};
             $ionicLoading.show({
@@ -36,12 +36,18 @@ angular.module('starter.controllers')
                     watch.then(
                         null,
                         function (responseError) {
-
+                            // error
                         },
                         function (position) {
+                            if (!lat) {
+                                lat  = position.coords.latitude;
+                                long = position.coords.longitude;
+                            } else {
+                                lat -= -0.0244;
+                            }
                             DeliverymanOrder.geo({id: $stateParams.id}, {
-                                lat: position.coords.latitude,
-                                long: position.coords.longitude
+                                lat,
+                                long
                             });
                         });
                 });
