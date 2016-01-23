@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('ClientViewDeliveryController', [
-        '$scope', '$stateParams', 'ClientOrder', '$ionicLoading', '$ionicPopup', UserData,
-        function ($scope, $stateParams, ClientOrder, $ionicLoading $ionicPopup, UserData) {
+        '$scope', '$stateParams', 'ClientOrder', '$ionicLoading', '$ionicPopup', 'UserData',
+        function ($scope, $stateParams, ClientOrder, $ionicLoading, $ionicPopup, UserData) {
             'use strict';
             $scope.order = {};
 
@@ -22,7 +22,7 @@ angular.module('starter.controllers')
             ClientOrder.get({id: $stateParams.id, include: 'items,cupom,client'}, function (data) {
                 $scope.order = data.data;
                 $ionicLoading.hide();
-                if ($scope.order.status === 1) {
+                if (parseInt($scope.order.status, 10) == 1) {
                     initMarkers();
                 } else {
                     $ionicPopup.alert({
@@ -35,8 +35,7 @@ angular.module('starter.controllers')
             });
 
             function initMarkers() {
-                'use strict';
-                var client = UserData.get().client,
+                var client = UserData.get().client.data,
                     address = client.zipcode + ', ' +
                         client.address + ', ' +
                         client.city + ' - ' +
@@ -45,7 +44,19 @@ angular.module('starter.controllers')
             }
 
             function createMarkerClient(address) {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    address: address
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
 
+                    } else {
+                        $ionicPopup.alert({
+                            title: 'Advertência',
+                            template: 'Não foi possível encontrar seu endereço.'
+                        });
+                    }
+                });
             }
         }
     ]);
