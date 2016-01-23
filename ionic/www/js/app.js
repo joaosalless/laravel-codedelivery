@@ -16,18 +16,21 @@ angular.module('starter', [
     'ngResource',
     'ngCordova',
     'uiGmapgoogle-maps',
+    'pusher-angular',
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
         baseUrl: 'http://192.168.1.105',
         name: 'Delivery',
         version: '0.0.1',
+        pusherKey: '4071c7f9c5f4e6400fa0',
         organization: {
             name: 'Empresa Teste'
         }
     })
-    .run(function ($ionicPlatform, $http, OAuthToken) {
+    .run(function ($ionicPlatform, $window, appConfig) {
         'use strict';
+        $window.client = new Pusher(appConfig.pusherKey);
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -43,8 +46,6 @@ angular.module('starter', [
                 StatusBar.show();
             }
         });
-
-        $http.defaults.headers.common.Authorization = 'Bearer ' + OAuthToken.getToken();
     })
 
     .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig, $provide) {
