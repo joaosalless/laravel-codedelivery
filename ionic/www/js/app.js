@@ -92,6 +92,12 @@ angular.module('starter', [
                 templateUrl: 'templates/client/view_order.html',
                 controller: 'ClientViewOrderController'
             })
+            .state('client.view_delivery', {
+                cache: false,
+                url: '/view_delivery/:id',
+                templateUrl: 'templates/client/view_delivery.html',
+                controller: 'ClientViewDeliveryController'
+            })
             .state('client.checkout', {
                 cache: false,
                 url: '/checkout',

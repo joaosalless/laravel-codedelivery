@@ -26,7 +26,7 @@ angular.module('starter.controllers')
                 $ionicActionSheet.show({
                     buttons: [
                         {text: 'Ver detalhes'},
-                        {text: 'Ver status da entrega'}
+                        {text: 'Ver entrega'}
                     ],
                     titleText: 'O que fazer?',
                     cancelText: 'Cancelar',
@@ -38,7 +38,8 @@ angular.module('starter.controllers')
                             case 0:
                             $state.go('client.view_order', {id: order.id});
                                 break;
-                            case 0:
+                            case 1:
+                                $state.go('client.view_delivery', {id: order.id});
                                 break;
                         }
                     }
