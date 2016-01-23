@@ -24,14 +24,15 @@ class OrderTransformer extends TransformerAbstract
     public function transform(Order $model)
     {
         return [
-            'id' => (int)$model->id,
-            'total' => (float)$model->total,
-            'status' => $model->status,
+            'id'            => (int)$model->id,
+            'total'         => (float)$model->total,
+            'status'        => $model->status,
+            'hash'          => $model->hash,
+            'getStatus'     => $model->present()->getStatus(),
             'product_names' => $this->getArrayProductNames($model->items),
-            'getStatus' => $model->present()->getStatus(),
 
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at,
+            'created_at'    => $model->created_at,
+            'updated_at'    => $model->updated_at,
         ];
     }
 

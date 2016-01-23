@@ -1,7 +1,23 @@
 angular.module('starter.controllers')
     .controller('ClientViewDeliveryController', [
-        '$scope', '$stateParams', 'ClientOrder', '$ionicLoading', '$ionicPopup', 'UserData',
-        function ($scope, $stateParams, ClientOrder, $ionicLoading, $ionicPopup, UserData) {
+        '$scope',
+        '$stateParams',
+        'ClientOrder',
+        '$ionicLoading',
+        '$ionicPopup',
+        'UserData',
+        '$pusher',
+        '$window',
+        function (
+            $scope,
+            $stateParams,
+            ClientOrder,
+            $ionicLoading,
+            $ionicPopup,
+            UserData,
+            $pusher,
+            $window
+        ) {
             'use strict';
 
             var iconUrl = 'http://maps.google.com/mapfiles/kml/pal2';
@@ -25,7 +41,7 @@ angular.module('starter.controllers')
                 $scope.order = data.data;
                 $ionicLoading.hide();
                 if (parseInt($scope.order.status, 10) == 1) {
-                    initMarkers();
+                    initMarkers($scope.order);
                 } else {
                     $ionicPopup.alert({
                         title: 'Advertência',
@@ -36,13 +52,14 @@ angular.module('starter.controllers')
                 $ionicLoading.hide();
             });
 
-            function initMarkers() {
+            function initMarkers(order) {
                 var client = UserData.get().client.data,
                     address = client.zipcode + ', ' +
                         client.address + ', ' +
                         client.city + ' - ' +
                         client.state
                 createMarkerClient(address);
+                watchPositionDeliveryman(order.hash);
             }
 
             function createMarkerClient(address) {
@@ -72,6 +89,14 @@ angular.module('starter.controllers')
                         });
                     }
                 });
+            }
+
+            function watchPositionDeliveryman(channel) {
+                var pusher  = $pusher($window.client),
+                    channel = pusher.subscribe(channel);
+                channel.bind('CodeDelivery\\Events\\GetLocationDeliveryman', function (data) {
+                    console.log(data);
+                })
             }
         }
     ]);
