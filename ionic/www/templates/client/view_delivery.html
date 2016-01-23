@@ -90,12 +90,12 @@
                 index="-1">
             </ui-gmap-map-control>
 
-            <ui-gmap-marker
-                idkey="o.id"
-                coords="o.coords"
-                options="o.options"
-                ng-repeat="o in markers">
-            </ui-gmap-marker>
+            <ui-gmap-markers
+                models="markers"
+                coords="'coords'"
+                options="'options'"
+                fit="map.fit">
+            </ui-gmap-markers>
         </ui-gmap-google-map>
     </ion-content>
 </ion-view>

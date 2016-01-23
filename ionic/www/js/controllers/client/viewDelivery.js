@@ -8,6 +8,7 @@ angular.module('starter.controllers')
         'UserData',
         '$pusher',
         '$window',
+        '$map',
         function (
             $scope,
             $stateParams,
@@ -16,21 +17,14 @@ angular.module('starter.controllers')
             $ionicPopup,
             UserData,
             $pusher,
-            $window
+            $window,
+            $map
         ) {
             'use strict';
 
             var iconUrl = 'http://maps.google.com/mapfiles/kml/pal2';
-            $scope.order = {};
-
-            $scope.map = {
-                center: {
-                    latitude: 0,
-                    longitude: 0
-                },
-                zoom: 12
-            };
-
+            $scope.order   = {};
+            $scope.map     = $map;
             $scope.markers = [];
 
             $ionicLoading.show({
@@ -148,4 +142,19 @@ angular.module('starter.controllers')
                 };
             };
         }
-    ]);
+    ])
+    .controller('ClientViewDeliveryDescentralize', ['$scope', '$map', function ($scope, $map) {
+        'use strict';
+        $scope.map = $map;
+        $scope.fit = function () {
+            $scope.map.fit = !$scope.map.fit;
+        };
+    }])
+    .controller('ClientViewDeliveryReload', ['$scope', '$window', '$timeout', function ($scope, $window, $timeout) {
+        'use strict';
+        $scope.reload = function() {
+            $timeout(function () {
+                $window.location.reload(true);
+            });
+        };
+    }]);
