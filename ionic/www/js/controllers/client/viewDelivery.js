@@ -4,6 +4,15 @@ angular.module('starter.controllers')
         function ($scope, $stateParams, ClientOrder, $ionicLoading) {
             'use strict';
             $scope.order = {};
+
+            $scope.map = {
+                center: {
+                    latitude: -23.4444,
+                    longitude: -46.4444
+                },
+                zoom: 16
+            };
+
             $ionicLoading.show({
                 template: 'Carregando...'
             });
