@@ -71,10 +71,13 @@
                 </p>
             </ion-item>
         </ion-list>
-        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+        <ui-gmap-google-map
+            center="map.center"
+            zoom="map.zoom"
+            bounds="map.bounds">
             <ui-gmap-marker
                 idkey="o.id"
-                coords="o.coords" 
+                coords="o.coords"
                 options="o.options"
                 ng-repeat="o in markers">
             </ui-gmap-marker>

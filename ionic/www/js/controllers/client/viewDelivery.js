@@ -25,8 +25,8 @@ angular.module('starter.controllers')
 
             $scope.map = {
                 center: {
-                    latitude: -23.4444,
-                    longitude: -46.4444
+                    latitude: 0,
+                    longitude: 0
                 },
                 zoom: 12
             };
@@ -122,5 +122,30 @@ angular.module('starter.controllers')
                     }
                 });
             }
+
+            $scope.$watch('markers.length', function (value) {
+                if (value == 2) {
+                    createBounds();
+                }
+            });
+
+            function createBounds() {
+                var bounds = new google.maps.LatLngBounds(),
+                    latlng;
+                angular.forEach($scope.markers, function (value) {
+                    latlng = new google.maps.LatLng(Number(value.coords.latitude), Number(value.coords.longitude));
+                    bounds.extend(latlng);
+                });
+                $scope.map.bounds = {
+                    northeast: {
+                        latitude:  bounds.getNorthEast().lat(),
+                        longitude: bounds.getNorthEast().lng(),
+                    },
+                    southwest: {
+                        latitude:  bounds.getSouthWest().lat(),
+                        longitude: bounds.getSouthWest().lng(),
+                    }
+                };
+            };
         }
     ]);
