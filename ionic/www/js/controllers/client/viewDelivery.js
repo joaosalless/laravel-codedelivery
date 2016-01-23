@@ -9,6 +9,7 @@ angular.module('starter.controllers')
         '$pusher',
         '$window',
         '$map',
+        'uiGmapGoogleMapApi',
         function (
             $scope,
             $stateParams,
@@ -18,7 +19,8 @@ angular.module('starter.controllers')
             UserData,
             $pusher,
             $window,
-            $map
+            $map,
+            uiGmapGoogleMapApi
         ) {
             'use strict';
 
@@ -31,9 +33,14 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
+            uiGmapGoogleMapApi.then(function (maps) {
+                $ionicLoading.hide();
+            }, function (error) {
+                $ionicLoading.hide();
+            });
+
             ClientOrder.get({id: $stateParams.id, include: 'items,cupom,client'}, function (data) {
                 $scope.order = data.data;
-                $ionicLoading.hide();
                 if (parseInt($scope.order.status, 10) == 1) {
                     initMarkers($scope.order);
                 } else {
@@ -42,8 +49,6 @@ angular.module('starter.controllers')
                         template: 'Pedido não está em status de entrega.'
                     });
                 }
-            }, function (dataError) {
-                $ionicLoading.hide();
             });
 
             function initMarkers(order) {
