@@ -29,7 +29,11 @@
     },
     "cordova-plugin-statusbar",
     "org.apache.cordova.statusbar",
-    "cordova-plugin-geolocation"
+    "cordova-plugin-geolocation",
+    {
+      "locator": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
+      "id": "cordova-plugin-actionsheet"
+    }
   ],
   "cordovaPlatforms": [
     "android",
