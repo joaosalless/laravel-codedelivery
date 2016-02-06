@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('LoginController', [
-        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', 'UserData', 'User', 'appConfig',
-        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User, appConfig) {
+        '$scope', 'OAuth', 'OAuthToken', '$state', '$ionicPopup', 'UserData', 'User', 'appConfig', '$localStorage',
+        function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User, appConfig, $localStorage) {
             'use strict';
 
             var home;
@@ -15,6 +15,10 @@ angular.module('starter.controllers')
             $scope.login = function () {
                 var promise = OAuth.getAccessToken($scope.user);
                 promise
+                    .then(function (data) {
+                        var token = $localStorage.get('device_token');
+                        return User.updateDeviceToken({}, {device_token: token}).$promise;
+                    })
                     .then(function (data) {
                         return User.authenticated({include: 'client'}).$promise;
                     })

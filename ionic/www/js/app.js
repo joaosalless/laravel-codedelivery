@@ -21,7 +21,7 @@ angular.module('starter', [
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'https://delivery-joaosalless.rhcloud.com',
+        baseUrl: 'http://codedelivery.dev',
         name: 'Delivery',
         version: '0.0.1',
         pusherKey: '4071c7f9c5f4e6400fa0',
@@ -29,7 +29,7 @@ angular.module('starter', [
             name: 'Empresa Teste'
         }
     })
-    .run(function ($ionicPlatform, $window, appConfig) {
+    .run(function ($ionicPlatform, $window, appConfig, $localStorage) {
         'use strict';
         $window.client = new Pusher(appConfig.pusherKey);
         $ionicPlatform.ready(function () {
@@ -55,7 +55,7 @@ angular.module('starter', [
                 }
             });
             push.register(function (token) {
-                console.log(token);
+                $localStorage.set('device_token', token.token);
             });
         });
     })
