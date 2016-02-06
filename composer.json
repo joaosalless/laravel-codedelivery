@@ -20,7 +20,8 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "^2.5",
         "simplesoftwareio/simple-qrcode": "1.3.*",
-        "pusher/pusher-php-server": "~2.0"
+        "pusher/pusher-php-server": "~2.0",
+        "dmitrovskiy/ionic-push-php": "^0.0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

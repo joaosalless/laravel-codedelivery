@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('Dmitrovskiy\IonicPush\PushProcessor', function() {
+            return new \Dmitrovskiy\IonicPush\PushProcessor(env('IONIC_APP_ID'), env('IONIC_SECRET_ID'));
+        });
     }
 }
