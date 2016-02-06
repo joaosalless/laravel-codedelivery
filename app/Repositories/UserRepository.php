@@ -10,5 +10,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface UserRepository extends RepositoryInterface
 {
-    //
+    public function updateDeviceToken($id, $deviceToken);
 }
