@@ -45,7 +45,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         $model = $this->model->find($id);
         $model->device_token = $deviceToken;
         $model->save();
-        return $this->parseResult($model);
+        return $this->parserResult($model);
     }
 
     /**

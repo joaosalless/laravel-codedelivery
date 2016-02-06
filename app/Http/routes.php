@@ -154,7 +154,11 @@ Route::group(['middleware' => 'cors'], function () {
          */
         Route::get('authenticated', [
             'as'   => 'authenticated',
-            'uses' => 'Api\AuthenticatedUserController@show'
+            'uses' => 'Api\AuthenticatedUserController@authenticated'
+        ]);
+        Route::patch('device_token', [
+            'as'   => 'device_token',
+            'uses' => 'Api\AuthenticatedUserController@updateDeviceToken'
         ]);
 
         /** --------------------------------------------------------------------
