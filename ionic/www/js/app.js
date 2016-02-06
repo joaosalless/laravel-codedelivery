@@ -51,7 +51,12 @@ angular.module('starter', [
             var push = new Ionic.Push({
                 debug: true,
                 onNotification: function (message) {
-                    console.log(message);
+                    alert(message.text);
+                },
+                pluginConfig: {
+                    android: {
+                        iconColor: "gray"
+                    }
                 }
             });
             push.register(function (token) {

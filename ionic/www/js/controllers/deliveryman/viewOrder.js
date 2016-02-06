@@ -59,6 +59,10 @@ angular.module('starter.controllers')
                 }
             };
 
+            $scope.setOrderDelivered = function () {
+                DeliverymanOrder.updateStatus({id: $stateParams.id}, {status: 2}, function (data) {
 
+                });
+            };
         }
     ]);

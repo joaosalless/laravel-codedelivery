@@ -6,25 +6,28 @@
     <ion-content class="padding">
         <ion-list>
             <ion-item class="item-white">
-                <i class="fa fa-fw fa-shopping-cart"></i> Número do pedido
+                Número do pedido
                 <span class="item-note dark"><strong> #{{order.id}}</strong></span>
             </ion-item>
             <ion-item class="item-white">
-                <i class="fa fa-fw fa-calendar-o"></i> Data da compra
+                Data da compra
                 <span class="item-note dark">{{order.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</span>
             </ion-item>
             <ion-item class="item-white">
-                <i class="fa fa-fw fa-money"></i> Valor da compra
-                <span class="item-note dark"><strong> R$ {{order.total | number: 2}}</strong></span>
+                Valor da compra
+                <span class="item-note dark"> R$ {{order.total | number: 2}}</span>
             </ion-item>
             <ion-item class="item-white">
-                <i class="fa fa-fw fa-truck"></i> Status
-                <span class="item-note" ng-class="{'assertive': order.status = 1, 'dark': order.status > 1}">{{order.getStatus }}</span>
+                Status
+                <span class="item-note" ng-class="{'positive': order.status == 1, 'balanced': order.status == 2, 'assertive': order.status == 3}"><i class="fa fa-fw fa-truck"></i> {{order.getStatus }}</span>
             </ion-item>
             <div class="item item-divider">
                 <strong>Endereço de entrega</strong>
             </div>
             <ion-item>
+                <p class="no-margin">
+                    <strong>{{order.client.data.user.data.name}}</strong>
+                </p>
                 <p class="no-margin">
                     {{order.client.data.address}}
                 </p>
