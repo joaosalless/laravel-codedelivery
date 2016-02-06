@@ -8,6 +8,7 @@ use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\CupomRepository;
 use CodeDelivery\Repositories\UserRepository;
+use Dmitrovskiy\IonicPush\PushProcessor;
 use DB;
 use Carbon\Carbon;
 
@@ -24,13 +25,15 @@ class OrderService
         ProductRepository $productRepository,
         OrderRepository $orderRepository,
         CupomRepository $cupomRepository,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        PushProcessor $pushProcessor
     ) {
         $this->clientRepository = $clientRepository;
         $this->productRepository = $productRepository;
         $this->orderRepository = $orderRepository;
         $this->cupomRepository = $cupomRepository;
         $this->userRepository = $userRepository;
+        $this->pushProcessor = $pushProcessor;
     }
 
     public function create(array $data)
@@ -84,15 +87,25 @@ class OrderService
     public function updateStatus($id, $userDeliverymanId, $status)
     {
         $order = $this->orderRepository->getByIdAndDeliveryman($id, $userDeliverymanId);
-        if ($order instanceof Order) {
-            $order->status = $status;
-            if ((int)($order->status) == 1 && !$order->hash) {
-                $order->hash = md5((new \DateTime())->getTimestamp());
-            }
-            $order->save();
-            return $order;
+        $order->status = $status;
+
+        switch ((int)$status) {
+            case 1:
+                if (!$order->hash) {
+                    $order->hash = md5((new \DateTime())->getTimestamp());
+                }
+                $order->save();
+                break;
+            case 2:
+                $user = $order->client->user;
+                $order->save();
+                $this->pushProcessor->notify(
+                    [$user->device_token],
+                    ['alert' => "Seu pedido {$order->id} acabou de ser entregue."]
+                );
+                break;
         }
 
-        return false;
+        return $order;
     }
 }

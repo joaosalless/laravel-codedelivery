@@ -4,8 +4,6 @@ angular.module('starter.controllers')
         function ($scope, OAuth, OAuthToken, $state, $ionicPopup, UserData, User, appConfig, $localStorage) {
             'use strict';
 
-            var home;
-
             $scope.app  = appConfig;
             $scope.user = {
                 username: 'user@user.com',
@@ -16,6 +14,7 @@ angular.module('starter.controllers')
                 var promise = OAuth.getAccessToken($scope.user);
                 promise
                     .then(function (data) {
+                        /*jshint camelcase: false */
                         var token = $localStorage.get('device_token');
                         return User.updateDeviceToken({}, {device_token: token}).$promise;
                     })
