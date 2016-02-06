@@ -8,7 +8,7 @@ angular.module('starter.controllers', []);
 angular.module('starter.services', []);
 angular.module('starter.filters', []);
 angular.module('starter', [
-    'ionic',
+    'ionic','ionic.service.core',
     'starter.controllers',
     'starter.services',
     'starter.filters',
