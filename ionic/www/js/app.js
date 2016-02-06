@@ -8,7 +8,8 @@ angular.module('starter.controllers', []);
 angular.module('starter.services', []);
 angular.module('starter.filters', []);
 angular.module('starter', [
-    'ionic','ionic.service.core',
+    'ionic',
+    'ionic.service.core',
     'starter.controllers',
     'starter.services',
     'starter.filters',
@@ -38,14 +39,24 @@ angular.module('starter', [
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
             if (window.StatusBar && cordova.platformId == 'android') {
-                // StatusBar.backgroundColorByHexString('#2975F4');
-                StatusBar.backgroundColorByName('gray');
+                // StatusBar.backgroundColorByName('gray');
+                StatusBar.backgroundColorByHexString('#2975F4');
                 StatusBar.show();
             }
             else if (window.StatusBar) {
                 StatusBar.styleDefault();
                 StatusBar.show();
             }
+            Ionic.io();
+            var push = new Ionic.Push({
+                debug: true,
+                onNotification: function (message) {
+                    console.log(message);
+                }
+            });
+            push.register(function (token) {
+                console.log(token);
+            });
         });
     })
 
