@@ -21,7 +21,7 @@ angular.module('starter', [
     'ionicLazyLoad'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://codedelivery.dev',
+        baseUrl: 'http://192.168.1.105',
         name: 'Delivery',
         version: '0.0.1',
         pusherKey: '4071c7f9c5f4e6400fa0',
