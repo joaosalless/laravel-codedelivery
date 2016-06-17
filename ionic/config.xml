@@ -2,7 +2,7 @@
 <widget id="delivery.joaosales.com.br" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>JS Delivery</name>
   <description>
-            Aplicativo para realizar entrega de pedidos.
+            Aplicativo de testes para realizar entrega de pedidos.
         </description>
   <author email="joaosalless@gmail.com" href="http://github.com/joaosalless">
             João Sales

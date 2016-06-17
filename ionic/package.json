@@ -1,7 +1,7 @@
 {
   "name": "CodeDelivery",
   "version": "1.1.1",
-  "description": "E-Commerce e Logística",
+  "description": "Aplicativo de testes para realizar entrega de pedidos",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -37,7 +37,6 @@
     "phonegap-plugin-push"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "android"
   ]
 }
