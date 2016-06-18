@@ -1,0 +1,44 @@
+<ion-view>
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear button-icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            Detalhes do Produto
+        </ion-nav-title>
+    </ion-nav-bar>
+
+    <ion-content class="padding">
+        <div class="list card no-margin-top">
+            <div class="item item-title">
+                <h2>{{produto.name}}</h2>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{produto.image}}">
+            </div>
+            <div class="item item-body">
+                <h2 class="no-margin-top dark">Descrição:</h2>
+                <p style="margin-top:0">{{produto.description}}</p>
+            </div>
+            <div class="item item-body">
+                <h2 class="no-margin-top">
+                    <span class="dark">Preço unitário:</span>
+                    <span class="item-note dark">R$ {{produto.price | number: 2}}</span>
+                </h2>
+            </div>
+            <!-- <div class="item item-body">
+                <h2 class="no-margin-top">
+                    <span class="dark">Subtotal:</span>
+                    <span class="item-note dark">R$ {{(produto.price * produto.qtd) | number: 2}}</span>
+                </h2>
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Quantidade:</span>
+                <input type="text" placeholder="Forneça a quantidade" ng-model="produto.qtd">
+            </label> -->
+        </div>
+        <button type="button" class="button button-assertive button-block no-margin" ng-click="addItem(produto)">
+            Adicionar ao Pedido
+        </button>
+    </ion-content>
+</ion-view>

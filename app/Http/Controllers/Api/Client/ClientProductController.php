@@ -16,8 +16,15 @@ class ClientProductController extends Controller
 
     public function index()
     {
-        $products = $this->productRepository->skipPresenter(false)->all();
+        $products = $this->productRepository->skipPresenter(false)->paginate();
 
         return $products;
+    }
+
+    public function show($id)
+    {
+        return $this->productRepository
+            ->skipPresenter(false)
+            ->find($id);
     }
 }

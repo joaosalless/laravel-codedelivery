@@ -59,16 +59,14 @@ angular.module('starter.controllers')
       };
 
       $scope.loadMore = function() {
-        for (var i = 0; i < 10; i++) {
-          getOrders().then(function(data) {
-            $scope.items = $scope.items.concat(data.data);
-            if ($scope.items.length == data.meta.pagination.total) {
-              $scope.canMoreItems = false;
-            }
-            page = page + 1;
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-          });
-        }
+        getOrders().then(function(data) {
+          $scope.items = $scope.items.concat(data.data);
+          if ($scope.items.length == data.meta.pagination.total) {
+            $scope.canMoreItems = false;
+          }
+          page = page + 1;
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
       };
 
       function getOrders() {

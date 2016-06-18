@@ -1,0 +1,46 @@
+<ion-view>
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <button class="button button-clear button-icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            Catálogo de Produtos
+        </ion-nav-title>
+        <!-- <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-ios-settings" menu-toggle="right"></button>
+        </ion-nav-buttons> -->
+    </ion-nav-bar>
+    <div class="bar bar-subheader bar-white item-input-inset no-border">
+        <label class="item-input-wrapper bg-white no-padding no-border">
+            <input type="search" placeholder="pesquisar..." ng-model="searchKeyword" ng-change="doRefresh()">
+        </label>
+        <span class="badge badge-stable"></span>
+    </div>
+    <ion-content class="has-subheader">
+        <ion-refresher
+            pulling-text="Puxe para atualizar..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <div class="item item-divider" ng-show="searchKeyword.length > 0">
+                <strong>Resultados da busca <span class="item-note dark">{{pagination.total}} itens</span></strong>
+            </div>
+            <ion-item collection-repeat="p in products | filter: searchKeyword" ng-click="openProductDetail(p)" on-hold="showActionSheet(p)" class="item-thumbnail-left">
+                <img ng-src="{{p.image}}">
+                <h2>{{p.name}}</h2>
+                <p>{{p.description}}</p>
+                <p>
+                    <i class="fa fa-folder-o"></i> {{p.category.data.name}}
+                    <span class="item-note dark">
+                        <strong>R$ {{p.price | number: 2}}</strong>
+                    </span>
+                </p>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll
+            ng-if="canMoreItems"
+          on-infinite="loadMore()"
+          distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

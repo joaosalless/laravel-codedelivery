@@ -17,7 +17,7 @@ angular.module('starter.controllers')
             };
 
             $scope.openListProducts = function () {
-                $state.go('client.view_products');
+                $state.go('client.product_index');
             };
 
             $scope.openProductDetail = function (i) {

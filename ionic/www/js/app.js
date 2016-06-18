@@ -158,10 +158,15 @@ angular.module('starter', [
         templateUrl: 'templates/client/checkout_successful.html',
         controller: 'ClientCheckoutSuccessfulController'
       })
-      .state('client.view_products', {
-        url: '/view_products',
-        templateUrl: 'templates/client/view_products.html',
-        controller: 'ClientViewProductController'
+      .state('client.product_index', {
+        url: '/product_index',
+        templateUrl: 'templates/client/product/index.html',
+        controller: 'ClientProductIndexController'
+      })
+      .state('client.product_show', {
+        url: '/product/:id',
+        templateUrl: 'templates/client/product/show.html',
+        controller: 'ClientProductShowController'
       })
       .state('deliveryman', {
         abstract: true,
