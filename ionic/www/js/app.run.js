@@ -1,8 +1,8 @@
 angular
   .module('starter.run')
   .run([
-    'PermissionStore', 'RoleStore', 'OAuth', 'UserData',
-    function(PermissionStore, RoleStore, OAuth, UserData) {
+    '$state', 'PermissionStore', 'RoleStore', 'OAuth', 'UserData', '$rootScope', 'authService',
+    function($state, PermissionStore, RoleStore, OAuth, UserData, $rootScope, authService) {
       'use strict';
 
       PermissionStore.definePermission('user-permission', function(stateParam) {
@@ -42,5 +42,17 @@ angular
         'user-permission',
         'deliveryman-permission',
       ]);
+
+
+      $rootScope.$on('event:oauth-loginRequired', function(event, data) {
+        OAuth.getRefreshToken().then(
+          function(data) {
+            authService.loginConfirmed();
+          },
+          function(responseError) {
+            $state.go('logout');
+          }
+        );
+      });
 
     }]);
