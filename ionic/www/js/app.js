@@ -23,9 +23,13 @@ angular.module('starter', [
   .constant('appConfig', {
     // baseUrl: 'https://delivery.joaosales.com.br',
     baseUrl: 'http://codedelivery.dev',
+    pusherKey: '4071c7f9c5f4e6400fa0',
+    redirectAfterLogin: {
+      client: 'client.order',
+      deliveryman: 'deliveryman.order'
+    },
     name: 'Delivery',
     version: '0.0.1',
-    pusherKey: '4071c7f9c5f4e6400fa0',
     organization: {
       name: 'Empresa Teste'
     }
