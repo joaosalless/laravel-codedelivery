@@ -45,9 +45,13 @@ angular
 
 
       $rootScope.$on('event:auth-loginRequired', function(event, data) {
+        if (!$rootScope.refreshingToken) {
+          $rootScope.refreshingToken = OAuth.getRefreshToken();
+        }
         OAuth.getRefreshToken().then(
           function(data) {
             authService.loginConfirmed();
+            $rootScope.refreshingToken = null;
           },
           function(responseError) {
             $state.go('logout');
