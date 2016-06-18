@@ -107,7 +107,7 @@ angular.module('starter', [
         controller: 'ClientMenuController',
         data: {
           permissions: {
-            only: ['user-permission']
+            only: ['client-role']
           }
         }
       })
