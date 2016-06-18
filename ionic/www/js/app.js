@@ -83,9 +83,14 @@ angular.module('starter', [
 
     $stateProvider
       .state('login', {
+        cache: false,
         url: '/login',
         templateUrl: 'templates/login.html',
         controller: 'LoginController'
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'LogoutController'
       })
       .state('client', {
         abstract: true,
