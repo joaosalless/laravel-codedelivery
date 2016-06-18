@@ -162,7 +162,12 @@ angular.module('starter', [
         cache: false,
         url: '/deliveryman',
         templateUrl: 'templates/deliveryman/menu.html',
-        controller: 'DeliverymanMenuController'
+        controller: 'DeliverymanMenuController',
+        data: {
+          permissions: {
+            only: ['deliveryman-role']
+          }
+        }
       })
       .state('deliveryman.settings', {
         url: '/settings',
