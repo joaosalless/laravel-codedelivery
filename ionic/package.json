@@ -34,7 +34,11 @@
       "locator": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
       "id": "cordova-plugin-actionsheet"
     },
-    "phonegap-plugin-push"
+    "phonegap-plugin-push",
+    {
+      "locator": "https://github.com/leecrossley/cordova-plugin-touchid.git",
+      "id": "cordova-plugin-touchid"
+    }
   ],
   "cordovaPlatforms": [
     "android"
