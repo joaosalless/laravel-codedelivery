@@ -18,6 +18,7 @@ angular.module('starter', [
   'ngCordova',
   'uiGmapgoogle-maps',
   'pusher-angular',
+  'permission',
   'ionicLazyLoad'
 ])
   .constant('appConfig', {
