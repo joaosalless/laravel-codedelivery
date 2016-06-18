@@ -60,11 +60,9 @@ angular
               }
             );
             break;
-
           case 'invalid_credentials':
             httpBuffer.rejectAll(data);
             break;
-
           default:
             $state.go('logout');
             break;
