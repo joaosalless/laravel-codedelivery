@@ -112,6 +112,11 @@ angular.module('starter', [
           }
         }
       })
+      .state('client.touchid', {
+        url: '/touchid',
+        templateUrl: 'templates/touchid.html',
+        controller: 'TouchIDController'
+      })
       .state('client.settings', {
         url: '/settings',
         templateUrl: 'templates/client/settings.html',
@@ -169,6 +174,11 @@ angular.module('starter', [
             only: ['deliveryman-role']
           }
         }
+      })
+      .state('deliveryman.touchid', {
+        url: '/touchid',
+        templateUrl: 'templates/touchid.html',
+        controller: 'TouchIDController'
       })
       .state('deliveryman.settings', {
         url: '/settings',

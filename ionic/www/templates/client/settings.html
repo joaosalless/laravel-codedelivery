@@ -1,16 +1,10 @@
 <ion-view>
     <ion-nav-title>Configurações</ion-nav-title>
     <ion-content class="has-header">
-        <ul class="list">
-            <li class="item item-toggle">
-                Teste
-                <label class="toggle toggle-positive">
-                    <input type="checkbox" ng-model="user.config.teste">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </li>
-        </ul>
+        <ion-list>
+            <ion-item menu-close ui-sref="client.touchid" class="item-icon-left">
+                <i class="icon ion-ios-locked"></i> Habilitar TouchID
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

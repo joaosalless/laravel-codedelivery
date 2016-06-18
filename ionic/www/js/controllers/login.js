@@ -16,19 +16,23 @@ angular.module('starter.controllers')
           $cordovaTouchID.authenticate('Posicione o dedo para autenticar').then(function() {
             var promise = $cordovaKeychain.getForKey('username', 'codedelivery');
             var username = null;
+            var password = null;
             promise
               .then(function(value) {
                 username = value;
-                $cordovaKeychain.getForKey('password', 'codedelivery');
+                return $cordovaKeychain.getForKey('password', 'codedelivery');
               })
               .then(function(value) {
-                $auth.login(username, value);
+                password = value;
               }, function() {
                 $ionicPopup.alert({
                   title: 'Advertência',
                   template: 'Login e/ou senha inválidos'
                 });
               });
+            if (username != null && password != null) {
+              $auth.login(username, value);
+            }
           }, function() {
             // error
           });
