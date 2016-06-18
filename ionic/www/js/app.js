@@ -7,19 +7,21 @@
 angular.module('starter.controllers', []);
 angular.module('starter.services', []);
 angular.module('starter.filters', []);
+angular.module('starter.run', []);
 angular.module('starter', [
   'ionic',
   'ionic.service.core',
   'starter.controllers',
   'starter.services',
   'starter.filters',
+  'starter.run',
   'angular-oauth2',
   'ngResource',
   'ngCordova',
   'uiGmapgoogle-maps',
   'pusher-angular',
-  'permission',
-  'ionicLazyLoad'
+  'ionicLazyLoad',
+  'permission'
 ])
   .constant('appConfig', {
     // baseUrl: 'https://delivery.joaosales.com.br',
@@ -102,7 +104,12 @@ angular.module('starter', [
         cache: false,
         url: '/client',
         templateUrl: 'templates/client/menu.html',
-        controller: 'ClientMenuController'
+        controller: 'ClientMenuController',
+        data: {
+          permissions: {
+            only: ['user-permission']
+          }
+        }
       })
       .state('client.settings', {
         url: '/settings',
