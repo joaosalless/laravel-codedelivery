@@ -28,7 +28,15 @@
                         </p>
                     </div>
                 </div>
+                <ion-option-button class="button-balanced">ação 1</ion-option-button>
+                <ion-option-button class="button-assertive">ação 2</ion-option-button>
+                <ion-option-button class="button-positive">ação 3</ion-option-button>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll
+            ng-if="canMoreItems"
+          on-infinite="loadMore()"
+          distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

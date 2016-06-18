@@ -17,7 +17,7 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Order::class, 10)->create()->each(function ($o) {
+        factory(Order::class, 200)->create()->each(function ($o) {
 
             $client = $o->client;
             $cupom  = Cupom::find(rand(1, 10));
