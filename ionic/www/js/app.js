@@ -21,7 +21,8 @@ angular.module('starter', [
   'uiGmapgoogle-maps',
   'pusher-angular',
   'ionicLazyLoad',
-  'permission'
+  'permission',
+  'http-auth-interceptor'
 ])
   .constant('appConfig', {
     // baseUrl: 'https://delivery.joaosales.com.br',
@@ -215,6 +216,11 @@ angular.module('starter', [
           writable: true
         }
       });
+      return $delegate;
+    }]);
+
+    $provide.decorator('oauthInterceptor', ['$delegate', function($delegate) {
+      delete $delegate['responseError'];
       return $delegate;
     }]);
   });
