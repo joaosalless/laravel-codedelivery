@@ -32,7 +32,7 @@ angular.module('starter', [
       client: 'client.order',
       deliveryman: 'deliveryman.order'
     },
-    name: 'Delivery',
+    name: 'JS Delivery',
     version: '0.0.1',
     organization: {
       name: 'Empresa Teste'
