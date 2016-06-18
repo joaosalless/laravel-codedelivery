@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a0b830a-a66e-4978-8fb9-9e1ec88b17ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ionic/www/js/app.run.js" afterPath="$PROJECT_DIR$/ionic/www/js/app.run.js" />
-    </list>
+    <list default="true" id="2a0b830a-a66e-4978-8fb9-9e1ec88b17ca" name="Default" comment="" />
     <ignored path="laravel-codedelivery.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -184,12 +182,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1441914941968</updated>
-      <workItem from="1466233763764" duration="1817000" />
+      <workItem from="1466233763764" duration="2276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1817000" />
+    <option name="totallyTimeSpent" value="2276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="52" width="960" height="1028" extended-state="4" />

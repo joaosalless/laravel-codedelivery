@@ -44,7 +44,7 @@ angular
       ]);
 
 
-      $rootScope.$on('event:oauth-loginRequired', function(event, data) {
+      $rootScope.$on('event:auth-loginRequired', function(event, data) {
         OAuth.getRefreshToken().then(
           function(data) {
             authService.loginConfirmed();
