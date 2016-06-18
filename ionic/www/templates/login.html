@@ -18,7 +18,10 @@
             </div>
             <div class="padding">
                 <button type="submit" class="button button-block button-positive">Entrar</button>
-                <button type="button" class="button button-block button-balanced" ng-show="isSupportTouchID">TouchID</button>
+                <button type="button" class="button button-block button-balanced"
+                    ng-show="isSupportTouchID"
+                    ng-click="loginWithTouchID"
+                >TouchID</button>
             </div>
         </form>
     </ion-content>
