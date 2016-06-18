@@ -1,42 +1,48 @@
 angular.module('starter.controllers')
-    .controller('DeliverymanOrderController', [
-        '$scope', '$state', '$ionicLoading', 'DeliverymanOrder',
-        function ($scope, $state, $ionicLoading, DeliverymanOrder) {
+  .controller('DeliverymanOrderController', [
+    '$scope', '$state', '$ionicLoading', '$ionicActionSheet', 'DeliverymanOrder', '$timeout',
+    function($scope, $state, $ionicLoading, $ionicActionSheet, DeliverymanOrder, $timeout) {
+      'use strict';
 
-            'use strict';
+      var page = 1;
+      $scope.items = [];
+      $scope.canMoreItems = true;
 
-            $scope.items = [];
+      $scope.doRefresh = function() {
+        page = 1;
+        $scope.items = [];
+        $scope.canMoreItems = true;
+        $scope.loadMore();
+        $timeout(function() {
+          $scope.$broadcast('scroll.refreshComplete');
+        }, 200);
+      };
 
-            $ionicLoading.show({
-                template: 'Carregando...'
-            });
+      $scope.openOrderDetail = function(order) {
+        $state.go('deliveryman.view_order', {
+          id: order.id
+        });
+      };
 
-            $scope.doRefresh = function () {
-                getOrders().then(function (data) {
-                    $scope.items = data.data;
-                    $scope.$broadcast('scroll.refreshComplete');
-                }, function (dataError) {
-                    $scope.$broadcast('scroll.refreshComplete');
-                });
-            };
+      $scope.loadMore = function() {
+        getOrders().then(function(data) {
+          $scope.items = $scope.items.concat(data.data);
+          if ($scope.items.length == data.meta.pagination.total) {
+            $scope.canMoreItems = false;
+          }
+          page = page + 1;
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+      };
 
-            $scope.openOrderDetail = function (order) {
-                $state.go('deliveryman.view_order', {id: order.id});
-            };
-
-            function getOrders() {
-                return DeliverymanOrder.query({
-                    id: null,
-                    orderBy: 'created_at',
-                    sortedBy: 'desc'
-                }).$promise;
-            }
-
-            getOrders().then(function (data) {
-                $scope.items = data.data;
-                $ionicLoading.hide();
-            }, function (dataError) {
-                $ionicLoading.hide();
-            });
-        }
-    ]);
+      function getOrders() {
+        return DeliverymanOrder.query({
+          id: null,
+          page: page,
+          include: 'deliveryman',
+          orderBy: 'created_at',
+          sortedBy: 'desc'
+        }).$promise;
+      }
+    }
+  ]);

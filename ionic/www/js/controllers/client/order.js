@@ -7,9 +7,6 @@ angular.module('starter.controllers')
       var page = 1;
       $scope.items = [];
       $scope.canMoreItems = true;
-      //   $ionicLoading.show({
-      //     template: 'Carregando...'
-      //   });
 
       $scope.doRefresh = function() {
         page = 1;
@@ -19,13 +16,6 @@ angular.module('starter.controllers')
         $timeout(function() {
           $scope.$broadcast('scroll.refreshComplete');
         }, 200);
-
-      /*getOrders().then(function(data) {
-        $scope.items = data.data;
-        $scope.$broadcast('scroll.refreshComplete');
-      }, function(dataError) {
-        $scope.$broadcast('scroll.refreshComplete');
-        });*/
       };
 
       $scope.openOrderDetail = function(order) {
@@ -88,12 +78,5 @@ angular.module('starter.controllers')
           sortedBy: 'desc'
         }).$promise;
       }
-
-    //   getOrders().then(function(data) {
-    //     $scope.items = data.data;
-    //     $ionicLoading.hide();
-    //   }, function(dataError) {
-    //     $ionicLoading.hide();
-    //   });
     }
   ]);

@@ -6,7 +6,7 @@
             on-refresh="doRefresh()">
         </ion-refresher>
         <ion-list>
-            <ion-item ng-repeat="o in items" ng-click="openOrderDetail(o)">
+            <ion-item collection-repeat="o in items" ng-click="openOrderDetail(o)">
                 <div class="row">
                     <div class="col">
                         <h2>#{{o.id}}</h2>
@@ -30,5 +30,10 @@
                 </div>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll
+            ng-if="canMoreItems"
+          on-infinite="loadMore()"
+          distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>
