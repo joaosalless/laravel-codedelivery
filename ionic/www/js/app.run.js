@@ -1,8 +1,8 @@
 angular
   .module('starter.run')
   .run([
-    '$state', 'PermissionStore', 'RoleStore', 'OAuth', 'UserData', '$rootScope', 'authService',
-    function($state, PermissionStore, RoleStore, OAuth, UserData, $rootScope, authService) {
+    '$state', 'PermissionStore', 'RoleStore', 'OAuth', 'UserData', '$rootScope', 'authService', 'httpBuffer',
+    function($state, PermissionStore, RoleStore, OAuth, UserData, $rootScope, authService, httpBuffer) {
       'use strict';
 
       PermissionStore.definePermission('user-permission', function(stateParam) {
@@ -45,18 +45,31 @@ angular
 
 
       $rootScope.$on('event:auth-loginRequired', function(event, data) {
-        if (!$rootScope.refreshingToken) {
-          $rootScope.refreshingToken = OAuth.getRefreshToken();
-        }
-        OAuth.getRefreshToken().then(
-          function(data) {
-            authService.loginConfirmed();
-            $rootScope.refreshingToken = null;
-          },
-          function(responseError) {
+        switch (data.data.error) {
+          case 'access_denied':
+            if (!$rootScope.refreshingToken) {
+              $rootScope.refreshingToken = OAuth.getRefreshToken();
+            }
+            OAuth.getRefreshToken().then(
+              function(data) {
+                authService.loginConfirmed();
+                $rootScope.refreshingToken = null;
+              },
+              function(responseError) {
+                $state.go('logout');
+              }
+            );
+            break;
+
+          case 'invalid_credentials':
+            httpBuffer.rejectAll(data);
+            break;
+
+          default:
             $state.go('logout');
-          }
-        );
+            break;
+        }
+
       });
 
     }]);
