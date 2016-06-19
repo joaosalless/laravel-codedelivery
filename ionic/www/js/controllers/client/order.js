@@ -36,10 +36,9 @@ angular.module('starter.controllers')
           ],
           titleText: 'O que fazer?',
           cancelText: 'Cancelar',
-          addCancelButtonWithLabel: 'Cancel',
-          androidEnableCancelButton: true,
+          //   destructiveText: 'Excluir',
           cancel: function() {
-            //
+            // console.log('cancel button pressed.');
           },
           buttonClicked: function(index) {
             switch (index) {
@@ -58,17 +57,6 @@ angular.module('starter.controllers')
         });
       };
 
-      $scope.loadMore = function() {
-        getOrders().then(function(data) {
-          $scope.items = $scope.items.concat(data.data);
-          if ($scope.items.length == data.meta.pagination.total) {
-            $scope.canMoreItems = false;
-          }
-          page = page + 1;
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-        });
-      };
-
       function getOrders() {
         return ClientOrder.query({
           id: null,
@@ -78,5 +66,16 @@ angular.module('starter.controllers')
           sortedBy: 'desc'
         }).$promise;
       }
+
+      $scope.loadMore = function() {
+        getOrders().then(function(data) {
+          $scope.items = $scope.items.concat(data.data);
+          if ($scope.items.length === data.meta.pagination.total) {
+            $scope.canMoreItems = false;
+          }
+          page = page + 1;
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+      };
     }
   ]);

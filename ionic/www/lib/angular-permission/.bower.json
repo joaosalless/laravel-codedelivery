@@ -41,6 +41,6 @@
     "commit": "02cf23c51c7bf7cf75e5189260deaf018a91732a"
   },
   "_source": "https://github.com/Narzerus/angular-permission.git",
-  "_target": "^2.3.8",
+  "_target": "~2.3.8",
   "_originalSource": "angular-permission"
 }
