@@ -23,10 +23,6 @@
       "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
       "id": "cordova-plugin-whitelist"
     },
-    {
-      "locator": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git",
-      "id": "phonegap-plugin-barcodescanner"
-    },
     "cordova-plugin-statusbar",
     "org.apache.cordova.statusbar",
     "cordova-plugin-geolocation",
@@ -42,6 +38,12 @@
     {
       "locator": "https://github.com/shazron/KeychainPlugin.git",
       "id": "cordova-plugin-ios-keychain"
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-ignore-lint-translation",
+    {
+      "locator": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git",
+      "id": "phonegap-plugin-barcodescanner"
     }
   ],
   "cordovaPlatforms": [
