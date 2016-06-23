@@ -47,5 +47,7 @@ class UserService
         }
 
         $this->clientRepository->update($data['client'], $client->id);
+
+        return $user;
     }
 }

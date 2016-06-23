@@ -61,16 +61,24 @@ angular.module('starter.controllers')
         return ClientOrder.query({
           id: null,
           page: page,
-          include: 'cupom',
+          search: $scope.searchKeyword,
           orderBy: 'created_at',
-          sortedBy: 'desc'
+          sortedBy: 'desc',
+          include: 'cupom'
         }).$promise;
       }
 
       $scope.loadMore = function() {
         getOrders().then(function(data) {
+          $scope.pagination = data.meta.pagination;
+
+          if ($scope.items.length >= $scope.pagination.total) {
+            $scope.items = [];
+          }
+
           $scope.items = $scope.items.concat(data.data);
-          if ($scope.items.length === data.meta.pagination.total) {
+
+          if ($scope.items.length == data.meta.pagination.total) {
             $scope.canMoreItems = false;
           }
           page = page + 1;

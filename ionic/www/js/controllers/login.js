@@ -1,7 +1,20 @@
 angular.module('starter.controllers')
   .controller('LoginController', [
-    '$scope', '$auth', '$cordovaTouchID', '$cordovaKeychain', '$ionicPopup',
-    function($scope, $auth, $cordovaTouchID, $cordovaKeychain, $ionicPopup) {
+    '$scope',
+    '$auth',
+    '$cordovaOauth',
+    '$cordovaTouchID',
+    '$cordovaKeychain',
+    '$cordovaNetwork',
+    '$ionicPopup',
+    function(
+      $scope,
+      $auth,
+      $cordovaOauth,
+      $cordovaTouchID,
+      $cordovaKeychain,
+      $ionicPopup,
+      $cordovaNetwork) {
       'use strict';
 
       $scope.user = {
@@ -46,6 +59,14 @@ angular.module('starter.controllers')
       if (ionic.Platform.isWebView() && ionic.Platform.isIOS() && ionic.Platform.isIpad()) {
         $cordovaTouchID.checkSupport().then(function() {
           $scope.isSupportTouchID = true;
+        });
+      }
+
+      $scope.facebookLogin = function() {
+        $cordovaOauth.facebook("1748749808700571", ["email"]).then(function(result) {
+          console.log("Facebook Login Response Object -> " + JSON.stringify(result));
+        }, function(error) {
+          console.log("Facebook Login Error -> " + error);
         });
       }
     }

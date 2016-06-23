@@ -1,6 +1,20 @@
 <ion-view>
-    <ion-nav-title>Meus Pedidos</ion-nav-title>
-    <ion-content class="has-header">
+    <ion-nav-bar class="no-border">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            Meus Pedidos
+        </ion-nav-title>
+    </ion-nav-bar>
+    <div class="bar bar-subheader bar-white item-input-inset">
+        <div class="item-input-wrapper bg-white no-padding no-border">
+            <i class="fa fa-search item-note"></i>
+            <input type="search" placeholder="pesquisar..." ng-model="searchKeyword" ng-change="doRefresh()">
+        </div>
+        <span class="badge badge-stable no-bold" ng-show="pagination.total > 0">{{pagination.total}} itens</span>
+    </div>
+    <ion-content class="has-header has-subheader no-padding">
         <ion-refresher
             pulling-text="Puxe para atualizar..."
             on-refresh="doRefresh()">
@@ -28,9 +42,11 @@
                         </p>
                     </div>
                 </div>
-                <!-- <ion-option-button class="button-balanced">ação 1</ion-option-button>
+                <!--
+                <ion-option-button class="button-balanced">ação 1</ion-option-button>
                 <ion-option-button class="button-assertive">ação 2</ion-option-button>
-                <ion-option-button class="button-positive">ação 3</ion-option-button> -->
+                <ion-option-button class="button-positive">ação 3</ion-option-button>
+                -->
             </ion-item>
         </ion-list>
         <ion-infinite-scroll

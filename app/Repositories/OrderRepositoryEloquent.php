@@ -18,6 +18,15 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 {
     protected $skipPresenter = true;
 
+    /**
+     * Fields utilizadas na busca
+     */
+    protected $fieldSearchable = [
+        'id'       => 'like',
+        'cupom_id' => 'like',
+        'total'    => 'like'
+    ];
+
     public function listsStatus()
     {
         return [

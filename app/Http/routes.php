@@ -147,7 +147,14 @@ Route::group(['middleware' => 'cors'], function () {
         'as'         => 'api.',
         'middleware' => 'oauth'
     ], function () {
-
+        /** --------------------------------------------------------------------
+         *  device_token
+         *  --------------------------------------------------------------------
+         */
+        Route::patch('device_token', [
+            'as'   => 'device_token',
+            'uses' => 'Api\AuthenticatedUserController@updateDeviceToken'
+        ]);
         /** --------------------------------------------------------------------
          *  Authenticated User
          *  --------------------------------------------------------------------
@@ -156,10 +163,15 @@ Route::group(['middleware' => 'cors'], function () {
             'as'   => 'authenticated',
             'uses' => 'Api\AuthenticatedUserController@authenticated'
         ]);
-        Route::patch('device_token', [
-            'as'   => 'device_token',
-            'uses' => 'Api\AuthenticatedUserController@updateDeviceToken'
+        Route::patch('update_profile', [
+            'as'   => 'update_profile',
+            'uses' => 'Api\AuthenticatedUserController@updateProfile'
         ]);
+        Route::patch('update_password', [
+            'as'   => 'update_password',
+            'uses' => 'Api\AuthenticatedUserController@updatePassword'
+        ]);
+
 
         /** --------------------------------------------------------------------
          *  Client

@@ -55,7 +55,8 @@
   .item {
       background: inherit;
       color: inherit;
-      border-color: darken($positive, 9%);
+    //   border-color: darken($positive, 9%);
+      border-color: transparent;
       a.item-content {
           background: inherit;
           color: inherit;

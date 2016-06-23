@@ -1,6 +1,20 @@
-
+.no-bold {
+    font-weight: normal;
+}
 .no-border {
-    border: 0 none;
+    border: 0 none !important;
+}
+.no-border-top {
+    border-top: 0 none !important;
+}
+.no-border-right {
+    border-right: 0 none !important;
+}
+.no-border-bottom {
+    border-bottom: 0 none !important;
+}
+.no-border-left {
+    border-left: 0 none !important;
 }
 .no-padding {
     padding: 0 !important;
@@ -32,12 +46,21 @@
     top: 4px;
     bottom: 4px;
 }
+.bg-transparent {
+    background-color: transparent;
+}
 .bg-positive {
     background: $positive;
     color: #fff;
 }
 .bg-white {
     background-color: #fff;
+}
+.bg-gray {
+    background-color: #e2e2e2;
+}
+.bg-gray-light {
+    background-color: #f5f5f5;
 }
 .bg-success {
     background: #dff0d8;

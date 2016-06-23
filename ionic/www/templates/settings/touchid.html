@@ -1,9 +1,12 @@
 <ion-view>
     <ion-nav-title>Suporte ao TouchID</ion-nav-title>
-    <ion-content class="padding">
+    <ion-content class="no-padding">
         <form name="form" ng-submit="login()">
-            <div class="list">
-                <label class="item item-input item-floating-label">
+            <div class="list bg-white">
+                <!-- <div class="item no-border text-center" style="padding-top: 50px">
+                    <img ng-src="img/feature-touchid.png" alt="" width="100px" height="100px" />
+                </div> -->
+                <label class="item item-input item-floating-label no-border">
                     <span class="input-label">Email</span>
                     <input type="text" name="username" ng-model="user.username" required="required" placeholder="Email">
                 </label>
@@ -11,9 +14,9 @@
                     <span class="input-label">Senha</span>
                     <input type="password" name="password" ng-model="user.password" required="required" placeholder="Senha">
                 </label>
-            </div>
-            <div class="padding">
-                <button type="submit" class="button button-block button-positive">Adicionar Suporte</button>
+                <div class="item padding">
+                    <button type="submit" class="button button-block button-positive no-margin">Adicionar Suporte</button>
+                </div>
             </div>
         </form>
     </ion-content>

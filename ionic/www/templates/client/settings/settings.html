@@ -1,0 +1,26 @@
+<ion-view>
+    <ion-nav-title>Configurações</ion-nav-title>
+    <ion-content class="has-header no-padding">
+        <ion-list>
+            <div class="item item-divider">
+                Conta
+            </div>
+            <ion-item ui-sref="client.settings_profile" class="item-icon-left">
+                <i class="icon fa fa-user"></i> Perfil do Usuário
+            </ion-item>
+            <ion-item ui-sref="client.settings_addresses" class="item-icon-left">
+                <i class="icon fa fa-map-marker"></i> Endereços de Entrega
+            </ion-item>
+            <ion-item ui-sref="client.settings_password" class="item-icon-left">
+                <i class="icon fa fa-unlock-alt"></i> Mudar Senha
+            </ion-item>
+            <ion-item
+                ui-sref="client.settings_touchid"
+                class="item-icon-left"
+                >
+                <!-- ng-show="isSupportTouchID" -->
+                <i class="icon fa fa-lock"></i> Habilitar TouchID
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

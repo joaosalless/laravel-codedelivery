@@ -18,6 +18,7 @@ angular.module('starter', [
   'angular-oauth2',
   'ngResource',
   'ngCordova',
+  'ngCordovaOauth',
   'uiGmapgoogle-maps',
   'pusher-angular',
   'ionicLazyLoad',
@@ -25,8 +26,8 @@ angular.module('starter', [
   'http-auth-interceptor'
 ])
   .constant('appConfig', {
-    baseUrl: 'https://delivery.joaosales.com.br',
     // baseUrl: 'http://codedelivery.dev',
+    baseUrl: 'https://delivery.joaosales.com.br',
     pusherKey: '4071c7f9c5f4e6400fa0',
     redirectAfterLogin: {
       client: 'client.order',
@@ -38,7 +39,7 @@ angular.module('starter', [
       name: 'Empresa Teste'
     }
   })
-  .run(function($ionicPlatform, $window, appConfig, $localStorage) {
+  .run(function($ionicPlatform, $window, $interval, appConfig, $localStorage) {
     'use strict';
     $window.client = new Pusher(appConfig.pusherKey);
     $ionicPlatform.ready(function() {
@@ -48,8 +49,8 @@ angular.module('starter', [
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
       if (window.StatusBar && cordova.platformId == 'android') {
-        // StatusBar.backgroundColorByName('gray');
-        StatusBar.backgroundColorByHexString('#2975F4');
+        StatusBar.backgroundColorByName('gray');
+        // StatusBar.backgroundColorByHexString('#2975F4');
         StatusBar.show();
       } else if (window.StatusBar) {
         StatusBar.styleDefault();
@@ -97,6 +98,7 @@ angular.module('starter', [
         controller: 'LoginController'
       })
       .state('logout', {
+        cache: false,
         url: '/logout',
         controller: 'LogoutController'
       })
@@ -112,15 +114,35 @@ angular.module('starter', [
           }
         }
       })
-      .state('client.touchid', {
-        url: '/touchid',
-        templateUrl: 'templates/touchid.html',
+      .state('client.settings', {
+        cache: false,
+        url: '/settings',
+        templateUrl: 'templates/client/settings/settings.html',
+        controller: 'ClientSettingsController'
+      })
+      .state('client.settings_password', {
+        cache: false,
+        url: '/settings_password',
+        templateUrl: 'templates/settings/password.html',
+        controller: 'PasswordController'
+      })
+      .state('client.settings_touchid', {
+        cache: false,
+        url: '/settings_touchid',
+        templateUrl: 'templates/settings/touchid.html',
         controller: 'TouchIDController'
       })
-      .state('client.settings', {
-        url: '/settings',
-        templateUrl: 'templates/client/settings.html',
-        controller: 'ClientSettingsController'
+      .state('client.settings_profile', {
+        cache: false,
+        url: '/settings_profile',
+        templateUrl: 'templates/client/settings/profile.html',
+        controller: 'ClientSettingsProfileController'
+      })
+      .state('client.settings_addresses', {
+        cache: false,
+        url: '/settings_addresses',
+        templateUrl: 'templates/client/settings/addresses.html',
+        controller: 'ClientSettingsProfileController'
       })
       .state('client.order', {
         cache: false,
@@ -159,11 +181,13 @@ angular.module('starter', [
         controller: 'ClientCheckoutSuccessfulController'
       })
       .state('client.product_index', {
+        cache: false,
         url: '/product_index',
         templateUrl: 'templates/client/product/index.html',
         controller: 'ClientProductIndexController'
       })
       .state('client.product_show', {
+        cache: false,
         url: '/product/:id',
         templateUrl: 'templates/client/product/show.html',
         controller: 'ClientProductShowController'
@@ -182,7 +206,7 @@ angular.module('starter', [
       })
       .state('deliveryman.touchid', {
         url: '/touchid',
-        templateUrl: 'templates/touchid.html',
+        templateUrl: 'templates/settings/touchid.html',
         controller: 'TouchIDController'
       })
       .state('deliveryman.settings', {

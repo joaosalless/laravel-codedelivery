@@ -1,0 +1,60 @@
+<ion-view>
+    <ion-nav-title>Perfil de Usuário</ion-nav-title>
+    <!-- <ion-nav-buttons side="right">
+        <button
+            class="button button-stable button-small"
+            style="padding:0 10px; height:22px; margin: 6px; border-radius: 4px;"
+            ng-click="">
+            SALVAR
+        </button>
+    </ion-nav-buttons> -->
+
+    <ion-content class="has-header no-padding">
+        <div class="list bg-white">
+            <div class="item text-center">
+                <img class="img-circle" src="{{user.image}}">
+            </div>
+            <div class="item item-divider">
+                Conta
+            </div>
+            <form name="form" ng-submit="updateProfile()">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Nome</span>
+                    <input type="text" name="name" ng-model="user.name" required="required" placeholder="Nome">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input type="text" name="email" ng-model="user.email" required="required" placeholder="Email">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Telefone</span>
+                    <input type="text" name="phone" ng-model="user.client.data.phone" placeholder="Telefone">
+                </label>
+                <div class="item item-divider">
+                    Endereço
+                </div>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Endereço</span>
+                    <input type="text" name="address" ng-model="user.client.data.address" placeholder="Endereço">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Cidade</span>
+                    <input type="text" name="city" ng-model="user.client.data.city" placeholder="Cidade">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Estado</span>
+                    <input type="text" name="state" ng-model="user.client.data.state" placeholder="Estado">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">CEP</span>
+                    <input type="text" name="zipcode" ng-model="user.client.data.zipcode" placeholder="CEP">
+                </label>
+                <div class="item padding">
+                    <button type="button"
+                        class="button button-block button-positive no-margin"
+                        ng-click="updateProfile()">Gravar Modificações</button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

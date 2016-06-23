@@ -1,30 +1,25 @@
 <ion-view>
-    <ion-nav-bar>
+    <ion-nav-bar class="no-border">
         <ion-nav-buttons side="left">
-            <button class="button button-clear button-icon ion-navicon" menu-toggle="left"></button>
+            <button class="button button-icon ion-navicon" menu-toggle="left"></button>
         </ion-nav-buttons>
         <ion-nav-title>
             Catálogo de Produtos
         </ion-nav-title>
-        <!-- <ion-nav-buttons side="right">
-            <button class="button button-icon icon ion-ios-settings" menu-toggle="right"></button>
-        </ion-nav-buttons> -->
     </ion-nav-bar>
-    <div class="bar bar-subheader bar-white item-input-inset no-border">
-        <label class="item-input-wrapper bg-white no-padding no-border">
+    <div class="bar bar-subheader bar-white item-input-inset">
+        <div class="item-input-wrapper bg-white no-padding no-border">
+            <i class="fa fa-search item-note"></i>
             <input type="search" placeholder="pesquisar..." ng-model="searchKeyword" ng-change="doRefresh()">
-        </label>
-        <span class="badge badge-stable"></span>
+        </div>
+        <span class="badge badge-stable no-bold" ng-show="pagination.total > 0">{{pagination.total}} itens</span>
     </div>
-    <ion-content class="has-subheader">
+    <ion-content class="has-subheader no-padding" style="margin-top:-1px">
         <ion-refresher
             pulling-text="Puxe para atualizar..."
             on-refresh="doRefresh()">
         </ion-refresher>
-        <ion-list>
-            <div class="item item-divider" ng-show="searchKeyword.length > 0">
-                <strong>Resultados da busca <span class="item-note dark">{{pagination.total}} itens</span></strong>
-            </div>
+        <ion-list class="no-padding no-border">
             <ion-item collection-repeat="p in products | filter: searchKeyword" ng-click="openProductDetail(p)" on-hold="showActionSheet(p)" class="item-thumbnail-left">
                 <img ng-src="{{p.image}}">
                 <h2>{{p.name}}</h2>
@@ -35,6 +30,9 @@
                         <strong>R$ {{p.price | number: 2}}</strong>
                     </span>
                 </p>
+            </ion-item>
+            <ion-item class="bg-gray" ng-show="pagination.total == 0">
+                <h2>Nenhum resultado</h2>
             </ion-item>
         </ion-list>
         <ion-infinite-scroll

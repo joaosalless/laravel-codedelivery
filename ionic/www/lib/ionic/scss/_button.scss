@@ -216,6 +216,10 @@
   }
 }
 
+.button-shadow {
+  box-shadow: 0 6px 6px -6px rgba(0,0,0,0.4);
+}
+
 .button-full,
 .button-full > .button {
   display: block;

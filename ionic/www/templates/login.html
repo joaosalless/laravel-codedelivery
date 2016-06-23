@@ -1,27 +1,53 @@
-<ion-view>
-    <ion-nav-bar class="bar bar-positive">
+<ion-view style="background: #2975F4;">
+    <!-- <ion-nav-bar class="bar bg-transparent no-padding">
         <ion-nav-title>
             <h2 class="title">{{app.name}}</h2>
         </ion-nav-title>
-    </ion-nav-bar>
-    <ion-content class="has-subheader">
-        <form name="form" ng-submit="login()">
-            <div class="list">
-                <label class="item item-input item-floating-label">
-                    <span class="input-label">Email</span>
+    </ion-nav-bar> -->
+    <ion-content class="no-padding">
+        <div class="text-center" style="padding-top:20px">
+            <img class="full-image" src="img/icon.png" style="width:50%" alt="" />
+        </div>
+        <form name="form" class="no-border" ng-submit="login()">
+            <div class="list list-inset bg-transparent" style="margin: 10px 30px">
+                <label class="item item-input no-border" style="background: rgba(255,255,255,0.2);">
                     <input type="text" name="username" ng-model="user.username" required="required" placeholder="Email">
                 </label>
-                <label class="item item-input item-floating-label">
-                    <span class="input-label">Senha</span>
+            </div>
+            <div class="list list-inset bg-transparent" style="margin: 10px 30px">
+                <label class="item item-input no-border" style="background: rgba(255,255,255,0.2);">
                     <input type="password" name="password" ng-model="user.password" required="required" placeholder="Senha">
                 </label>
             </div>
-            <div class="padding">
-                <button type="submit" class="button button-block button-positive">Entrar</button>
-                <button type="button" class="button button-block button-balanced"
+            <div class="list list-inset bg-transparent" style="margin: 10px 30px">
+                <div class="item no-padding bg-transparent no-border">
+                    <button type="submit" class="button button-block button-light button-shadow no-border no-margin-top">
+                        <i class="fa fa-fw fa-sign-in">&nbsp;</i> Entrar</button>
+                </div>
+            </div>
+            <div class="list list-inset bg-transparent" style="margin: 0px 30px">
+                <div class="item bg-transparent no-border" style="padding:0 0 25px 0">
+                    <button type="button" class="button button-block button-royal button-shadow no-border no-margin"
                     ng-show="isSupportTouchID"
                     ng-click="loginWithTouchID"
-                >TouchID</button>
+                    ><i class="fa fa-fw fa-apple">&nbsp;</i> Entrar com TouchID</button>
+                    <button type="button"
+                        style="background: #3b5998"
+                        ng-click="facebookLogin()"
+                        class="button button-block button-positive button-shadow no-border">
+                        <i class="fa fa-fw fa-facebook-official">&nbsp;</i> Entrar com Facebook
+                    </button>
+                    <!-- <button type="button"
+                        ng-click="instagramLogin()"
+                        class="button button-block button-light button-shadow no-border">
+                        <i class="fa fa-fw fa-instagram">&nbsp;</i> Entrar com Instagram
+                    </button>
+                    <button type="button"
+                        ng-click="googleLogin()"
+                        class="button button-block button-light button-shadow no-border">
+                        <i class="fa fa-fw fa-google">&nbsp;</i> Entrar com Google
+                    </button> -->
+                </div>
             </div>
         </form>
     </ion-content>

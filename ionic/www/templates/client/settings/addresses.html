@@ -1,0 +1,48 @@
+<ion-view>
+    <ion-nav-bar class="no-border">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            Endereços de Entrega
+        </ion-nav-title>
+    </ion-nav-bar>
+    <div class="bar bar-subheader bar-white item-input-inset">
+        <div class="item-input-wrapper bg-white no-padding no-border">
+            <i class="fa fa-search item-note"></i>
+            <input type="search" placeholder="pesquisar..." ng-model="searchKeyword" ng-change="doRefresh()">
+        </div>
+        <span class="badge badge-stable no-bold" ng-show="pagination.total > 0">{{pagination.total}} itens</span>
+    </div>
+    <ion-content class="has-header has-subheader no-padding">
+        <ion-refresher
+            pulling-text="Puxe para atualizar..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <div class="col">
+                        <h2>{{address.name}}</h2>
+                        <p>{{address.street}}</p>
+                        <p>{{address.zipcode}}</p>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item collection-repeat="address in items" ng-click="openAddressDetail(address)" on-hold="showActionSheet(address)">
+                <div class="row">
+                    <div class="col">
+                        <h2>{{address.name}}</h2>
+                        <p>{{address.street}}</p>
+                        <p>{{address.zipcode}}</p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll
+            ng-if="canMoreItems"
+            on-infinite="loadMore()"
+            distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>
