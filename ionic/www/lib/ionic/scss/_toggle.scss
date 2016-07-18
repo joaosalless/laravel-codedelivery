@@ -27,6 +27,7 @@
 }
 
 .toggle {
+
   &.toggle-light  {
     @include toggle-style($toggle-on-light-border, $toggle-on-light-bg);
   }

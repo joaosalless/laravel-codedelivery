@@ -14,6 +14,15 @@
             <ion-item ui-sref="client.settings_password" class="item-icon-left">
                 <i class="icon fa fa-unlock-alt"></i> Mudar Senha
             </ion-item>
+            <li class="item item-toggle item-icon-left">
+                <i class="icon fa fa-globe"></i> Online
+                <label class="toggle toggle-positive">
+                <input type="checkbox" ng-model="isOnline">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+                </label>
+            </li>
             <ion-item
                 ui-sref="client.settings_touchid"
                 class="item-icon-left"

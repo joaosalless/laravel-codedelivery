@@ -50,7 +50,8 @@
       "id": "cordova-plugin-inappbrowser"
     },
     "cordova-plugin-network-information",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator",
+    "cordova-plugin-media-capture"
   ],
   "cordovaPlatforms": [
     "android"

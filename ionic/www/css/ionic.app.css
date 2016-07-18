@@ -5977,12 +5977,12 @@ a.item-content {
 .item-icon-left {
   padding-left: 54px; }
   .item-icon-left .icon {
-    left: 16px; }
+    left: 11px; }
 
 .item-complex.item-icon-left {
-  padding-left: 5px; }
+  padding-left: 0; }
   .item-complex.item-icon-left .item-content {
-    padding-left: 40px; }
+    padding-left: 54px; }
 
 .item-icon-right {
   padding-right: 54px; }
@@ -6140,10 +6140,10 @@ button.item.item-button-right {
 
 .item-thumbnail-left,
 .item-thumbnail-left .item-content {
-  padding-top: 9px;
-  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-bottom: 0;
   padding-left: 106px;
-  min-height: 101px; }
+  min-height: 100px; }
   .item-thumbnail-left > img:first-child,
   .item-thumbnail-left .item-image,
   .item-thumbnail-left .item-content > img:first-child,
@@ -6205,7 +6205,9 @@ button.item.item-button-right {
   padding-bottom: 8px;
   min-height: 30px;
   background-color: #f5f5f5;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
   color: #222;
+  border: 0 none;
   font-weight: 500; }
 
 .platform-ios .item-divider-platform,
@@ -7416,9 +7418,9 @@ input:checked + .checkbox-icon:after {
   box-sizing: border-box;
   width: 51px;
   height: 31px;
-  border: solid 2px #e6e6e6;
+  border: solid 6px #e6e6e6;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: #e6e6e6;
   content: ' ';
   cursor: pointer;
   pointer-events: none; }
@@ -7437,18 +7439,18 @@ input:checked + .checkbox-icon:after {
   transition-property: background-color, transform;
   position: absolute;
   display: block;
-  width: 27px;
-  height: 27px;
-  border-radius: 27px;
+  width: 19px;
+  height: 19px;
+  border-radius: 19px;
   background-color: #fff;
-  top: 7px;
-  left: 7px;
+  top: 11px;
+  left: 11px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15); }
   .toggle .handle:before {
     position: absolute;
     top: -4px;
-    left: -21.5px;
-    padding: 18.5px 34px;
+    left: -17.5px;
+    padding: 14.5px 26px;
     content: " "; }
 
 .toggle input:checked + .track .handle {
@@ -11149,7 +11151,7 @@ a.button {
   content: ""; }
 
 .platform-android .action-sheet-backdrop.active {
-  background-color: rgba(0, 0, 0, 0.4); }
+  background-color: rgba(0, 0, 0, 0.5); }
 
 .platform-android .action-sheet {
   align-content: center;
@@ -11165,13 +11167,14 @@ a.button {
 
 .platform-android .action-sheet .action-sheet-title {
   font-size: 14px;
-  padding: 16px;
-  color: #666; }
+  padding: 14px 16px;
+  color: #888; }
 
 .platform-android .action-sheet .button {
-  border-color: #e2e2e2;
-  padding-left: 16px;
-  color: #387ef5; }
+  border-color: #e5e5e5;
+  padding-left: 16px; }
+  .platform-android .action-sheet .button > i {
+    font-size: 16px; }
 
 .platform-android .action-sheet .button.destructive {
   color: red; }

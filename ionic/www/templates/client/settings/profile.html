@@ -1,21 +1,40 @@
 <ion-view>
     <ion-nav-title>Perfil de Usuário</ion-nav-title>
-    <!-- <ion-nav-buttons side="right">
+    <ion-nav-buttons side="right">
         <button
-            class="button button-stable button-small"
+            class="button button-balanced no-border button-small"
             style="padding:0 10px; height:22px; margin: 6px; border-radius: 4px;"
-            ng-click="">
-            SALVAR
+            ng-click="updateProfile()"
+            >
+            Salvar
         </button>
-    </ion-nav-buttons> -->
+    </ion-nav-buttons>
 
     <ion-content class="has-header no-padding">
         <div class="list bg-white">
             <div class="item text-center">
-                <img class="img-circle" src="{{user.image}}">
-            </div>
-            <div class="item item-divider">
-                Conta
+                <div class="row no-padding">
+                    <div class="col col-25 no-padding">
+                        <span style="position: absolute" ng-click="changePhoto()">
+                            <i class="icon fa fa-fw fa-camera" style="color: rgba(0,0,0,0.2)"></i>
+                        </span>
+                        <img class="full-image" src="{{user.image}}" ng-click="changePhoto()" on-hold="changePhoto()">
+                    </div>
+                    <div class="col col-75 text-left" style="padding-left: 15px">
+                        <p>
+                            <strong>{{user.name}}</strong>
+                        </p>
+                        <p>
+                            {{user.email}}
+                        </p>
+                        <p>
+                            {{user.client.data.phone}}
+                        </p>
+                        <p>
+                            {{user.client.data.city}}, {{user.client.data.state}} - {{user.client.data.zipcode}}
+                        </p>
+                    </div>
+                </div>
             </div>
             <form name="form" ng-submit="updateProfile()">
                 <label class="item item-input item-floating-label">
@@ -30,9 +49,6 @@
                     <span class="input-label">Telefone</span>
                     <input type="text" name="phone" ng-model="user.client.data.phone" placeholder="Telefone">
                 </label>
-                <div class="item item-divider">
-                    Endereço
-                </div>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Endereço</span>
                     <input type="text" name="address" ng-model="user.client.data.address" placeholder="Endereço">
@@ -49,11 +65,6 @@
                     <span class="input-label">CEP</span>
                     <input type="text" name="zipcode" ng-model="user.client.data.zipcode" placeholder="CEP">
                 </label>
-                <div class="item padding">
-                    <button type="button"
-                        class="button button-block button-positive no-margin"
-                        ng-click="updateProfile()">Gravar Modificações</button>
-                </div>
             </form>
         </div>
     </ion-content>

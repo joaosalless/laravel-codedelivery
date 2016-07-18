@@ -448,7 +448,7 @@ $progress-margin:                 15px auto !default;
 
 $toggle-width:                    51px !default;
 $toggle-height:                   31px !default;
-$toggle-border-width:             2px !default;
+$toggle-border-width:             6px !default;
 $toggle-border-radius:            20px !default;
 
 $toggle-handle-width:             $toggle-height - ($toggle-border-width * 2) !default;
@@ -456,7 +456,7 @@ $toggle-handle-height:            $toggle-handle-width !default;
 $toggle-handle-radius:            $toggle-handle-width !default;
 $toggle-handle-dragging-bg-color: darken(#fff, 5%) !default;
 
-$toggle-off-bg-color:             #fff !default;
+$toggle-off-bg-color:             #e6e6e6 !default;
 $toggle-off-border-color:         #e6e6e6 !default;
 
 $toggle-on-light-bg:              $button-light-border !default;

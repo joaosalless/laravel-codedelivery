@@ -1,5 +1,5 @@
 .platform-android .action-sheet-backdrop.active {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .platform-android .action-sheet {
     align-content: center;
@@ -16,13 +16,19 @@
 }
 .platform-android .action-sheet .action-sheet-title {
     font-size: 14px;
-    padding: 16px;
-    color: #666;
+    padding: 14px 16px;
+    color: #888;
 }
 .platform-android .action-sheet .button {
-    border-color: #e2e2e2;
+    border-color: $card-border-color;
     padding-left: 16px;
-    color: $link-color;
+    // color: $link-color;
+    // color: $dark;
+    // font-weight: 600;
+
+    > i {
+        font-size: 16px;
+    }
 }
 .platform-android .action-sheet .button.destructive {
     color: red;
@@ -32,7 +38,6 @@
     background: #e8e8e8;
 }
 .platform-android .action-sheet-group {
-    // border-radius: 0;
     background-color: #fafafa;
 }
 .platform-android .action-sheet-cancel {
