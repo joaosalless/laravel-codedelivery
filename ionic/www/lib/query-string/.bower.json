@@ -30,7 +30,7 @@
     "tag": "v1.0.1",
     "commit": "cadf180a81772862adb035b43594c2c5c46bc6bd"
   },
-  "_source": "git://github.com/sindresorhus/query-string.git",
+  "_source": "https://github.com/sindresorhus/query-string.git",
   "_target": "^1.0.0",
   "_originalSource": "query-string"
 }

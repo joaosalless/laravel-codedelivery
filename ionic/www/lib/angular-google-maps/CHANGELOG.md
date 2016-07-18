@@ -1,3 +1,25 @@
+<a name"3.3.2"></a>
+### 3.3.2 (2016-05-13)
+
+
+<a name"2.3.2"></a>
+### 2.3.2 (2016-02-11)
+
+
+#### Bug Fixes
+
+* **angular 1.5:** working ([8ac35c3e](https://github.com/angular-ui/angular-google-maps/commit/8ac35c3e))
+
+
+<a name"2.3.1"></a>
+### 2.3.1 (2016-01-28)
+
+
+#### Bug Fixes
+
+* **lodash:** #1682 check both directions 3.X to 4.X and 4.X to 3.X. ([cb3a20bd](https://github.com/angular-ui/angular-google-maps/commit/cb3a20bd))
+
+
 <a name"2.2.2"></a>
 ### 2.2.2 (2016-01-21)
 

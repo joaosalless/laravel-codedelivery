@@ -1,6 +1,7 @@
 log = require('util').log
 _ = require 'lodash'
-karmaRunner = require './grunt/karma'
+kickoff = require 'karma-kickoff'
+argv = require('yargs').argv
 
 module.exports = (grunt) ->
   # Load the required plugins
@@ -21,10 +22,10 @@ module.exports = (grunt) ->
     'grunt-replace'
     'grunt-subgrunt'
     'grunt-debug-task'
-    'grunt-curl'
     'grunt-verbosity'
     'grunt-webpack'
     'grunt-angular-architecture-graph'
+    'grunt-ng-annotate'
     ].forEach (gruntLib) -> grunt.loadNpmTasks gruntLib
 
   #squishing this file done by moving grunt options out to its own file. This way we can focus on tasks!
@@ -49,17 +50,18 @@ module.exports = (grunt) ->
   options.open = _.extend options.open, allExamplesOpen
   grunt.initConfig options
 
-  # Default task: build a release in dist/
-  grunt.registerTask "default", [
-    'bower', 'curl',
-    'verbosity', 'clean:dist', 'jshint', 'mkdir', 'coffee',
-    'concat:libs', 'replace', 'webpack', 'concat:dist', 'concat:streetview'
-    'copy', 'uglify:dist', 'uglify:streetview', 'karma']
+  grunt.registerTask 'build', ['bower', 'clean:dist', 'jshint', 'mkdir', 'coffee', 'ngAnnotate',
+  'concat:libs', 'replace', 'webpack']
+
+  grunt.registerTask 'buildDist', ['build', 'concat:dist']
+
+  grunt.registerTask "default", [ 'verbosity', 'buildDist', 'copy', 'uglify:dist', 'uglify:streetview', 'karma']
+
+  grunt.registerTask "buildAll", [ "build", "concat",
+    "uglify", "copy", "karma", "graph"]
 
   # run default "grunt" prior to generate _SpecRunner.html
-  grunt.registerTask "spec", [
-    'bower', 'curl',
-    'verbosity', "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "webpack", "concat",
+  grunt.registerTask "spec", [ 'verbosity', "buildDist",
     "copy", "karma", "open:jasmine", "watch:spec"]
 
   grunt.registerTask "coverage", ['connect:coverage','open:coverage', "watch:spec"]
@@ -76,26 +78,21 @@ module.exports = (grunt) ->
 
   grunt.registerTask "fast", dev.concat ["karma"]
 
-  grunt.registerTask "mappAll", [
-    'bower', 'curl',
-    "clean:dist", "jshint", "mkdir", "coffee", "concat:libs", "replace", "webpack", "concat", "uglify"
-    "copy", "karma", "graph"]
 
   grunt.registerTask "build-street-view", ['clean:streetview','mkdir','coffee', 'concat:libs', 'replace',
     'concat:streetview', 'concat:streetviewMapped', 'uglify:streetview', 'uglify:streetviewMapped']
 
-  grunt.registerTask "buildAll", "mappAll"
 
   # Run the example page by creating a local copy of angular-google-maps.js
   # and running a webserver on port 3100 with livereload. Web page is opened
   # automatically in the default browser.
   grunt.registerTask 'graph', ['angular_architecture_graph']
 
-  grunt.registerTask 'bump-@-preminor', ['changelog', 'bump-only:preminor', 'mappAll', 'bump-commit']
-  grunt.registerTask 'bump-@-prerelease', ['changelog','bump-only:prerelease', 'mappAll', 'bump-commit']
-  grunt.registerTask 'bump-@', ['changelog','bump-only', 'mappAll', 'bump-commit']
-  grunt.registerTask 'bump-@-minor', ['changelog','bump-only:minor', 'mappAll', 'bump-commit']
-  grunt.registerTask 'bump-@-major', ['changelog','bump-only:major', 'mappAll', 'bump-commit']
+  grunt.registerTask 'bump-@-preminor', ['changelog', 'bump-only:preminor', 'buildAll', 'bump-commit']
+  grunt.registerTask 'bump-@-prerelease', ['changelog','bump-only:prerelease', 'buildAll', 'bump-commit']
+  grunt.registerTask 'bump-@', ['changelog','bump-only', 'buildAll', 'bump-commit']
+  grunt.registerTask 'bump-@-minor', ['changelog','bump-only:minor', 'buildAll', 'bump-commit']
+  grunt.registerTask 'bump-@-major', ['changelog','bump-only:major', 'buildAll', 'bump-commit']
 
   exampleOpenTasks = []
 
@@ -130,5 +127,18 @@ module.exports = (grunt) ->
   grunt.registerTask 's', 'server'
 
   grunt.registerTask 'karma', 'karma runner', ->
-    karmaRunner(grunt) @async()
+    kickoff @async(),
+      logFn: grunt.log.oklns
+      configFile: require.resolve './karma.conf.coffee'
+
+  grunt.registerTask 'karmaSpecific', 'karma runner', ->
+    kickoff @async(),
+      configFile: require.resolve './karma.conf.coffee'
+      logFn: grunt.log.oklns
+      appendFiles: argv.files.split(',')
+      lengthToPop: 1
+      reporters: ['mocha']
+
+  grunt.registerTask 'buildSpecFile', ['buildDist', 'karmaSpecific']
+  grunt.registerTask 'buildSpec', ['buildDist', 'karma']
 #to see all tasks available don't forget "grunt --help" !!!

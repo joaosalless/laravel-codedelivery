@@ -35,6 +35,11 @@
 .menu-open .menu-content .pane,
 .menu-open .menu-content .scroll-content {
   pointer-events: none;
+}
+.menu-open .menu-content .scroll-content .scroll {
+  pointer-events: none;
+}
+.menu-open .menu-content .scroll-content:not(.overflow-scroll) {
   overflow: hidden;
 }
 
@@ -50,25 +55,6 @@
 
 .menu-left {
   left: 0;
-  background: darken($positive, 3%);
-  color: $bar-positive-text;
-  .item {
-      background: inherit;
-      color: inherit;
-    //   border-color: darken($positive, 9%);
-      border-color: transparent;
-      a.item-content {
-          background: inherit;
-          color: inherit;
-      }
-      i.fa {
-          margin-right: $button-bar-button-padding;
-          font-size: $button-bar-button-icon-size;
-      }
-  },
-  .bar-footer {
-      border-top-width: 0;
-  }
 }
 
 .menu-right {

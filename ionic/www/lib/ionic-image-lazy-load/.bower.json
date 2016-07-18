@@ -30,8 +30,7 @@
     "branch": "master",
     "commit": "981e5284cc09000e535558d0c64eff42ebbd89cc"
   },
-  "_source": "git://github.com/paveisistemas/ionic-image-lazy-load.git",
+  "_source": "https://github.com/paveisistemas/ionic-image-lazy-load.git",
   "_target": "*",
-  "_originalSource": "ion-image-lazy-load",
-  "_direct": true
+  "_originalSource": "ion-image-lazy-load"
 }

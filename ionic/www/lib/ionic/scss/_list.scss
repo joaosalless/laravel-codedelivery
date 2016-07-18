@@ -48,7 +48,7 @@
 .card,
 .list-inset {
   overflow: hidden;
-  margin: ($content-padding) $content-padding;
+  margin: ($content-padding * 2) $content-padding;
   border-radius: $card-border-radius;
   background-color: $card-body-bg;
 }

@@ -10,8 +10,7 @@
   z-index: $z-index-item; // Make sure the borders and stuff don't get hidden by children
   display: block;
 
-  // margin: $item-border-width * -1;
-  margin: ($item-border-width * -1);
+  margin: $item-border-width * -1;
   padding: $item-padding;
 
   border-width: $item-border-width;
@@ -196,16 +195,13 @@ a.item.item-complex,
 button.item.item-complex {
   padding: 0;
 }
+.item-complex .item-content,
 .item-radio .item-content {
   position: relative;
   z-index: $z-index-item;
   padding: $item-padding (ceil( ($item-padding * 3) + ($item-padding / 3) ) - 5) $item-padding $item-padding;
   border: none;
   background-color: $item-default-bg;
-}
-
-.item-complex .item-content {
-  padding: $item-padding (ceil( ($item-padding * 1) + ($item-padding / 3) ) - 5) $item-padding $item-padding;
 }
 
 a.item-content {
@@ -459,6 +455,16 @@ button.item.item-button-right {
   }
 }
 
+.item-button-left.item-button-right{
+   .button{
+     &:first-child {
+      right: auto;
+    }
+     &:last-child {
+      left: auto;
+    }
+   }
+}
 
 // Item Avatar
 // -------------------------------
@@ -508,7 +514,6 @@ button.item.item-button-right {
 .item-thumbnail-left,
 .item-thumbnail-left .item-content {
   padding-top: $item-padding / 2;
-  padding-bottom: 0;
   padding-left: $item-thumbnail-width + $item-thumbnail-margin + $item-padding;
   min-height: $item-thumbnail-height + ($item-thumbnail-margin * 2);
 
@@ -592,9 +597,7 @@ button.item.item-button-right {
   padding-bottom: ceil($item-padding / 2);
   min-height: 30px;
   background-color: $item-divider-bg;
-  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
   color: $item-divider-color;
-  border: 0 none;
   font-weight: 500;
 }
 

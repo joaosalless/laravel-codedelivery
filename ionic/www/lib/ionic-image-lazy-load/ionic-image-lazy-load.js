@@ -92,7 +92,6 @@ angular.module('ionicLazyLoad')
                             $ionicScrollDelegate.resize();
                         }
                         $element.unbind("load");
-                        $element.addClass('fadeIn animated');
                     });
 
                     if ($scope.imageLazyBackgroundImage == "true") {

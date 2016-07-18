@@ -16,8 +16,9 @@ $dark:                            #444 !default;
 // Base
 // -------------------------------
 
-$font-family-sans-serif:          "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-light-sans-serif:    "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-sans-serif:           '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+
+$font-family-light-sans-serif:    '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
 $font-family-serif:               serif !default;
 $font-family-monospace:           monospace !default;
 
@@ -92,11 +93,14 @@ $button-bar-button-height:        32px !default;
 $button-bar-button-padding:       8px !default;
 $button-bar-button-icon-size:     20px !default;
 
+$button-default-border:       transparent;
+$button-default-active-border:null;
+
 $button-light-bg:                 $light !default;
 $button-light-text:               #444 !default;
-$button-light-border:             #e5e5e5 !default;
+$button-light-border:             #ddd !default;
 $button-light-active-bg:          #fafafa !default;
-$button-light-active-border:      #e5e5e5 !default;
+$button-light-active-border:      #ccc !default;
 
 $button-stable-bg:                $stable !default;
 $button-stable-text:              #444 !default;
@@ -294,10 +298,10 @@ $item-padding:                    16px !default;
 
 $item-button-font-size:           18px !default;
 $item-button-line-height:         32px !default;
-$item-icon-font-size:             18px !default;
+$item-icon-font-size:             32px !default;
 $item-icon-fill-font-size:        28px !default;
 
-$item-icon-accessory-color:       #e5e5e5 !default;
+$item-icon-accessory-color:       #ccc !default;
 $item-icon-accessory-font-size:   16px !default;
 
 $item-avatar-width:               40px !default;
@@ -414,7 +418,7 @@ $card-footer-bg:                  #F5F5F5 !default;
 $card-padding:                    10px !default;
 $card-border-width:               1px !default;
 
-$card-border-color:               #e5e5e5 !default;
+$card-border-color:               #ccc !default;
 $card-border-radius:              2px !default;
 $card-box-shadow:                 0 1px 3px rgba(0, 0, 0, .3) !default;
 
@@ -448,7 +452,7 @@ $progress-margin:                 15px auto !default;
 
 $toggle-width:                    51px !default;
 $toggle-height:                   31px !default;
-$toggle-border-width:             6px !default;
+$toggle-border-width:             2px !default;
 $toggle-border-radius:            20px !default;
 
 $toggle-handle-width:             $toggle-height - ($toggle-border-width * 2) !default;
@@ -456,7 +460,7 @@ $toggle-handle-height:            $toggle-handle-width !default;
 $toggle-handle-radius:            $toggle-handle-width !default;
 $toggle-handle-dragging-bg-color: darken(#fff, 5%) !default;
 
-$toggle-off-bg-color:             #e6e6e6 !default;
+$toggle-off-bg-color:             #fff !default;
 $toggle-off-border-color:         #e6e6e6 !default;
 
 $toggle-on-light-bg:              $button-light-border !default;
@@ -542,7 +546,7 @@ $range-assertive-track-bg:        $button-assertive-bg !default;
 $range-energized-track-bg:        $button-energized-bg !default;
 $range-royal-track-bg:            $button-royal-bg !default;
 $range-dark-track-bg:             $button-dark-bg !default;
-$range-default-track-bg:          #e5e5e5 !default;
+$range-default-track-bg:          #ccc !default;
 
 
 // Menus
@@ -647,7 +651,7 @@ $loading-backdrop-bg-color:       rgba(0,0,0,0.4) !default;
 $badge-font-size:                 14px !default;
 $badge-line-height:               16px !default;
 $badge-font-weight:               bold !default;
-$badge-border-radius:             6px !default;
+$badge-border-radius:             10px !default;
 
 $badge-light-bg:                  $button-light-bg !default;
 $badge-light-text:                $button-light-text !default;

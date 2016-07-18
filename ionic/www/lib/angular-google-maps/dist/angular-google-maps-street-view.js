@@ -1,4 +1,4 @@
-/*! angular-google-maps 2.3.0 2016-01-21
+/*! angular-google-maps 2.3.3 2016-05-13
  *  AngularJS directives for Google Maps
  *  git: https://github.com/angular-ui/angular-google-maps.git
  */
@@ -193,7 +193,10 @@ return UUID;
   ]);
 
 }).call(this);
-;(function() {
+;
+/*global _:true, angular:true, google:true */
+
+(function() {
   angular.module('uiGmapgoogle-maps.directives.api.utils').service('uiGmapGmapUtil', [
     'uiGmapLogger', '$compile', function(Logger, $compile) {
       var _isFalse, _isTruthy, getCoords, getLatitude, getLongitude, validateCoords;
@@ -225,7 +228,9 @@ return UUID;
         if (!value) {
           return;
         }
-        if (Array.isArray(value) && value.length === 2) {
+        if (value instanceof google.maps.LatLng) {
+          return value;
+        } else if (Array.isArray(value) && value.length === 2) {
           return new google.maps.LatLng(value[1], value[0]);
         } else if (angular.isDefined(value.type) && value.type === 'Point') {
           return new google.maps.LatLng(value.coordinates[1], value.coordinates[0]);
