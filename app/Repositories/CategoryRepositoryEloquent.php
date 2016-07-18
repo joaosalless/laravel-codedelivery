@@ -16,7 +16,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
 {
     protected $skipPresenter = true;
 
-    public function lists()
+    public function listsCategories()
     {
         return $this->model->lists('name', 'id');
     }

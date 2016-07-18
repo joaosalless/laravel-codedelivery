@@ -21,7 +21,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return UserPresenter::class;
     }
 
-    public function lists()
+    public function listsUsers()
     {
         return $this->model->lists('name', 'id');
     }
@@ -34,9 +34,9 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function listsRoles()
     {
         return [
-            'client' => 'Cliente',
+            'client'      => 'Cliente',
             'deliveryman' => 'Entregador',
-            'admin' => 'Administrador',
+            'admin'       => 'Administrador',
         ];
     }
 
