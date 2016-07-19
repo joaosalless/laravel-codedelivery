@@ -293,12 +293,12 @@ $tabs-striped-border-width:       2px !default;
 // -------------------------------
 
 $item-font-size:                  16px !default;
-$item-border-width:               1px !default;
+$item-border-width:               0.5px !default;
 $item-padding:                    16px !default;
 
 $item-button-font-size:           18px !default;
 $item-button-line-height:         32px !default;
-$item-icon-font-size:             32px !default;
+$item-icon-font-size:             18px !default;
 $item-icon-fill-font-size:        28px !default;
 
 $item-icon-accessory-color:       #ccc !default;
@@ -624,7 +624,7 @@ $popup-enter-animation:           superScaleIn !default;
 $popup-enter-animation-duration:  0.2s !default;
 $popup-leave-animation-duration:  0.1s !default;
 
-$popup-border-radius:             0px !default;
+$popup-border-radius:             5px !default;
 $popup-background-color:          rgba(255,255,255,0.9) !default;
 
 $popup-button-border-radius:      2px !default;

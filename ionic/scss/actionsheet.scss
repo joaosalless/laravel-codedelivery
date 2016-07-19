@@ -37,8 +37,12 @@
 .platform-android .action-sheet .button.activated {
     background: #e8e8e8;
 }
+
 .platform-android .action-sheet-group {
-    background-color: #fafafa;
+    margin-bottom: $sheet-margin;
+    border-radius: $sheet-border-radius;
+    background-color: #fff;
+    overflow: hidden;
 }
 .platform-android .action-sheet-cancel {
     display: block;

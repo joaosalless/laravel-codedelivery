@@ -26,8 +26,8 @@ angular.module('starter', [
         'http-auth-interceptor'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://codedelivery.dev',
-        // baseUrl: 'https://delivery.joaosales.com.br',
+        // baseUrl: 'http://codedelivery.dev',
+        baseUrl: 'https://delivery.joaosales.com.br',
         pusherKey: '4071c7f9c5f4e6400fa0',
         redirectAfterLogin: {
             client: 'client.order',

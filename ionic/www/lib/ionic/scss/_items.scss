@@ -332,7 +332,7 @@ a.item-content {
 }
 
 .item-icon-left {
-  padding-left: ceil( ($item-padding * 3) + ($item-padding / 3) );
+  padding-left: ceil( ($item-padding * 2) + ($item-padding / 2) );
 
   .icon {
     left: ceil( ($item-padding / 3) * 2);
@@ -342,7 +342,7 @@ a.item-content {
   padding-left: 0;
 
   .item-content {
-    padding-left: ceil( ($item-padding * 3) + ($item-padding / 3) );
+    padding-left: ceil( ($item-padding * 2) + ($item-padding / 2) );
   }
 }
 
