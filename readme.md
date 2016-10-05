@@ -11,6 +11,8 @@
 ## laravel-codedelivery
 Código desenvolvido durante o Curso Laravel 5.1 + Ionic + Cordova - Code Education [Laravel 5.1 + ionic + cordova](http://sites.code.education/laravel-ionic-cordova/)
 
+[APK para testes](ionic/JsDelivery.apk)
+
 ## Screenshots
 [![](public/img/app/menu.jpg)](public/img/app/menu.jpg)
 
